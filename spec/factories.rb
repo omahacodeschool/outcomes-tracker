@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :entry do
+    user_id 1
+    company "MyString"
+  end
   factory :cohort do
     name "MyString"
     school_id 1
