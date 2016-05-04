@@ -16,6 +16,7 @@
 <body class="<%= body_class %>">
   <%= render "flashes" -%>
   <h3> OUTCOMES TRACKER LOL. THIS IS THE APP LAYOUT. </h3>
+  <li><%= link_to 'Login with GitHub', '/auth/github' %></li>
   <%= yield %>
   <%= render "javascript" %>
   <%= render "css_overrides" %>
