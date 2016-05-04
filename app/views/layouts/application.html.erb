@@ -14,9 +14,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <%= render "flashes" -%>
+  
   <h3> OUTCOMES TRACKER LOL. THIS IS THE APP LAYOUT. </h3>
-  <li><%= link_to 'Login with GitHub', '/auth/github' %></li>
+  <%= render "flashes" -%>
+  <div>
+    <% if current_user %>
+      <ul>
+        <%= image_tag current_user.image_url, alt: current_user.name %>
+        <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+      </ul>
+    <% else %>
+      <li><%= link_to 'Login with GitHub', '/auth/github' %></li>
+    <% end %>
+  </div>
+
   <%= yield %>
   <%= render "javascript" %>
   <%= render "css_overrides" %>
