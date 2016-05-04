@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cohorts
+  resources :schools
   resources :users
 
   get '/auth/:provider/callback' => 'sessions#create'
