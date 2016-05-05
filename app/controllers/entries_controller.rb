@@ -62,7 +62,6 @@ class EntriesController < ApplicationController
     end
 
     def owner_check
-      binding.pry
       if current_user.id != @entry.user_id
         redirect_to root_path, notice: 'You cannot access that page'
       end
