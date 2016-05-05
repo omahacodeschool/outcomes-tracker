@@ -1,7 +1,18 @@
 FactoryGirl.define do
+
   factory :entry do
     user_id 1
     company "MyString"
+  end
+  factory :profile do
+    user_id 1
+    cohort_id 1
+    gender "MyString"
+    birthdate "2016-05-05"
+    race "MyString"
+    ethnicity "MyString"
+    military false
+    disability false
   end
   factory :cohort do
     name "MyString"
