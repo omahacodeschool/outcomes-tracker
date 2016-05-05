@@ -1,11 +1,11 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :user_check, only: [:new]
+  before_action :user_check, only: [:new, :index]
   before_action :owner_check, only: [:show, :edit]
 
   # GET /entries
   def index
-    @entries = Entry.all
+    @entries = Entry.where(user_id: current_user.id)
   end
 
   # GET /entries/1
