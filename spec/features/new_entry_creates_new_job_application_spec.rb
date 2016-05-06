@@ -17,4 +17,6 @@ RSpec.feature 'New entry creates new job application' do
 
     expect(page).to have_text("Entry was successfully created.")
   end
+
+  # Later add scenarios for bad input. Right now there can't really be bad input?
 end
