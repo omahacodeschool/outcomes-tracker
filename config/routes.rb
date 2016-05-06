@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :applications
+  resources :job_applications
   resources :entries
   resources :profiles
   resources :cohorts

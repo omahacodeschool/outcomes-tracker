@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Applications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Job title</th>
+      <th>Remote</th>
+      <th>Posting url</th>
+      <th>Company contact</th>
+      <th>Notes</th>
+      <th>Date due</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job_applications.each do |job_application| %>
+      <tr>
+        <td><%= job_application.location %></td>
+        <td><%= job_application.job_title %></td>
+        <td><%= job_application.remote %></td>
+        <td><%= job_application.posting_url %></td>
+        <td><%= job_application.company_contact %></td>
+        <td><%= job_application.notes %></td>
+        <td><%= job_application.date_due %></td>
+        <td><%= link_to 'Show', job_application %></td>
+        <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
+        <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Application', new_job_application_path %>

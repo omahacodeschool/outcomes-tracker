@@ -20,7 +20,7 @@
     <%= f.text_field :company %>
   </div>
 
-  <%= f.fields_for :application do |ff| %>
+  <%= f.fields_for :job_application do |ff| %>
     <div>
       <%= ff.label :job_title %>
       <%= ff.text_field :job_title %>

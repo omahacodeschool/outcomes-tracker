@@ -1,6 +1,6 @@
 module FormHelper
   def setup_entry(entry)
-    entry.application ||= Application.new
+    entry.job_application ||= JobApplication.new
     entry
   end
 end
