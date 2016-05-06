@@ -1,4 +1,4 @@
-<%= form_for(@entry) do |f| %>
+<%= form_for(setup_entry(@entry)) do |f| %>
   <% if @entry.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
@@ -12,13 +12,53 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
+    <%# f.label :user_id %><br>
     <%= f.hidden_field :user_id, :value => @user.id %>
   </div>
   <div class="field">
     <%= f.label :company %><br>
     <%= f.text_field :company %>
   </div>
+
+  <%= f.fields_for :application do |ff| %>
+    <div>
+      <%= ff.label :job_title %>
+      <%= ff.text_field :job_title %>
+    </div>
+    <div>
+      <%= ff.label :location %>
+      <%= ff.text_field :location %>
+    </div>
+    <div>
+      <%= ff.label :posting_url %>
+      <%= ff.text_field :posting_url %>
+    </div>
+    <div>
+      <%= ff.label :company_contact %>
+      <%= ff.text_field :company_contact %>
+    </div>
+    <div>
+      <%= ff.label :notes %>
+      <%= ff.text_field :notes %>
+    </div>
+    <!-- CHANGE TO CHECKBOX -->
+    <!-- <div>
+      <%# ff.label :remote %>
+      <%# ff.text_field :remote %>
+    </div> -->
+    <!-- CHANGE TO DROPDOWN -->
+    <!-- <div>
+      <%# ff.label :nature_of_employment %>
+      <%# ff.text_field :nature_of_employment %>
+    </div> -->
+    <!-- CHANGE TO SOME KIND OF COOL CALENDAR THING? -->
+    <!-- <div>
+      <%# ff.label :date_due %>
+      <%# ff.text_field :date_due %>
+    </div> -->
+
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

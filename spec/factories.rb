@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :application do
+    location "MyString"
+    job_title "MyString"
+    remote false
+    posting_url "MyString"
+    company_contact "MyString"
+    notes "MyText"
+    date_due "2016-05-06"
+  end
 
   factory :entry do
     user_id 1
