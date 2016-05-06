@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :entries
   has_one :profile
+  has_many :permissions
   has_many :abilities, through: :permissions
 
   delegate :cohort, :to => :profile
