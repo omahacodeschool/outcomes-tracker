@@ -11,6 +11,12 @@ end
 
 require "webmock/rspec"
 
+# module IntegrationSpecHelper
+#   def login_with_oauth(service = :github)
+#     visit "/auth/#{service}"
+#   end
+# end
+
 # http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
@@ -22,8 +28,17 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  # config.include IntegrationSpecHelper, :type => :request
   config.example_status_persistence_file_path = "tmp/rspec_examples.txt"
   config.order = :random
 end
+
+# Capybara.default_host = "http://example.org"
+
+# OmniAuth.config.test_mode = true
+# OmniAuth.config.add_mock(:github, {
+#   :uid => '12345',
+#   :nickname => 'testrobot'
+# })
 
 WebMock.disable_net_connect!(allow_localhost: true)
