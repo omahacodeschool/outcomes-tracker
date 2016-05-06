@@ -36,7 +36,7 @@ FactoryGirl.define do
   end
   factory :user do
     name "MyString"
-    github "MyString"
+    github_username "MyString"
     email "MyString"
   end
 end

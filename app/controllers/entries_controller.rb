@@ -15,7 +15,8 @@ class EntriesController < ApplicationController
   # GET /entries/new
   def new
     @entry = Entry.new
-    @user = User.find(session[:user_id])
+    @user = current_user
+    # @user = User.find(session[:user_id])
   end
 
   # GET /entries/1/edit
