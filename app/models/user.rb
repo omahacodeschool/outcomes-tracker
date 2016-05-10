@@ -14,4 +14,20 @@ class User < ActiveRecord::Base
     user
   end
 
+  def has_view_permission 
+    if self.permissions.where(ability_id:2).empty? == false
+      true
+    else
+      false
+    end
+  end
+
+  def has_edit_permission 
+    if self.permissions.where(ability_id:3).empty? == false
+      true
+    else
+      false
+    end
+  end
+
 end

@@ -1,7 +1,8 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :user_check, only: [:new, :index]
-  before_action :owner_check, only: [:show, :edit]
+  before_action :user_check, only: [:new, :index] # more views needed here?
+  before_action :view_permission_check, only: [:show]
+  before_action :edit_permission_check, only: [:edit]
 
   # GET /entries
   def index
@@ -62,8 +63,15 @@ class EntriesController < ApplicationController
       end
     end
 
-    def owner_check
-      if current_user.id != @entry.user_id
+    def view_permission_check
+      if current_user.id != @entry.user_id && current_user.has_view_permission == false # is the logic right?
+        # it feels a little weird that permission to view and edit are separate. can't totally articulate why.
+        redirect_to root_path, notice: 'You cannot access that page'
+      end
+    end
+
+    def edit_permission_check
+      if current_user.id != @entry.user_id && current_user.has_edit_permission == false
         redirect_to root_path, notice: 'You cannot access that page'
       end
     end
