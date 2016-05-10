@@ -54,12 +54,12 @@ RSpec.describe JobApplicationsController, type: :controller do
     end
   end
 
-  describe "GET #new" do
-    it "assigns a new application as @application" do
-      get :new, {}, valid_session
-      expect(assigns(:application)).to be_a_new(JobApplication)
-    end
-  end
+  # describe "GET #new" do
+  #   it "assigns a new application as @application" do
+  #     get :new, {}, valid_session
+  #     expect(assigns(:application)).to be_a_new(JobApplication)
+  #   end
+  # end
 
   describe "GET #edit" do
     it "assigns the requested application as @application" do
@@ -69,38 +69,38 @@ RSpec.describe JobApplicationsController, type: :controller do
     end
   end
 
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new Application" do
-        expect {
-          post :create, {:application => valid_attributes}, valid_session
-        }.to change(Application, :count).by(1)
-      end
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new Application" do
+  #       expect {
+  #         post :create, {:application => valid_attributes}, valid_session
+  #       }.to change(Application, :count).by(1)
+  #     end
 
-      it "assigns a newly created application as @application" do
-        post :create, {:application => valid_attributes}, valid_session
-        expect(assigns(:application)).to be_a(JobApplication)
-        expect(assigns(:application)).to be_persisted
-      end
+  #     it "assigns a newly created application as @application" do
+  #       post :create, {:application => valid_attributes}, valid_session
+  #       expect(assigns(:application)).to be_a(JobApplication)
+  #       expect(assigns(:application)).to be_persisted
+  #     end
 
-      it "redirects to the created application" do
-        post :create, {:application => valid_attributes}, valid_session
-        expect(response).to redirect_to(Application.last)
-      end
-    end
+  #     it "redirects to the created application" do
+  #       post :create, {:application => valid_attributes}, valid_session
+  #       expect(response).to redirect_to(Application.last)
+  #     end
+  #   end
 
-    context "with invalid params" do
-      it "assigns a newly created but unsaved application as @application" do
-        post :create, {:application => invalid_attributes}, valid_session
-        expect(assigns(:application)).to be_a_new(JobApplication)
-      end
+  #   context "with invalid params" do
+  #     it "assigns a newly created but unsaved application as @application" do
+  #       post :create, {:application => invalid_attributes}, valid_session
+  #       expect(assigns(:application)).to be_a_new(JobApplication)
+  #     end
 
-      it "re-renders the 'new' template" do
-        post :create, {:application => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
+  #     it "re-renders the 'new' template" do
+  #       post :create, {:application => invalid_attributes}, valid_session
+  #       expect(response).to render_template("new")
+  #     end
+  #   end
+  # end
 
   describe "PUT #update" do
     context "with valid params" do
