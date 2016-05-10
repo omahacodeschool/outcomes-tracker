@@ -18,7 +18,7 @@ require 'rails_helper'
 # Message expectations are only used when there is no simpler way to specify
 # that an instance is receiving a specific message.
 
-RSpec.describe ApplicationsController, type: :controller do
+RSpec.describe JobApplicationsController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
   # Application. As you add validations to Application, be sure to
@@ -36,9 +36,11 @@ RSpec.describe ApplicationsController, type: :controller do
   # ApplicationsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  ###### TO DO: Go through and change variable names that say application to job_application
+
   describe "GET #index" do
     it "assigns all applications as @applications" do
-      application = Application.create! valid_attributes
+      application = JobApplication.create! valid_attributes
       get :index, {}, valid_session
       expect(assigns(:applications)).to eq([application])
     end
@@ -46,7 +48,7 @@ RSpec.describe ApplicationsController, type: :controller do
 
   describe "GET #show" do
     it "assigns the requested application as @application" do
-      application = Application.create! valid_attributes
+      application = JobApplication.create! valid_attributes
       get :show, {:id => application.to_param}, valid_session
       expect(assigns(:application)).to eq(application)
     end
@@ -55,13 +57,13 @@ RSpec.describe ApplicationsController, type: :controller do
   describe "GET #new" do
     it "assigns a new application as @application" do
       get :new, {}, valid_session
-      expect(assigns(:application)).to be_a_new(Application)
+      expect(assigns(:application)).to be_a_new(JobApplication)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested application as @application" do
-      application = Application.create! valid_attributes
+      application = JobApplication.create! valid_attributes
       get :edit, {:id => application.to_param}, valid_session
       expect(assigns(:application)).to eq(application)
     end
@@ -77,7 +79,7 @@ RSpec.describe ApplicationsController, type: :controller do
 
       it "assigns a newly created application as @application" do
         post :create, {:application => valid_attributes}, valid_session
-        expect(assigns(:application)).to be_a(Application)
+        expect(assigns(:application)).to be_a(JobApplication)
         expect(assigns(:application)).to be_persisted
       end
 
@@ -90,7 +92,7 @@ RSpec.describe ApplicationsController, type: :controller do
     context "with invalid params" do
       it "assigns a newly created but unsaved application as @application" do
         post :create, {:application => invalid_attributes}, valid_session
-        expect(assigns(:application)).to be_a_new(Application)
+        expect(assigns(:application)).to be_a_new(JobApplication)
       end
 
       it "re-renders the 'new' template" do
@@ -107,20 +109,20 @@ RSpec.describe ApplicationsController, type: :controller do
       }
 
       it "updates the requested application" do
-        application = Application.create! valid_attributes
+        application = JobApplication.create! valid_attributes
         put :update, {:id => application.to_param, :application => new_attributes}, valid_session
         application.reload
         skip("Add assertions for updated state")
       end
 
       it "assigns the requested application as @application" do
-        application = Application.create! valid_attributes
+        application = JobApplication.create! valid_attributes
         put :update, {:id => application.to_param, :application => valid_attributes}, valid_session
         expect(assigns(:application)).to eq(application)
       end
 
       it "redirects to the application" do
-        application = Application.create! valid_attributes
+        application = JobApplication.create! valid_attributes
         put :update, {:id => application.to_param, :application => valid_attributes}, valid_session
         expect(response).to redirect_to(application)
       end
@@ -128,13 +130,13 @@ RSpec.describe ApplicationsController, type: :controller do
 
     context "with invalid params" do
       it "assigns the application as @application" do
-        application = Application.create! valid_attributes
+        application = JobApplication.create! valid_attributes
         put :update, {:id => application.to_param, :application => invalid_attributes}, valid_session
         expect(assigns(:application)).to eq(application)
       end
 
       it "re-renders the 'edit' template" do
-        application = Application.create! valid_attributes
+        application = JobApplication.create! valid_attributes
         put :update, {:id => application.to_param, :application => invalid_attributes}, valid_session
         expect(response).to render_template("edit")
       end
@@ -143,14 +145,14 @@ RSpec.describe ApplicationsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested application" do
-      application = Application.create! valid_attributes
+      application = JobApplication.create! valid_attributes
       expect {
         delete :destroy, {:id => application.to_param}, valid_session
       }.to change(Application, :count).by(-1)
     end
 
     it "redirects to the applications list" do
-      application = Application.create! valid_attributes
+      application = JobApplication.create! valid_attributes
       delete :destroy, {:id => application.to_param}, valid_session
       expect(response).to redirect_to(applications_url)
     end
