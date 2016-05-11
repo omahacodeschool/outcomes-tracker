@@ -8,7 +8,7 @@ RSpec.feature 'Entry is visible with right permissions' do
   scenario 'user can view' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    ability_can_view = Ability.create(description:"can view")
+    ability_can_view = Ability.create(description:"can view all user entries")
     user.permissions.create(ability_id: ability_can_view.id)
     entry = student.entries.create(company:'Test')
 

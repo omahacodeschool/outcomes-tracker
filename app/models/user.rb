@@ -14,8 +14,17 @@ class User < ActiveRecord::Base
     user
   end
 
+  def return_abilities_array
+    ability_descriptions = []
+    self.abilities.each do |ability|
+      ability_descriptions << ability.description
+    end
+    ability_descriptions
+  end
+
   def has_view_permission 
-    if self.permissions.where(ability_id:2).empty? == false
+    if self.return_abilities_array.include?("can view all user entries")
+      # this still feels yucky because the ability description is hard-coded. having trouble of thinking how to best reference the specific ability for a given user-flow.
       true
     else
       false
@@ -23,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   def has_edit_permission 
-    if self.permissions.where(ability_id:3).empty? == false
+    if self.return_abilities_array.include?("can edit all user entries")
       true
     else
       false
