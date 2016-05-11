@@ -10,8 +10,9 @@ RSpec.feature 'Entry is visible with right permissions' do
 
     ability_can_view = Ability.create(description:"can view")
     user.permissions.create(ability_id: ability_can_view.id)
-    binding.pry
     entry = student.entries.create(company:'Test')
+
+    binding.pry
 
     visit entry_path(entry.id)
 
