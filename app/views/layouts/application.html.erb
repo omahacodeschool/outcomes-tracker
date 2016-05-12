@@ -16,11 +16,11 @@
 <body class="<%= body_class %>">
   <div id="main">
 
-    <%= render "flashes" -%>
-
     <div id="nav_bar">
       <ul>
-      <li id="logo">OUTCOMES TRACKER</li>
+      <li id="logo">
+        <%= image_tag "/ocs_star.png", alt: "OCS Outcomes Tracker" %>
+      </li>
         <% if current_user %>
             <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
             <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
@@ -28,10 +28,21 @@
           <li><%= link_to 'Login with GitHub', '/auth/github' %></li>
         <% end %>
       </ul>
+    </div>
+
+    <div id="profile_bar">
+      <ul>
+        <% if current_user %>
+            <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
+            <li><%= current_user.name %></li>
+            <li><%= current_user.cohort.name %></li>
+        <% end %>
+      </ul>
       <div id="fill"></div>
     </div>
 
     <div id="page_content">
+      <%= render "flashes" -%>
       <%= yield %>
     </div>
   </div>

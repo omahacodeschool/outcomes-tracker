@@ -1,6 +1,11 @@
 $primary-color: white;
+$notice-color: red;
 $primary-background: grey;
 
-#nav_bar, #fill {
+#profile_bar, #fill {
   background-color: $primary-background;
+}
+
+#notice, .flashes {
+  color: $notice-color;
 }

@@ -1,4 +1,5 @@
 $padding-top: 16px;
+$padding-left: 16px;
 
 body {
   margin: 0;
@@ -8,13 +9,12 @@ body {
   @include outer-container(100%);
 }
 
-#page_content {
-  @inclue span-columns(10 of 12);
-  padding-top: $padding-top;
+#nav_bar {
+  @include span-columns(12);
 }
 
-/* NAV BAR LAYOUT */
-#nav_bar {
+/* PROFILE BAR LAYOUT */
+#profile_bar {
   @include span-columns(2 of 12);
 }
 
@@ -24,6 +24,28 @@ body {
 
 #nav_bar ul {
   list-style: none;
+  padding: 3px 0 0 0;
+  margin: 0;
+}
+
+#nav_bar li {
+  float: left;
+}
+
+#profile_bar ul {
+  list-style: none;
   padding: 0;
 }
 
+#nav_bar, #profile_bar {
+  padding-left: $padding-left;
+}
+
+#profile_bar {
+  padding-top: $padding-top;
+}
+
+#page_content {
+  @inclue span-columns(10 of 12);
+  padding-top: $padding-top;
+}
