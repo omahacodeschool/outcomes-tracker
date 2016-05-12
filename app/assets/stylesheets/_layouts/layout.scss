@@ -1,9 +1,16 @@
+$padding-top: 16px;
+
+body {
+  margin: 0;
+}
+
 #main {
   @include outer-container(100%);
 }
 
 #page_content {
   @inclue span-columns(10 of 12);
+  padding-top: $padding-top;
 }
 
 /* NAV BAR LAYOUT */
