@@ -20,6 +20,8 @@ gem "sprockets-es6"
 gem "title"
 gem "uglifier"
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
+gem 'bourbon'
+gem 'neat'
 
 group :development do
   gem "quiet_assets"

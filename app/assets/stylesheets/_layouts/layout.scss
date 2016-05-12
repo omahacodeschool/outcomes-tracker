@@ -1,0 +1,22 @@
+#main {
+  @include outer-container(100%);
+}
+
+#page_content {
+  @inclue span-columns(10 of 12);
+}
+
+/* NAV BAR LAYOUT */
+#nav_bar {
+  @include span-columns(2 of 12);
+}
+
+#fill {
+  height: 1000px;
+}
+
+#nav_bar ul {
+  list-style: none;
+  padding: 0;
+}
+
