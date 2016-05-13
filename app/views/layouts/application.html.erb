@@ -19,7 +19,7 @@
     <div id="nav_bar">
       <ul>
       <li id="logo">
-        <%= image_tag "/ocs_star.png", alt: "OCS Outcomes Tracker" %>
+        <%= link_to( image_tag("/ocs_star.png", alt: "OCS Outcomes Tracker"), root_path, alt: 'Outcomes Tracker Home') %>
       </li>
         <% if current_user %>
             <li><%= image_tag current_user.image_url, alt: current_user.name %></li>
