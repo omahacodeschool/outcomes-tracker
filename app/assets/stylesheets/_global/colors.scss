@@ -1,6 +1,7 @@
 $primary-color: white;
 $notice-color: red;
 $primary-background: grey;
+$link-color: purple;
 
 #profile_bar, #fill {
   background-color: $primary-background;
@@ -8,4 +9,11 @@ $primary-background: grey;
 
 #notice, .flashes {
   color: $notice-color;
+}
+
+a {
+  text-decoration: none;
+  &:hover{
+    color: lighten($link-color, 10%);
+  }
 }
