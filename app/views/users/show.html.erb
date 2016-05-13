@@ -7,7 +7,7 @@
 
 <p>
   <strong>Github:</strong>
-  <%= @user.github_username %>
+  <%= link_to @user.github_username , 'https://www.github.com/'+@user.github_username %>
 </p>
 
 <p>
@@ -15,5 +15,17 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<p>
+  <strong>Class <%= @user.cohort.name %></strong>
+</p>
+
+<% if current_user == @user %>
+  <div>
+    <%= link_to 'Edit', edit_user_path(@user) %>
+  </div>
+<% end %>
+<%# link_to 'Back', users_path %>
+
+<div>
+  [PARTIAL WILL GO HERE WITH ENTRIES INFO]
+</div>
