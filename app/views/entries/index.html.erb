@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Entries</h1>
+<!-- <h1>Listing Entries</h1> -->
+<h1>User Activity</h1>
 
 <table>
   <thead>
@@ -14,7 +15,7 @@
   <tbody>
     <% @entries.each do |entry| %>
       <tr>
-        <td><%= entry.user_id %></td>
+        <td><%= link_to User.find(entry.user_id).name, user_path(entry.user_id) %></td>
         <td><%= entry.company %></td>
         <td><%= link_to 'Show', entry %></td>
         <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Entry', new_entry_path %>
+<%# link_to 'New Entry', new_entry_path %>

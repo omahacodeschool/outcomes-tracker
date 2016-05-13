@@ -6,7 +6,11 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
-    @entries = Entry.where(user_id: current_user.id)
+    if current_user.has_view_permission
+      @entries = Entry.all
+    else
+      @entries = Entry.where(user_id: current_user.id)
+    end
   end
 
   # GET /entries/1

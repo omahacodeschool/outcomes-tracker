@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+
+# RAILS RESOURCE ROUTING
+# GET     /photos            photos#index    photos_path
+# GET     /photos/new        photos#new      new_photo_path
+# POST    /photos            photos#create   photos_path
+# GET     /photos/:id        photos#show     photo_path(:id)
+# GET     /photos/:id/edit   photos#edit     edit_photo_path(:id)
+# PATCH   /photos/:id        photos#update   photo_path(:id)
+# DELETE  /photos/:id        photos#destroy  photo_path(:id)
+
   resources :job_applications
   resources :entries
   resources :profiles
@@ -10,5 +20,6 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
-  root 'users#index'
+  root 'application#dashboard'
+  # url currently displays incorrectly
 end
