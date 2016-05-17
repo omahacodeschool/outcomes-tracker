@@ -1,4 +1,9 @@
 FactoryGirl.define do
+  factory :offer do
+    job_title "MyString"
+    location "MyString"
+    reote false
+  end
   factory :application do
     location "MyString"
     job_title "MyString"

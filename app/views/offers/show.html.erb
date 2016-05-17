@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job title:</strong>
+  <%= @offer.job_title %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @offer.location %>
+</p>
+
+<p>
+  <strong>Reote:</strong>
+  <%= @offer.reote %>
+</p>
+
+<%= link_to 'Edit', edit_offer_path(@offer) %> |
+<%= link_to 'Back', offers_path %>
