@@ -20,4 +20,23 @@
     <%= f.text_field :company %>
   </div>
 
+  <%= f.fields_for :offer, Offer.new do |o| %>
+
+    <div class="field">
+      <%= o.label :job_title %><br>
+      <%= o.text_field :job_title %>
+    </div>
+    <div class="field">
+      <%= o.label :location %><br>
+      <%= o.text_field :location %>
+    </div>
+    <div class="field">
+      <%= o.label :remote %><br>
+      <%= o.check_box :remote %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

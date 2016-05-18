@@ -21,7 +21,22 @@ class EntriesController < ApplicationController
   def new
     @entry = Entry.new
     @user = current_user
-    # @user = User.find(session[:user_id])
+  end
+
+  def new_job_application
+    @entry = Entry.new
+    @user = current_user
+  end
+
+  def new_offer
+    @entry = Entry.new
+    @user = current_user
+  end
+
+  def new_position
+    @entry = Entry.new
+    @user = current_user
+    #refactor these later
   end
 
   # GET /entries/1/edit
@@ -83,7 +98,7 @@ class EntriesController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def entry_params
       # binding.pry
-      params.require(:entry).permit(:user_id, :company, job_application_attributes: [ :location, :job_title, :posting_url, :company_contact, :notes ])
+      params.require(:entry).permit(:user_id, :company, job_application_attributes: [ :location, :job_title, :posting_url, :company_contact, :notes ], offer_attributes: [:job_title, :location, :remote])
       # binding.pry
     end
 
