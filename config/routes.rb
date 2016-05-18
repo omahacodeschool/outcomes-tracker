@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :offers
 # RAILS RESOURCE ROUTING
 # GET     /photos            photos#index    photos_path
 # GET     /photos/new        photos#new      new_photo_path
@@ -10,12 +9,19 @@ Rails.application.routes.draw do
 # PATCH   /photos/:id        photos#update   photo_path(:id)
 # DELETE  /photos/:id        photos#destroy  photo_path(:id)
 
-  resources :job_applications
-  resources :entries
-  resources :profiles
+  resources :users
+  # GET /users/:id        users#show
+  # GET /users/:id/edit   users#edit
+  # PATCH /users/:id      users#update
+
   resources :cohorts
   resources :schools
-  resources :users
+
+  resources :profiles
+
+  resources :entries
+  resources :job_applications
+  resources :offers
 
   get '/auth/:provider/callback' => 'sessions#create'
 
