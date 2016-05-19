@@ -1,7 +1,7 @@
 $primary-color: white;
 $notice-color: red;
 $primary-background: grey;
-$link-color: purple;
+$link-color: white;
 
 #profile_bar, #fill {
   background-color: $primary-background;
@@ -14,6 +14,17 @@ $link-color: purple;
 a {
   text-decoration: none;
   &:hover{
-    color: lighten($link-color, 10%);
+    color: darken($link-color, 10%);
+  }
+}
+
+#profile_bar {
+  a {
+    &:visited{
+      color: inherit;
+    }
+    &:hover{
+      color: darken($link-color, 10%);
+    }
   }
 }
