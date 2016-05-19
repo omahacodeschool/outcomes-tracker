@@ -30,11 +30,9 @@ class EntriesController < ApplicationController
 
   # POST /entries
   def create
-    binding.pry
     @entry = Entry.new(entry_params)
 
     if @entry.save
-      binding.pry
       redirect_to @entry, notice: 'Entry was successfully created.'
     else
       render :new
