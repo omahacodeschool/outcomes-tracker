@@ -55,7 +55,6 @@ GEM
     bundler-audit (0.5.0)
       bundler (~> 1.2)
       thor (~> 0.18)
-    byebug (8.2.5)
     capybara (2.6.2)
       addressable
       mime-types (>= 1.16)
@@ -151,9 +150,6 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    pry-byebug (3.3.0)
-      byebug (~> 8.0)
-      pry (~> 0.10)
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     quiet_assets (1.1.0)
@@ -289,7 +285,6 @@ DEPENDENCIES
   newrelic_rpm (>= 3.9.8)
   omniauth-github (~> 1.1, >= 1.1.2)
   pg
-  pry-byebug
   pry-rails
   quiet_assets
   rack-canonical-host

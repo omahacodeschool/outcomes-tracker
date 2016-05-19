@@ -23,21 +23,21 @@ class EntriesController < ApplicationController
     @user = current_user
   end
 
-  def new_job_application
-    @entry = Entry.new
-    @user = current_user
-  end
+  # def new_job_application
+  #   @entry = Entry.new
+  #   @user = current_user
+  # end
 
-  def new_offer
-    @entry = Entry.new
-    @user = current_user
-  end
+  # def new_offer
+  #   @entry = Entry.new
+  #   @user = current_user
+  # end
 
-  def new_position
-    @entry = Entry.new
-    @user = current_user
-    #refactor these later
-  end
+  # def new_position
+  #   @entry = Entry.new
+  #   @user = current_user
+  #   #refactor these later
+  # end
 
   # GET /entries/1/edit
   def edit
@@ -46,9 +46,11 @@ class EntriesController < ApplicationController
 
   # POST /entries
   def create
+    binding.pry
     @entry = Entry.new(entry_params)
 
     if @entry.save
+      binding.pry
       redirect_to @entry, notice: 'Entry was successfully created.'
     else
       render :new

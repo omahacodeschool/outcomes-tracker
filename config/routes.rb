@@ -20,9 +20,9 @@ Rails.application.routes.draw do
   resources :profiles
 
   resources :entries
-  get '/entries/new/job_application' => 'entries#new_job_application'
-  get '/entries/new/offer' => 'entries#new_offer'
-  get '/entries/new/position' => 'entries#new_position'
+  # get '/entries/new/job_application' => 'entries#new_job_application'
+  # get '/entries/new/offer' => 'entries#new_offer'
+  # get '/entries/new/position' => 'entries#new_position'
 
   resources :job_applications
   resources :offers
