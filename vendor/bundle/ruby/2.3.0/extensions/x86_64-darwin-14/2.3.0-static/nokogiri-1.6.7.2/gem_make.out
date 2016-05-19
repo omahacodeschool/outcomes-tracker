@@ -1,5 +1,9 @@
 current directory: /Users/alexandramillatmal/Code/outcomes-tracker/vendor/bundle/ruby/2.3.0/gems/nokogiri-1.6.7.2/ext/nokogiri
+<<<<<<< HEAD
 /Users/alexandramillatmal/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20160519-5132-1v5djax.rb extconf.rb
+=======
+/Users/alexandramillatmal/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20160518-29850-1bt0tb4.rb extconf.rb
+>>>>>>> master
 checking if the C compiler accepts ... *** extconf.rb failed ***
 Could not create Makefile due to some reason, probably lack of necessary
 libraries and/or headers.  Check the mkmf.log file for more details.  You may

@@ -1,5 +1,9 @@
 current directory: /Users/alexandramillatmal/Code/outcomes-tracker/vendor/bundle/ruby/2.3.0/gems/pg-0.18.4/ext
+<<<<<<< HEAD
 /Users/alexandramillatmal/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20160519-5132-6zcwq8.rb extconf.rb
+=======
+/Users/alexandramillatmal/.rbenv/versions/2.3.0/bin/ruby -r ./siteconf20160518-29850-f83hv3.rb extconf.rb
+>>>>>>> master
 checking for pg_config... yes
 Using config values from /usr/local/bin/pg_config
 *** extconf.rb failed ***
