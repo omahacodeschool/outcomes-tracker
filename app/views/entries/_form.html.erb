@@ -64,7 +64,7 @@
 
   <label>Offer:</label><br><br>
 
-  <%= f.fields_for :offer, Offer.new do |o| %>
+  <%= f.fields_for :offer do |o| %>
 
     <div class="field">
       <%= o.label :job_title %><br>

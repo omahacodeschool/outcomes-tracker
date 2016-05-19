@@ -11,10 +11,11 @@ class Entry < ActiveRecord::Base
     arr = []
     if self.job_application && self.job_application.job_title.blank? == false
       arr << "Application"
-    elsif self.offer && self.offer.job_title.blank? == false
+    end
+    if self.offer && self.offer.job_title.blank? == false
       arr << "Offer"
     end
     return arr.join(", ")
   end
-  
+
 end
