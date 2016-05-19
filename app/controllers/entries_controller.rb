@@ -23,22 +23,6 @@ class EntriesController < ApplicationController
     @user = current_user
   end
 
-  # def new_job_application
-  #   @entry = Entry.new
-  #   @user = current_user
-  # end
-
-  # def new_offer
-  #   @entry = Entry.new
-  #   @user = current_user
-  # end
-
-  # def new_position
-  #   @entry = Entry.new
-  #   @user = current_user
-  #   #refactor these later
-  # end
-
   # GET /entries/1/edit
   def edit
     @user = User.find(@entry.user_id)
