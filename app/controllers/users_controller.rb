@@ -53,6 +53,7 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :github, :email)
+      binding.pry
+      params.require(:user).permit(:name, :github_username, :email)
     end
 end

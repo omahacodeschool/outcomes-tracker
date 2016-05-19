@@ -24,6 +24,13 @@
           <td><%= link_to User.find(entry.user_id).name, user_path(entry.user_id) %></td>
         <% end %>
         <td><%= entry.company %></td>
+        <td><%= entry.return_associated_info %></td>
+        <%# if entry.job_application && entry.job_application.job_title.blank? == false %>
+          <!-- <td>Application,</td> -->
+        <%# end %>
+        <%# if entry.offer && entry.offer.job_title.blank? == false %>
+          <!-- <td>Offer</td> -->
+        <%# end %>
         <td><%= link_to 'Show', entry %></td>
         <!-- <td><%# link_to 'Edit', edit_entry_path(entry) %></td>
         <td><%# link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->

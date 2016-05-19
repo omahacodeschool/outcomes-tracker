@@ -4,3 +4,5 @@
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
+<br><br>
+<%= link_to 'Delete User', user_path(@user.id), method: :delete %>
