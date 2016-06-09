@@ -6,6 +6,7 @@ class EntriesController < ApplicationController
 
   # GET /entries
   def index
+    # note, this check may change or be relocated later
     if current_user.has_view_permission
       @entries = Entry.all
     else

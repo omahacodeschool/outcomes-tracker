@@ -5,10 +5,7 @@ class ApplicationController < ActionController::Base
 
   def dashboard 
     if current_user
-      redirect_to entries_path
-      # if current_user.has_view_permission
-      # else
-
+      load_dashboard
     else
       render :public
     end
@@ -18,6 +15,16 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
+  end
+
+  def load_dashboard
+    if current_user.has_view_permission
+      # @entries = Entry.all
+      render :dashboard_admin
+    else #this feels weird.
+      # @entries = Entry.where(user_id: current_user.id)
+      render :dashboard_student
+    end
   end
 
   helper_method :current_user
