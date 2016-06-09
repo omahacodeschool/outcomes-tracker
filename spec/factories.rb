@@ -2,7 +2,7 @@ FactoryGirl.define do
   factory :offer do
     job_title "MyString"
     location "MyString"
-    reote false
+    remote false
   end
   factory :application do
     location "MyString"
