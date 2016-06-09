@@ -3,7 +3,11 @@ class JobApplicationsController < ApplicationController
 
   # GET /applications
   def index
-    @job_applications = JobApplication.all
+    if current_user.has_view_permission
+      @job_applications = JobApplication.all
+    else
+      @job_applications = JobApplication.retrieve_all_for_user(current_user)
+    end
   end
 
   # GET /applications/1
