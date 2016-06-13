@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   delete '/logout' => 'sessions#destroy'
 
+  post '/new_entry' => 'application#new_entry_prompt', as: :new_entry_prompt
+
   root 'application#dashboard'
   # url currently displays incorrectly
 end

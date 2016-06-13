@@ -27,5 +27,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def new_entry_prompt
+  end 
+
   helper_method :current_user
 end
