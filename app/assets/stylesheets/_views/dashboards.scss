@@ -1,0 +1,17 @@
+#dashboard_menu {
+  list-style: none;
+}
+
+#dashboard_menu li {
+  float: left;
+  padding-right: $padding-right;
+}
+
+#dashboard_add-new {
+  list-style: none;
+}
+
+#dashboard_add-new li {
+  float: right;
+  padding-right: $padding-right;
+}

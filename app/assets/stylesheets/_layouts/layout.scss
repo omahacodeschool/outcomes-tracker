@@ -47,5 +47,6 @@ body {
 
 #page_content {
   @inclue span-columns(10 of 12);
-  padding-top: $padding-top;
+  padding-top: $padding-top*2;
+  padding-right: $padding-right*2;
 }

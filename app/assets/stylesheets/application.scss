@@ -2,9 +2,10 @@
 
 @import 'bourbon';
 @import 'neat';
+@import '_global/variables';
 @import '_layouts/layout';
 @import '_global/fonts';
-@import '_global/variables';
 @import '_global/nav_bar';
 @import '_global/profile_bar';
 @import '_global/colors';
+@import '_views/dashboards';
