@@ -37,7 +37,8 @@
           <li><%= link_to current_user.name, user_path(current_user.id) %></li>
           <% if current_user.profile && current_user.has_view_permission == false %>
             <li><%= current_user.cohort.name %></li>
-            <li><%= link_to current_user.entries.count.to_s + ' Entries', entries_path %></li>
+            <!-- entries routing no longer exists, but keep this as a template for stats on job apps, offers, etc -->
+            <!-- <li><%# link_to current_user.entries.count.to_s + ' Entries', entries_path %></li> -->
           <% end %>
         </ul>
         <div id="fill"></div>
