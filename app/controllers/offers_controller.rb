@@ -17,6 +17,7 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = Offer.new
+    @offer.build_entry
   end
 
   # GET /offers/1/edit
@@ -57,6 +58,7 @@ class OffersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def offer_params
-      params.require(:offer).permit(:job_title, :location, :remote)
+      params.require(:offer).permit(:job_title, :location, :remote, 
+      entry_attributes: [:id, :user_id, :company])
     end
 end

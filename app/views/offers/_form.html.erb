@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <%= f.fields_for :entry do |ff| %>
+    <div class="field">
+      <%# f.label :user_id %><br>
+      <%= ff.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="field">
+      <%= ff.label :company %><br>
+      <%= ff.text_field :company %>
+    </div><br><br>
+  <% end %> 
+
   <div class="field">
     <%= f.label :job_title %><br>
     <%= f.text_field :job_title %>
