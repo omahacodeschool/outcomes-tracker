@@ -17,6 +17,7 @@ class JobApplicationsController < ApplicationController
   # GET /applications/new
   def new
     @job_application = JobApplication.new
+    @job_application.build_entry
   end
 
   # GET /applications/1/edit
@@ -25,7 +26,6 @@ class JobApplicationsController < ApplicationController
 
   # POST /applications
   def create
-    binding.pry
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.save
