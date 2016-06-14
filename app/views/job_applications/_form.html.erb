@@ -11,6 +11,17 @@
     </div>
   <% end %>
 
+  <%= f.fields_for :entry do |ff| %>
+    <div class="field">
+      <%# f.label :user_id %><br>
+      <%= ff.hidden_field :user_id, :value => current_user.id %>
+    </div>
+    <div class="field">
+      <%= ff.label :company %><br>
+      <%= ff.text_field :company %>
+    </div><br><br>
+  <% end %> 
+
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
@@ -35,10 +46,10 @@
     <%= f.label :notes %><br>
     <%= f.text_area :notes %>
   </div>
-  <div class="field">
-    <%= f.label :date_due %><br>
-    <%= f.date_select :date_due %>
-  </div>
+<!--   <div class="field">
+    <%# f.label :date_due %><br>
+    <%# f.date_select :date_due %>
+  </div> -->
   <div class="actions">
     <%= f.submit %>
   </div>

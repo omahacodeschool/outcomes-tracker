@@ -1,3 +1,10 @@
-<h1>Add a new...</h1>
-<%= link_to("Job Application", new_job_application_path) %>
-
+<h1>Add a *brand* new...</h1>
+<ul id="new_entry_menu">
+  <li>
+    <%= link_to("Job Application", new_job_application_path) %>
+  </li>
+  <li>
+    <%= link_to("Job Offer", new_offer_path) %>
+  </li>
+<%# link_to("Accepted Position", new_position_path) %>
+</ul>

@@ -25,6 +25,7 @@ class JobApplicationsController < ApplicationController
 
   # POST /applications
   def create
+    binding.pry
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.save
@@ -57,6 +58,7 @@ class JobApplicationsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def job_application_params
-      params.require(:job_application).permit(:location, :job_title, :remote, :posting_url, :company_contact, :notes, :date_due)
+      params.require(:job_application).permit(:location, :job_title, :remote, :posting_url, :company_contact, :notes, :date_due, 
+        entry_attributes: [:id, :user_id, :company])
     end
 end
