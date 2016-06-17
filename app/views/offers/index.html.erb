@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Offers</h1>
+<h1>Your Offers</h1>
 
 <table>
-  <thead>
+  <!-- <thead>
     <tr>
       <th>Job title</th>
       <th>Location</th>
@@ -12,18 +12,18 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> -->
     <% @offers.each do |offer| %>
       <tr>
-        <td><%= offer.job_title %></td>
-        <td><%= offer.location %></td>
-        <td><%= offer.remote %></td>
-        <td><%= link_to 'Show', offer %></td>
+        <td><%= offer.job_title %>, <%= offer.entry.company %></td>
+        <!-- <td><%= offer.location %></td>
+        <td><%= offer.remote %></td> -->
+        <td><%= link_to 'Show', offer.entry %></td>
         <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
         <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+<!--   </tbody> -->
 </table>
 
 <br>

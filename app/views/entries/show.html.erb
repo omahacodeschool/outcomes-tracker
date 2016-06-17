@@ -4,26 +4,22 @@
 </p> -->
 
 <p>
-  <strong>Entry:</strong><br>
-  Company: <%= @entry.company %>
+  <h1><%= @entry.company %></h1>
 </p>
 
 <% if @entry.job_application %>
-  <strong>Job Application:</strong><br>
-  Job Title: <%= @entry.job_application.job_title %><br>
-  Location: <%= @entry.job_application.location %><br>
-  Remote: <%= @entry.job_application.remote.to_s %><br>
+  <strong>Application</strong><br>
+  <%= @entry.job_application.job_title %>, <%= @entry.job_application.location %><br><br>
+  <!-- Remote: <%= @entry.job_application.remote.to_s %><br>
   Posting URL: <%= @entry.job_application.posting_url %><br>
   Company Contact: <%= @entry.job_application.company_contact %><br>
-  Notes: <%= @entry.job_application.notes %><br><br>
+  Notes: <%= @entry.job_application.notes %><br><br> -->
 <% end %>
 
 <% if @entry.offer %>
-  <strong>Offer:</strong><br>
-  Job Title: <%= @entry.offer.job_title %><br>
-  Location: <%= @entry.offer.location %><br>
-  Remote: <%= @entry.offer.remote.to_s %><br><br>
+  <strong>Offer</strong><br>
+  <%= @entry.offer.job_title %>, <%= @entry.offer.location %><br><br>
 <% end %>
 
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>
+<%# link_to 'Edit', edit_entry_path(@entry) %><!--  | -->
+<%# link_to 'Back', entries_path %>

@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Applications</h1>
+<h1>Your Applications</h1>
 
 <table>
   <!-- <thead>
@@ -26,12 +26,12 @@
     <td><%= job_application.company_contact %></td>
     <td><%= job_application.notes %></td>
     <td><%= job_application.date_due %></td> -->
-    <td><%= link_to 'Show', job_application %></td>
+    <td><%= link_to 'Show', job_application.entry %></td>
     <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
     <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
-  </tbody>
+<!--   </tbody> -->
 </table>
 
 <br>

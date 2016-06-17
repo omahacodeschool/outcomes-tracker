@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   # MIGHT DELETE THIS ROUTING ALL TOGETHER?
   # resources :entries
+  get '/entries/:id' => 'entries#show', as: :entry
   # get '/entries/new/job_application' => 'entries#new_job_application'
   # get '/entries/new/offer' => 'entries#new_offer'
   # get '/entries/new/position' => 'entries#new_position'
