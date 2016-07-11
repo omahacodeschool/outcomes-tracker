@@ -39,7 +39,7 @@
       "required":true
     },
     "WEB_CONCURRENCY":{
-      "value":1,
+      "value":"1",
       "required":true
     }
   },
