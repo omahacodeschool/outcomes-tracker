@@ -1,5 +1,5 @@
 class JobApplication < ActiveRecord::Base
-  belongs_to :entry
+  belongs_to :entry 
   accepts_nested_attributes_for :entry
 
   # not sure if syntax is right.
