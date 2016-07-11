@@ -32,7 +32,7 @@
   </div>
   <div class="field">
     <%= f.label "Employment type" %><br>
-    <%= f.select(:nature_of_employment, options_for_select([["Internship", "internship"], ["Apprenticeship", "apprenticeship"], ["Freelance/Contract", "freelance/contract"], ["Part-Time", "part-time"], ["Full-Time", "full-time"], ["Self-Employed", "self-employed"]])) %>
+    <%= f.select(:nature_of_employment, JobApplication.nature_of_employments.keys) %>
   </div>
   <div class="field">
     <%= f.label :remote %><br>

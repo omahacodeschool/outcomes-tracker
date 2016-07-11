@@ -27,6 +27,7 @@ class JobApplicationsController < ApplicationController
   # POST /applications
   def create
     @job_application = JobApplication.new(job_application_params)
+    binding.pry
 
     if @job_application.save
       redirect_to @job_application, notice: 'Application was successfully created.'
