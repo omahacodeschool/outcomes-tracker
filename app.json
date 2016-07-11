@@ -41,6 +41,12 @@
     "WEB_CONCURRENCY":{
       "value":"1",
       "required":true
+    },
+    "GITHUB_CLIENT_ID":{
+      "required":true
+    },
+    "GITHUB_CLIENT_SECRET":{
+      "required":true
     }
   },
   "addons":[
