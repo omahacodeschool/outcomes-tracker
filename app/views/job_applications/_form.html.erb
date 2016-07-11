@@ -31,6 +31,10 @@
     <%= f.text_field :job_title %>
   </div>
   <div class="field">
+    <%= f.label "Employment type" %><br>
+    <%= f.select(:nature_of_employment, options_for_select([["Internship", 0], ["Apprenticeship", 1], ["Freelance/Contract", 2], ["Part-Time", 3], ["Full-Time", 4], ["Self-Employed", 5]])) %>
+  </div>
+  <div class="field">
     <%= f.label :remote %><br>
     <%= f.check_box :remote %>
   </div>
