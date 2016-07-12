@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :positions
 # RAILS RESOURCE ROUTING
 # GET     /photos            photos#index    photos_path
 # GET     /photos/new        photos#new      new_photo_path

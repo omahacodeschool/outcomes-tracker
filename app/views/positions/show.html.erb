@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Job title:</strong>
+  <%= @position.job_title %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @position.location %>
+</p>
+
+<p>
+  <strong>Remote:</strong>
+  <%= @position.remote %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @position.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @position.end_date %>
+</p>
+
+<%= link_to 'Edit', edit_position_path(@position) %> |
+<%= link_to 'Back', positions_path %>

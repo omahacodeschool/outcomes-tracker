@@ -1,4 +1,11 @@
 FactoryGirl.define do
+  factory :position do
+    job_title "MyString"
+    location "MyString"
+    remote false
+    start_date "2016-07-12 12:50:24"
+    end_date "2016-07-12 12:50:24"
+  end
   factory :offer do
     job_title "MyString"
     location "MyString"
