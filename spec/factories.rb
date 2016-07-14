@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :salary do
+    amount 1
+    rate 1
+  end
   factory :position do
     job_title "MyString"
     location "MyString"

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :salaries
   resources :positions
 # RAILS RESOURCE ROUTING
 # GET     /photos            photos#index    photos_path

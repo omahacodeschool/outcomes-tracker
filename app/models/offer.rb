@@ -1,5 +1,6 @@
 class Offer < ActiveRecord::Base
   belongs_to :entry
+  has_one :salary
   accepts_nested_attributes_for :entry
 
   #theres gotta be a better way to do this. but for now:
