@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :permissions
   has_many :abilities, through: :permissions
+  # has_many :job_applications, through: entries 
 
   delegate :cohort, :to => :profile
 
