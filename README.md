@@ -2,7 +2,17 @@
 
 ## Getting Started
 
-After you have cloned this repo, run this setup script to set up your machine
+After you have been given access to the repository and cloned the project locally, run `bin/setup` to set up your local project with the necessary dependencies to run and test this application.
+
+## Contributing Your Changes
+
+Format for PR messages: 
+
+```
+Example will go here
+```
+
+<!-- After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
 
     % ./bin/setup
@@ -26,3 +36,4 @@ programming in style.
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
+ -->
