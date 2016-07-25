@@ -15,10 +15,12 @@
     <%= f.label :job_title %><br>
     <%= f.text_field :job_title %>
   </div>
-  <div class="field">
-    <%= f.label :salary %><br>
-    <%= f.text_field :salary %>
-  </div>
+  <%= f.fields_for :salary do |ff| %>
+    <div class="field">
+      <%= ff.label :amount %><br>
+      <%= ff.text_field :amount %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
