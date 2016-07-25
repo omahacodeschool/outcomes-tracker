@@ -1,16 +1,24 @@
 #public__container {
-  align-items: center;
+  @include outer-container(100%); 
+  background-color: $light-gray;
   display:flex;
-}
-
-#public__banner {
-  
-}
-
-#public__button {
-  
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
 }
 
 #public__logo {
+  @include size(auto, 12.75em);
+}
+
+#public__banner {
+  font-size: 100px;
+  text-shadow: 4px 4px 4px white;
+  overflow: nowrap;
+}
+
+#public__button {
+  color: #0078ae;
+  background-color: white;
 
 }
