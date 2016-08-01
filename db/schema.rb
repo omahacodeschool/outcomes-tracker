@@ -86,16 +86,6 @@ ActiveRecord::Schema.define(version: 20160728164359) do
   add_index "permissions", ["ability_id"], name: "index_permissions_on_ability_id", using: :btree
   add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
 
-  create_table "positions", force: :cascade do |t|
-    t.string   "job_title"
-    t.string   "location"
-    t.boolean  "remote"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "cohort_id"
@@ -110,14 +100,6 @@ ActiveRecord::Schema.define(version: 20160728164359) do
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
-
-  create_table "salaries", force: :cascade do |t|
-    t.integer  "amount"
-    t.integer  "rate"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "position_id"
-  end
 
   create_table "schools", force: :cascade do |t|
     t.string   "name"
