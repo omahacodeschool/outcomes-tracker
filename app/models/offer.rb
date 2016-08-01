@@ -1,5 +1,6 @@
 class Offer < ActiveRecord::Base
   belongs_to :entry
+  has_one :salary
   accepts_nested_attributes_for :entry
 
   enum nature_of_employment: {"internship" => 0, "apprenticeship" => 1, 
