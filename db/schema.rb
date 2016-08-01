@@ -72,9 +72,10 @@ ActiveRecord::Schema.define(version: 20160725192335) do
     t.string   "job_title"
     t.string   "location"
     t.boolean  "remote"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "entry_id"
+    t.integer  "nature_of_employment"
   end
 
   create_table "permissions", force: :cascade do |t|
