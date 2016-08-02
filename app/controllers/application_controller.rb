@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
       render :dashboard_admin
     else #this feels weird.
       # @entries = Entry.where(user_id: current_user.id)
-      @job_applications = JobApplication.retrieve_all_for_user(current_user)
+      @job_applications = current_user.job_applications
       render :dashboard_student
     end
   end
