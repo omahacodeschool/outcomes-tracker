@@ -7,6 +7,7 @@ class JobApplicationsController < ApplicationController
       @job_applications = JobApplication.all
     else
       @job_applications = JobApplication.retrieve_all_for_user(current_user)
+      # This is weird, right? Why did I write it this way? This should be a method on the User class.
     end
   end
 
