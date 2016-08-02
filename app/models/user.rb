@@ -14,6 +14,16 @@ class User < ActiveRecord::Base
     user
   end
 
+  # this still feels strange? should there be a way to reference job applications up above the class, instead of writing a custom method? `has_many :job_applications, through: :entries` feels wrong.
+  def job_applications
+    entries = self.entries
+    job_applications = []
+    entries.each do |e|
+      job_applications << JobApplication.where(entry_id == e.id)
+    end
+    job_applications 
+  end
+
   def return_abilities_array
     ability_descriptions = []
     self.abilities.each do |ability|
