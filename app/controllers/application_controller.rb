@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   def load_dashboard
     if current_user.has_view_permission
+      # TODO - what do we want to be rendered on the admin dashboard? Alex will create an Issue in GH asking.
       render :dashboard_admin
     else #this feels weird.
       @job_applications = current_user.job_applications
