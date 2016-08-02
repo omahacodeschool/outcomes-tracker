@@ -13,8 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       redirect_to new_profile_path
-      binding.pry
-      flash[:success] = "Welcome, #{@user.name}! Please take a moment to fill out your profile."
+      flash[:success] = "Welcome, #{@user.github_username}! Please take a moment to fill out your profile."
     end
   end
 
