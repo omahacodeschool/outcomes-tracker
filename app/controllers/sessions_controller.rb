@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def create
     # render text: request.env['omniauth.auth'].to_yaml
     begin
@@ -8,10 +9,12 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    if Profile.user_id(@user.id) == nil
-      redirect_to create_profile_path
-    else
+    if current_user.profile
       redirect_to root_path
+    else
+      redirect_to new_profile_path
+      binding.pry
+      flash[:success] = "Welcome, #{@user.name}! Please take a moment to fill out your profile."
     end
   end
 

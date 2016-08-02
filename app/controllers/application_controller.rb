@@ -30,13 +30,5 @@ class ApplicationController < ActionController::Base
   def new_entry_prompt
   end 
 
-  def complete_profile
-      if current_user.completed_profile?
-        redirect_to root_path
-      else
-        redirect_to create_profile_path
-      end
-  end
-
   helper_method :current_user
 end
