@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you..."
     end
-    redirect_to root_path
+    if Profile.user_id(@user.id) == nil
+      redirect_to create_profile_path
+    else
+      redirect_to root_path
+    end
   end
 
   def destroy
