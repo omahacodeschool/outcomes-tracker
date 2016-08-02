@@ -19,8 +19,11 @@ class User < ActiveRecord::Base
     entries = self.entries
     job_applications = []
     entries.each do |e|
-      job_applications << JobApplication.where("entry_id = #{e.id}")
+      if e.job_application
+        job_applications << e.job_application
+      end
     end
+    binding.pry
     job_applications 
   end
 
