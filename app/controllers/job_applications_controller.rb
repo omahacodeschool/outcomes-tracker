@@ -6,8 +6,7 @@ class JobApplicationsController < ApplicationController
     if current_user.has_view_permission
       @job_applications = JobApplication.all
     else
-      @job_applications = JobApplication.retrieve_all_for_user(current_user)
-      # This is weird, right? Why did I write it this way? This should be a method on the User class.
+      @job_applications = current_user.job_applications
     end
   end
 
