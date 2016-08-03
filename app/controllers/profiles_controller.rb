@@ -3,7 +3,11 @@ class ProfilesController < ApplicationController
 
   # GET /profiles
   def index
-    @profiles = Profile.all
+    if current_user.has_edit_permission
+      @profiles = Profile.all
+    else
+      redirect_to root_path, notice: 'You do not have permission to view that page.'
+    end
   end
 
   # GET /profiles/1
