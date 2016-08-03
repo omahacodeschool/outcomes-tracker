@@ -20,6 +20,11 @@ class OffersController < ApplicationController
     @offer.build_entry
   end
 
+  def add_new_to_existing_entry
+    @offer = Offer.new
+    # Something here finding entry from params and associating the Offer to it.
+  end
+
   # GET /offers/1/edit
   def edit
   end
