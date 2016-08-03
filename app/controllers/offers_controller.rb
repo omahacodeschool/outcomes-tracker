@@ -20,9 +20,11 @@ class OffersController < ApplicationController
     @offer.build_entry
   end
 
+  # GET /entries/:id/add_offer
   def add_new_to_existing_entry
     @offer = Offer.new
-    # Something here finding entry from params and associating the Offer to it.
+    @offer.entry_id = params[:id]
+    render :new
   end
 
   # GET /offers/1/edit

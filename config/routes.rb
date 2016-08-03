@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # get '/entries/new/offer' => 'entries#new_offer'
   # get '/entries/new/position' => 'entries#new_position'
 
-  get '/entries/:id/add_offer' => 'entries#add_new_to_existing_entry', as: :advance_job_application
+  get '/entries/:id/add_offer' => 'offers#add_new_to_existing_entry', as: :advance_job_application
   resources :job_applications
   resources :offers
 
