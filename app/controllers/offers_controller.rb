@@ -25,7 +25,6 @@ class OffersController < ApplicationController
   def add_new_to_existing_entry
     @offer = Offer.new
     @offer.entry_id = params[:id]
-    # I just realized this probably DOESN'T get passed all the way to the offers#create action (Wasn't able to test because of unfixed bug)
     render :new
   end
 
