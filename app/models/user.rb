@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :permissions
   has_many :abilities, through: :permissions
 
+  has_many :job_applications, through: :entries
+
   delegate :cohort, :to => :profile
 
   def self.from_omniauth(auth_hash)
@@ -12,17 +14,6 @@ class User < ActiveRecord::Base
     user.image_url = auth_hash['info']['image']
     user.save!
     user
-  end
-
-  # this still feels strange? should there be a way to reference job applications up above the class, instead of writing a custom method? `has_many :job_applications, through: :entries` feels wrong.
-  def job_applications
-    job_applications = []
-    self.entries.each do |e|
-      if e.job_application
-        job_applications << e.job_application
-      end
-    end
-    job_applications 
   end
 
   def return_abilities_array
