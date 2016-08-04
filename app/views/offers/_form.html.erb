@@ -11,21 +11,17 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :entry do |ff| %>
-    <div class="field">
-      <%# f.label :user_id %><br>
-      <%= ff.hidden_field :user_id, :value => current_user.id %>
-    </div>
-    <% if params[:action] == "new" %>
-      <!-- Some kind of drop down will go here. -->
-    <% else %>
-      <!-- Do we even want this to be a text field that folks can inadvertently change? Probably not. Will leave it for now. -->
-      <div class="field">
-        <%= ff.label :company %><br>
-        <%= ff.text_field :company %>
-      </div><br><br>
-    <% end %>
-  <% end %> 
+  <%# f.fields_for :entry do |ff| %>
+    <!-- <div class="field"> -->
+      <%# f.label :user_id %><!-- <br> -->
+      <%# ff.hidden_field :user_id, :value => current_user.id %>
+    <!-- </div> -->
+    <!-- Do we even want this to be a text field that folks can inadvertently change? Probably not. Will leave it for now. -->
+    <!-- <div class="field"> -->
+      <%# ff.label :company %><!-- <br> -->
+      <%# ff.text_field :company %>
+    <!-- </div><br><br> -->
+  <%# end %> 
 
   <div class="field">
     <%= f.label :job_title %><br>
