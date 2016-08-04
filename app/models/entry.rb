@@ -19,4 +19,14 @@ class Entry < ActiveRecord::Base
     return arr.join(", ")
   end
 
+  def self.all_without_offer
+    arr = []
+    self.all.each do |entry|
+      if !entry.offer
+        arr << entry
+      end
+    end
+    return arr
+  end
+
 end

@@ -18,13 +18,14 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @offer.build_entry
-    #not sure how the above will mesh with what I'm planning
+    @entries = Entry.all_without_offer
   end
 
   # GET /entries/:id/add_offer
   def add_new_to_existing_entry
     @offer = Offer.new
     @offer.entry_id = params[:id]
+    # I just realized this probably DOESN'T get passed all the way to the offers#create action (Wasn't able to test because of unfixed bug)
     render :new
   end
 
