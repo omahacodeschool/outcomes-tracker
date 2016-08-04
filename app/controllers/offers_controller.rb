@@ -18,6 +18,7 @@ class OffersController < ApplicationController
   def new
     @offer = Offer.new
     @offer.build_entry
+    #not sure how the above will mesh with what I'm planning
   end
 
   # GET /entries/:id/add_offer
