@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
 
   def load_dashboard
     if current_user.has_view_permission
-      # @entries = Entry.all
+      # TODO - what do we want to be rendered on the admin dashboard? Alex will create an Issue in GH asking.
       render :dashboard_admin
     else #this feels weird.
-      # @entries = Entry.where(user_id: current_user.id)
+      @job_applications = current_user.job_applications
       render :dashboard_student
     end
   end
