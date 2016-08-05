@@ -14,6 +14,7 @@ class PositionsController < ApplicationController
   def new
     @position = Position.new
     @position.build_salary
+    @entries = Entry.all_without_position
   end
 
   # GET /entries/:id/add_position

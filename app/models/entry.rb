@@ -19,6 +19,7 @@ class Entry < ActiveRecord::Base
     return arr.join(", ")
   end
 
+  # minimize / combine this and the following method at a later time
   def self.all_without_offer
     arr = []
     self.all.each do |entry|
@@ -27,6 +28,17 @@ class Entry < ActiveRecord::Base
       end
     end
     return arr
+  end
+
+  # minimize / combine this and the above method at a later time
+  def self.all_without_position
+    arr = []
+    self.all.each do |entry|
+      if !entry.position
+        arr << entry
+      end  
+    end
+    return arr  
   end
 
 end
