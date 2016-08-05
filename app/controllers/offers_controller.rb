@@ -66,7 +66,8 @@ class OffersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def offer_params
-      params.require(:offer).permit(:job_title, :location, :nature_of_employment, :remote, 
-      entry_attributes: [:id, :user_id, :company])
+      params.require(:offer).permit(:job_title, :location, :nature_of_employment, :remote, :entry_id,
+      entry_attributes: [:id, :user_id, :company],
+      salary_attributes: [:id, :amount, :rate])
     end
 end
