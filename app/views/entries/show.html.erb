@@ -25,5 +25,8 @@
 <%# link_to 'Back', entries_path %>
 
 <% if !@entry.offer %>
-  <%= link_to 'I got an offer!', advance_job_application_path %>
+  <%= link_to 'I received an offer!', advance_job_application_path %><br>
+<% end %>
+<% if @entry.offer && !@entry.position %>
+  <%= link_to 'I accepted a position!', advance_offer_path %>
 <% end %> 

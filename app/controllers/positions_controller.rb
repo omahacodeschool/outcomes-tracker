@@ -16,6 +16,14 @@ class PositionsController < ApplicationController
     @position.build_salary
   end
 
+  # GET /entries/:id/add_position
+  def add_new_to_existing_entry
+    @offer = Offer.new
+    @offer.build_salary
+    @offer.entry_id = params[:id]
+    render :new
+  end
+
   # GET /positions/1/edit
   def edit
   end
