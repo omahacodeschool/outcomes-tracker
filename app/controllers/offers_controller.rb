@@ -17,13 +17,15 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = Offer.new
-    @offer.build_entry
+    # @offer.build_entry
+    @offer.build_salary
     @entries = Entry.all_without_offer
   end
 
   # GET /entries/:id/add_offer
   def add_new_to_existing_entry
     @offer = Offer.new
+    @offer.build_salary
     @offer.entry_id = params[:id]
     render :new
   end
