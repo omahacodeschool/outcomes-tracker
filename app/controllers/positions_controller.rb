@@ -63,6 +63,8 @@ class PositionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def position_params
-      params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, salary_attributes: [:id, :amount, :rate])
+      params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, 
+        entry_attributes: [:id, :user_id, :company],
+        salary_attributes: [:id, :amount, :rate])
     end
 end

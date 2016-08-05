@@ -23,7 +23,7 @@ class Entry < ActiveRecord::Base
   def self.all_without_offer
     arr = []
     self.all.each do |entry|
-      if !entry.offer
+      if entry.job_application && !entry.offer
         arr << entry
       end
     end
@@ -34,7 +34,7 @@ class Entry < ActiveRecord::Base
   def self.all_without_position
     arr = []
     self.all.each do |entry|
-      if !entry.position
+      if entry.offer && !entry.position
         arr << entry
       end  
     end
