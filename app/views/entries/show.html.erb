@@ -21,8 +21,11 @@
   <%= @entry.offer.job_title %>, <%= @entry.offer.location %><br><br>
 <% end %>
 
-<%# link_to 'Edit', edit_entry_path(@entry) %><!--  | -->
-<%# link_to 'Back', entries_path %>
+<% if @entry.position %>
+  <strong>Position</strong><br>
+  <%= @entry.position.job_title %>, <%= @entry.position.location %><br><br>
+<% end %>
+
 
 <% if !@entry.offer %>
   <%= link_to 'I received an offer!', advance_job_application_path %><br>
