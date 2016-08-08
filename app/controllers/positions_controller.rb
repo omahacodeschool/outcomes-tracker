@@ -20,10 +20,10 @@ class PositionsController < ApplicationController
 
   # GET /entries/:id/add_position
   def add_new_to_existing_entry
-    @offer = Offer.new
-    @offer.build_salary
+    @position = Position.new
+    @position.build_salary
     @entry = Entry.find(params[:id])
-    @offer.entry_id = @entry.id
+    @position.entry_id = @entry.id
     render :new
   end
 
@@ -65,7 +65,7 @@ class PositionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def position_params
-      params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, 
+      params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, :entry_id,
         entry_attributes: [:id, :user_id, :company],
         salary_attributes: [:id, :amount, :rate])
     end
