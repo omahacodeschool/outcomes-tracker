@@ -15,13 +15,15 @@ class PositionsController < ApplicationController
     @position = Position.new
     @position.build_salary
     @entries = Entry.all_without_position
+    check_if_new_position_is_valid
   end
 
   # GET /entries/:id/add_position
   def add_new_to_existing_entry
     @offer = Offer.new
     @offer.build_salary
-    @offer.entry_id = params[:id]
+    @entry = Entry.find(params[:id])
+    @offer.entry_id = @entry.id
     render :new
   end
 
@@ -66,5 +68,11 @@ class PositionsController < ApplicationController
       params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, 
         entry_attributes: [:id, :user_id, :company],
         salary_attributes: [:id, :amount, :rate])
+    end
+
+    def check_if_new_position_is_valid
+      if @entries.length == 0 
+        redirect_to offers_path, notice: 'You must have a pending offer to add a new position.'
+      end 
     end
 end

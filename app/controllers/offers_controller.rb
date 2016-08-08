@@ -17,16 +17,17 @@ class OffersController < ApplicationController
   # GET /offers/new
   def new
     @offer = Offer.new
-    # @offer.build_entry
     @offer.build_salary
     @entries = Entry.all_without_offer
+    check_if_new_offer_is_valid
   end
 
   # GET /entries/:id/add_offer
   def add_new_to_existing_entry
     @offer = Offer.new
     @offer.build_salary
-    @offer.entry_id = params[:id]
+    @entry = Entry.find(params[:id])
+    @offer.entry_id = @entry.id
     render :new
   end
 
@@ -71,5 +72,11 @@ class OffersController < ApplicationController
       params.require(:offer).permit(:job_title, :location, :nature_of_employment, :remote, :entry_id,
       entry_attributes: [:id, :user_id, :company],
       salary_attributes: [:id, :amount, :rate])
+    end
+
+    def check_if_new_offer_is_valid
+      if @entries.length == 0 
+        redirect_to offers_path, notice: 'You must first create a job application.'
+      end 
     end
 end
