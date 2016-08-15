@@ -1,13 +1,5 @@
 @charset "utf-8";
 
-@import 'bourbon/bourbon';
-@import 'grid-settings';
-@import 'neat/neat';
-@import 'base/base';
-@import '_global/variables';
-@import '_layouts/layout';
-@import '_global/fonts';
-@import '_global/nav_bar';
-@import '_global/profile_bar';
-@import '_global/colors';
-@import '_views/dashboards';
+@import "bourbon";
+@import "neat";
+@import "base/base";

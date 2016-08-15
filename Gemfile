@@ -19,7 +19,7 @@ gem "sprockets-es6"
 gem "title"
 gem "uglifier"
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
-gem 'bourbon'
+gem 'bourbon', '~> 5.0.0.beta.6'
 gem 'neat'
 
 group :development do
