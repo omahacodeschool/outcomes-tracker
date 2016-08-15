@@ -4,7 +4,8 @@
 
 <% if @entry.job_application %>
   <strong>Application</strong><br>
-  <%= @entry.job_application.job_title %>, <%= @entry.job_application.location %><br><br>
+  <%= @entry.job_application.job_title %>, <%= @entry.job_application.location %><br>
+  <%= link_to 'See more...', @entry.job_application %><br><br>
   <!-- Remote: <%= @entry.job_application.remote.to_s %><br>
   Posting URL: <%= @entry.job_application.posting_url %><br>
   Company Contact: <%= @entry.job_application.company_contact %><br>
@@ -13,12 +14,20 @@
 
 <% if @entry.offer %>
   <strong>Offer</strong><br>
-  <%= @entry.offer.job_title %>, <%= @entry.offer.location %><br><br>
+  <%= @entry.offer.job_title %>, <%= @entry.offer.location %><br>
+  <%= link_to 'See more...', @entry.offer %><br><br>
 <% end %>
 
-<%# link_to 'Edit', edit_entry_path(@entry) %><!--  | -->
-<%# link_to 'Back', entries_path %>
+<% if @entry.position %>
+  <strong>Position</strong><br>
+  <%= @entry.position.job_title %>, <%= @entry.position.location %><br>
+  <%= link_to 'See more...', @entry.position %><br><br>
+<% end %>
+
 
 <% if !@entry.offer %>
-  <%= link_to 'I got an offer!', advance_job_application_path %>
+  <%= link_to 'I received an offer!', advance_job_application_path %><br>
+<% end %>
+<% if @entry.offer && !@entry.position %>
+  <%= link_to 'I accepted a position!', advance_offer_path %>
 <% end %> 

@@ -11,25 +11,42 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :entry do |ff| %>
+  <%# f.fields_for :entry do |ff| %>
+    <!-- <div class="field"> -->
+      <%# f.label :user_id %><!-- <br> -->
+      <%# ff.hidden_field :user_id, :value => current_user.id %>
+    <!-- </div> -->
+    <!-- Do we even want this to be a text field that folks can inadvertently change? Probably not. Will leave it for now. -->
+    <!-- <div class="field"> -->
+      <%# ff.label :company %><!-- <br> -->
+      <%# ff.text_field :company %>
+    <!-- </div><br><br> -->
+  <%# end %> 
+
+  <% if params[:action] == "new" %>
     <div class="field">
-      <%# f.label :user_id %><br>
-      <%= ff.hidden_field :user_id, :value => current_user.id %>
+      <%= f.label "For which existing application?" %>
+      <%= f.select(:entry_id, @entries.collect {|e| [e.company, e.id]}) %><br>
     </div>
+  <% elsif params[:action] == "add_new_to_existing_entry" %>
     <div class="field">
-      <%= ff.label :company %><br>
-      <%= ff.text_field :company %>
-    </div><br><br>
-  <% end %> 
+      <%= f.label @entry.company %>
+      <%= f.hidden_field :entry_id, :value => @offer.entry_id %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= f.label :job_title %><br>
     <%= f.text_field :job_title %>
   </div>
-  <div class="field">
-    <%= f.label :salary %><br>
-    <%= f.text_field :salary %>
-  </div>
+  
+  <%= f.fields_for :salary do |ff| %>
+    <div class="field">
+      <%= ff.label :amount %><br>
+      <%= ff.text_field :amount %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>

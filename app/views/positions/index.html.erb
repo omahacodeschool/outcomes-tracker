@@ -22,7 +22,7 @@
         <td><%= position.remote %></td>
         <td><%= position.start_date %></td>
         <td><%= position.end_date %></td>
-        <td><%= link_to 'Show', position %></td>
+        <td><%= link_to 'Show', position.entry %></td>
         <td><%= link_to 'Edit', edit_position_path(position) %></td>
         <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

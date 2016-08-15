@@ -11,16 +11,30 @@
     </div>
   <% end %>
 
+  <% if params[:action] == "new" %>
+    <div class="field">
+      <%= f.label "For which existing application?" %>
+      <%= f.select(:entry_id, @entries.collect {|e| [e.company, e.id]}) %><br>
+    </div>
+  <% elsif params[:action] == "add_new_to_existing_entry" %>
+    <div class="field">
+      <%= f.label @entry.company %>
+      <%= f.hidden_field :entry_id, :value => @position.entry_id %>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :job_title %><br>
     <%= f.text_field :job_title %>
   </div>
+
   <%= f.fields_for :salary do |ff| %>
     <div class="field">
       <%= ff.label :amount %><br>
       <%= ff.text_field :amount %>
     </div>
   <% end %>
+
   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>

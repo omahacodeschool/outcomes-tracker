@@ -92,10 +92,9 @@ ActiveRecord::Schema.define(version: 20160809151259) do
     t.boolean  "remote"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "entry_id"
-    t.integer  "nature_of_employment"
   end
 
   create_table "profiles", force: :cascade do |t|

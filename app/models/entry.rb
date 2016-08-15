@@ -19,4 +19,26 @@ class Entry < ActiveRecord::Base
     return arr.join(", ")
   end
 
+  # minimize / combine this and the following method at a later time
+  def self.all_without_offer
+    arr = []
+    self.all.each do |entry|
+      if entry.job_application && !entry.offer
+        arr << entry
+      end
+    end
+    return arr
+  end
+
+  # minimize / combine this and the above method at a later time
+  def self.all_without_position
+    arr = []
+    self.all.each do |entry|
+      if entry.offer && !entry.position
+        arr << entry
+      end  
+    end
+    return arr  
+  end
+
 end
