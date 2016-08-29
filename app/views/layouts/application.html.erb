@@ -24,7 +24,10 @@
         <div class="sidebar">
           <%= image_tag current_user.image_url, alt: current_user.name, class: "profilePhoto" %>
 
-          
+          <p>
+            <strong><%= current_user.github_username %></strong><br>
+            <%= current_user.cohort.name %>
+          </p>
         </div>
       <% end %>
 
