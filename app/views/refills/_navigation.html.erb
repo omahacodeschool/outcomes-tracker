@@ -14,6 +14,10 @@
       <% if current_user %>
         <ul class="navigation-menu show">
           <li class="nav-link">
+            <%= link_to("Add Application", :new_job_application) %>
+          </li>
+
+          <li class="nav-link">
             <%= link_to 'Update Profile', :update_profile %>
           </li>
 
