@@ -11,39 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :cohort_id %><br>
-    <%= f.number_field :cohort_id %>
-  </div>
-  <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
-  </div>
-  <div class="field">
-    <%= f.label :birthdate %><br>
-    <%= f.date_select :birthdate %>
-  </div>
-  <div class="field">
-    <%= f.label :race %><br>
-    <%= f.text_field :race %>
-  </div>
-  <div class="field">
-    <%= f.label :ethnicity %><br>
-    <%= f.text_field :ethnicity %>
-  </div>
-  <div class="field">
-    <%= f.label :military %><br>
-    <%= f.check_box :military %>
-  </div>
-  <div class="field">
-    <%= f.label :disability %><br>
-    <%= f.check_box :disability %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+    <p>
+      <%= f.label :gender %>
+      <%= f.text_field :gender %>
+    </p>
+
+    <p>
+      <%= f.label :race %>
+      <%= f.text_field :race %>
+    </p>
+
+    <p>
+      <%= f.label :ethnicity %>
+      <%= f.text_field :ethnicity %>
+    </p>
+
+    <p>
+      <label for="profile_military">
+        <%= f.check_box :military %>
+        Military/Veteran?
+      </label>
+    </p>
+
+    <p>
+      <%= f.label :birthdate %>
+      <%= f.date_select :birthdate, {}, class: "birthdateSelect" %>
+    </p>
+  </fieldset>
+
+  <%= f.submit "Save" %>
 <% end %>

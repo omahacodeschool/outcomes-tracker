@@ -21,7 +21,7 @@ gem "uglifier"
 gem 'omniauth-github', '~> 1.1', '>= 1.1.2'
 gem 'bourbon', '~> 5.0.0.beta.6'
 gem 'neat'
-gem "refills", group: :development
+gem "refills", group: :development, git: "git@github.com:thoughtbot/refills.git"
 
 group :development do
   gem "quiet_assets"

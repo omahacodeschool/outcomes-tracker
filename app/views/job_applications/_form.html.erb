@@ -11,50 +11,57 @@
     </div>
   <% end %>
 
-  <%= f.fields_for :entry do |ff| %>
-    <div class="field">
-      <%# f.label :user_id %><br>
+  <fieldset>
+    <h2>Company Info</h2>
+    <%= f.fields_for :entry do |ff| %>
       <%= ff.hidden_field :user_id, :value => current_user.id %>
-    </div>
-    <div class="field">
-      <%= ff.label :company %><br>
-      <%= ff.text_field :company %>
-    </div><br><br>
-  <% end %> 
 
-  <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :job_title %><br>
-    <%= f.text_field :job_title %>
-  </div>
-  <div class="field">
-    <%= f.label "Employment type" %><br>
-    <%= f.select(:nature_of_employment, JobApplication.nature_of_employments.keys) %>
-  </div>
-  <div class="field">
-    <%= f.label :remote %><br>
-    <%= f.check_box :remote %>
-  </div>
-  <div class="field">
-    <%= f.label :posting_url %><br>
-    <%= f.text_field :posting_url %>
-  </div>
-  <div class="field">
-    <%= f.label :company_contact %><br>
-    <%= f.text_field :company_contact %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-<!--   <div class="field">
-    <%# f.label :date_due %><br>
-    <%# f.date_select :date_due %>
-  </div> -->
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+      <p>
+        <%= ff.label :company %>
+        <%= ff.text_field :company, placeholder: "Google" %>
+      </p>
+    <% end %> 
+
+    <p>
+      <%= f.label :location %>
+      <%= f.text_field :location, placeholder: "Omaha" %>
+    </p>  
+  </fieldset>
+
+  <fieldset>
+    <h2>Job Details</h2>
+    <p>
+      <%= f.label :job_title %>
+      <%= f.text_field :job_title %>
+    </p>
+    <p>
+      <%= f.label "Employment type" %>
+      <%= f.select(:nature_of_employment, JobApplication.nature_of_employments.keys) %>
+    </p>
+    <p>
+      <label for="job_application_remote">
+        <%= f.check_box :remote %>
+        Remote?
+      </label>
+    </p>  
+  </fieldset>
+
+  <fieldset>
+    <h2>Job Posting</h2>
+
+    <p>
+      <%= f.label :posting_url %>
+      <%= f.text_field :posting_url %>
+    </p>
+    <p>
+      <%= f.label :company_contact, "Hiring Manager Email" %>
+      <%= f.text_field :company_contact, placeholder: "recruiter@google.com" %>
+    </p>
+    <p>
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+    </p>
+  </fieldset>
+
+  <%= f.submit "Save" %>
 <% end %>

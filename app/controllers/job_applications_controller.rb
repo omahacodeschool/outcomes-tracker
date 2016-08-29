@@ -29,7 +29,7 @@ class JobApplicationsController < ApplicationController
     @job_application = JobApplication.new(job_application_params)
 
     if @job_application.save
-      redirect_to @job_application, notice: 'Application was successfully created.'
+      redirect_to @job_application.entry, notice: 'Application added.'
     else
       render :new
     end
@@ -38,7 +38,7 @@ class JobApplicationsController < ApplicationController
   # PATCH/PUT /applications/1
   def update
     if @job_application.update(job_application_params)
-      redirect_to @job_application, notice: 'Application was successfully updated.'
+      redirect_to @job_application, notice: 'Application updated.'
     else
       render :edit
     end
@@ -47,7 +47,7 @@ class JobApplicationsController < ApplicationController
   # DELETE /applications/1
   def destroy
     @job_application.destroy
-    redirect_to job_applications_url, notice: 'Application was successfully destroyed.'
+    redirect_to job_applications_url, notice: 'Application deleted.'
   end
 
   private

@@ -1,0 +1,35 @@
+.container{
+  @include outer-container;
+}
+
+.innerContainer{
+  padding-top: 10px;
+}
+
+.sidebar{
+  @include span-columns(2);
+  @extend .innerContainer;
+}
+
+.pageContent{
+  @include span-columns(10); 
+  @extend .innerContainer;
+  padding-bottom: 40px;
+}
+
+fieldset{
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  background: #FDFDFD;
+  border-radius: 6px;
+  border: 1px solid #eee;
+}
+
+.jobEntryButtons{
+  margin-bottom: 20px;
+}
+
+.birthdateSelect{
+  width: 130px; 
+  display: inline-block;
+}

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/profile' => 'profiles#edit', as: "update_profile"
+
   resources :salaries
   resources :positions
 # RAILS RESOURCE ROUTING
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   resources :cohorts
   resources :schools
 
-  resources :profiles
+  resources :profiles, only: [:update]
 
   # MIGHT DELETE THIS ROUTING ALL TOGETHER?
   # resources :entries

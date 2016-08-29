@@ -1,21 +1,57 @@
-<p>
-  <h1><%= @entry.company %></h1>
-</p>
+<h1><%= @entry.company %></h1>
+
+<div class="button-group jobEntryButtons">
+  <% if !@entry.job_application.posting_url.blank? %>
+    <label>
+      <%= link_to "Job Details", @entry.job_application.posting_url, class: "button-group-item" %>
+    </label>
+  <% end %>
+
+  <% if !@entry.job_application.company_contact.blank? %>
+    <label>
+      <%= link_to "Message Hiring Manager", "mailto:#{@entry.job_application.company_contact}", class: "button-group-item" %>
+    </label>
+  <% end %>
+
+  <% if !@entry.offer %>
+    <label>
+      <%= link_to '＋ Received Offer', :advance_job_application, class: "button-group-item" %>
+    </label>
+  <% else %>
+
+    <% if !@entry.position && false %>
+      <label>
+        <%= link_to "＋ Accepted Position", :advance_offer, class: "button-group-item" %>
+      </label>
+    <% end %>
+
+  <% end %>
+</div>
 
 <% if @entry.job_application %>
-  <strong>Application</strong><br>
-  <%= @entry.job_application.job_title %>, <%= @entry.job_application.location %><br>
-  <%= link_to 'See more...', @entry.job_application %><br><br>
-  <!-- Remote: <%= @entry.job_application.remote.to_s %><br>
-  Posting URL: <%= @entry.job_application.posting_url %><br>
-  Company Contact: <%= @entry.job_application.company_contact %><br>
-  Notes: <%= @entry.job_application.notes %><br><br> -->
+  <p>
+    You added the "<%= @entry.job_application.job_title %>" <%= @entry.job_application.nature_of_employment %> position, at <%= @entry.company %> in <%= @entry.job_application.location %> about <%= time_ago_in_words(@entry.created_at) %> ago.
+  </p>
+
+  <% if !@entry.job_application.notes.blank? %>
+    <p>Notes: <%= @entry.job_application.notes %></p>
+  <% end %>
+
+  <p>
+    <% if @entry.job_application.remote %>
+      This is a remote position.
+    <% end %>
+  </p>
 <% end %>
 
 <% if @entry.offer %>
-  <strong>Offer</strong><br>
-  <%= @entry.offer.job_title %>, <%= @entry.offer.location %><br>
-  <%= link_to 'See more...', @entry.offer %><br><br>
+  <hr>
+
+  <h2>Offer</h2>
+
+  <p>
+    You received an offer to work at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.pretty_amount, precision: 0) %> about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %>
+  </p>
 <% end %>
 
 <% if @entry.position %>
@@ -24,10 +60,3 @@
   <%= link_to 'See more...', @entry.position %><br><br>
 <% end %>
 
-
-<% if !@entry.offer %>
-  <%= link_to 'I received an offer!', advance_job_application_path %><br>
-<% end %>
-<% if @entry.offer && !@entry.position %>
-  <%= link_to 'I accepted a position!', advance_offer_path %>
-<% end %> 

@@ -1,54 +1,26 @@
-<ul id="dashboard_menu">
-  <li>
-    <%= link_to("Job Applications", job_applications_path) %>
-  </li>
-  <li>
-    <%= link_to("Offers", offers_path) %>
-  </li>
-  <li>
-    <%= link_to("Positions", positions_path) %>
-  </li>
-  <li>
-    Data
-  </li>
-</ul>
+<h1>Dashboard</h1>
 
-<ul id="dashboard_add-new">
-  <li>
-    <%= link_to("+", new_job_application_path) %>
-  </li>
-</ul>
+<% if @job_applications.any? %>
+  <table class="tables">
+    <% @job_applications.each do |job_application| %>
+      <tr>
+        <td>
+          <%= link_to job_application.job_title, job_application.entry %>,
+          <%= job_application.entry.company %>
+        </td>
 
-<div>
-<table>
-  <!-- <thead>
-    <tr>
-      <th>Location</th>
-      <th>Job title</th>
-      <th>Remote</th>
-      <th>Posting url</th>
-      <th>Company contact</th>
-      <th>Notes</th>
-      <th>Date due</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead> -->
+        <td>
+          <%= link_to("Job Posting", job_application.posting_url) unless job_application.posting_url.blank? %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>
+    Looks like you haven't applied to any jobs yet. When you do, they'll show up here.
+  </p>
 
-<!--   <tbody> -->
-<% @job_applications.each do |job_application| %>
-  <tr>
-    <!-- <td><%= job_application.location %></td> -->
-    <td><%= job_application.job_title %>, <%= job_application.entry.company %></td>
-    <!-- <td><%= job_application.remote %></td>
-    <td><%= job_application.posting_url %></td>
-    <td><%= job_application.company_contact %></td>
-    <td><%= job_application.notes %></td>
-    <td><%= job_application.date_due %></td> -->
-    <td><%= link_to 'Show', job_application.entry %></td>
-    <td><%= link_to 'Edit', edit_job_application_path(job_application) %></td>
-    <td><%= link_to 'Destroy', job_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <p>
+    Click the "Add Application" button to get started.
+  </p>
 <% end %>
-<!--   </tbody> -->
-</table>
-</div>

@@ -40,7 +40,7 @@ class OffersController < ApplicationController
     @offer = Offer.new(offer_params)
 
     if @offer.save
-      redirect_to @offer, notice: 'Offer was successfully created.'
+      redirect_to @offer.entry, notice: 'Offer added.'
     else
       render :new
     end
@@ -49,7 +49,7 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   def update
     if @offer.update(offer_params)
-      redirect_to @offer, notice: 'Offer was successfully updated.'
+      redirect_to @offer, notice: 'Offer updated.'
     else
       render :edit
     end
@@ -58,7 +58,7 @@ class OffersController < ApplicationController
   # DELETE /offers/1
   def destroy
     @offer.destroy
-    redirect_to offers_url, notice: 'Offer was successfully destroyed.'
+    redirect_to offers_url, notice: 'Offer deleted.'
   end
 
   private
