@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     rescue
       flash[:warning] = "There was an error while trying to authenticate you."
     end
-    if !current_user.profile.empty?
+    if current_user.profile
       redirect_to root_path
     else
       current_user.initialize_profile if !current_user.profile
