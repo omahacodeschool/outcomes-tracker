@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
     if current_user.has_view_permission
       @entries = Entry.all
     else
-      @entries = User.entries
+      @entries = current_user.entries
     end
   end
 
