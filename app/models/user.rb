@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :abilities, through: :permissions
 
   has_many :job_applications, through: :entries
+  has_many :offers, through: :entries
+  has_many :positions, through: :entries
+
 
   delegate :cohort, :to => :profile
 
