@@ -38,6 +38,22 @@ class User < ActiveRecord::Base
     end
   end
 
+  def remove_view_permission
+    if self.has_view_permission == true
+      permissions = self.permissions.where(ability: 1)
+      # In best-use case, return of the above query should always be a single record, but not assured by application; and I'm not sure that there is a way to add such a validation on the table. 
+      # Therefore, loop through each below:
+      permissions.each { |p| p.destroy }
+    end
+  end
+
+  def remove_edit_permission
+    if self.has_edit_permission == true
+      permissions = self.permissions.where(ability: 2)
+      permissions.each { |p| p.destroy }
+    end
+  end
+
   def return_list_of_abilities
     ability_descriptions = []
     self.permissions.each do |permission|
