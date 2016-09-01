@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :permissions
 
+  # accepts_nested_attributes_for :permissions
+
   has_many :job_applications, through: :entries
 
   delegate :cohort, :to => :profile
@@ -20,6 +22,20 @@ class User < ActiveRecord::Base
     user.image_url = auth_hash['info']['image']
     user.save!
     user
+  end
+
+  def set_view_permission
+    if self.has_view_permission == false
+      p = self.permissions.build({ability: 1})
+      p.save
+    end
+  end
+
+  def set_edit_permission
+    if self.has_edit_permission == false
+      p = self.permissions.build({ability: 2})
+      p.save
+    end
   end
 
   def return_list_of_abilities
