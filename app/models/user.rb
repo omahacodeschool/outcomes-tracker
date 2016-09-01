@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_many :entries
   has_one :profile
   has_many :permissions
-  has_many :abilities, through: :permissions
 
   has_many :job_applications, through: :entries
 
@@ -23,17 +22,17 @@ class User < ActiveRecord::Base
     user
   end
 
-  def return_abilities_array
+  def return_list_of_abilities
     ability_descriptions = []
-    self.abilities.each do |ability|
-      ability_descriptions << ability.description
+    self.permissions.each do |permission|
+      ability_descriptions << permission.ability
     end
     ability_descriptions
   end
 
   def has_view_permission 
-    if self.return_abilities_array.include?("can view all user entries")
-      # this still feels yucky because the ability description is hard-coded. having trouble of thinking how to best reference the specific ability for a given user-flow.
+    if self.return_list_of_abilities.include?("can view all user entries")
+      # Changing to enums does not change the need to do a check against a string here, which still feels weird. Maybe it doesn't need to feel weird.
       true
     else
       false
@@ -41,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def has_edit_permission 
-    if self.return_abilities_array.include?("can edit all user entries")
+    if self.return_list_of_abilities.include?("can edit all user entries")
       true
     else
       false
