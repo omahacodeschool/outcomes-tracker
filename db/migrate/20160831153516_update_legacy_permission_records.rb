@@ -1,7 +1,7 @@
 class UpdateLegacyPermissionRecords < ActiveRecord::Migration
   def change
     Permission.all.each do |permission|
-      a = Ability.where(id: permission.ability_id)[0]
+      a = Ability.find_by_id(permission.ability_id)
       if a.description == "can export spreadsheet"
         permission.ability = 0
       elsif a.description == "can view all user entries"
