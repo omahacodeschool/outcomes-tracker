@@ -10,14 +10,19 @@ class SessionsController < ApplicationController
       rescue
         flash[:warning] = "There was an error while trying to authenticate you."
       end
+      # SUGGESTION INSTEAD OF WHAT IS BELOW:
+      # if first_user_login <-- lol, how?
+      # # redirect_to :update_profile
+      # else
+      # # redirect_to :root_path
+      # end
       if current_user.profile
         redirect_to root_path
       else
-        current_user.initialize_profile if !current_user.profile
-        # is the if statement above necessary if this is already in a condidtional?
-        # this will move anyway because the Staff User will initialize profile. 
+        current_user.initialize_profile
+        # this will move because the Staff User will initialize profile. 
         redirect_to :update_profile
-        flash[:success] = "Welcome, #{@user.github_username}!"
+        flash[:success] = "Welcome, #{@user.github_username}! Please fill out some additional info about yourself."
       end
     else
       flash[:notice] = "Doesn't look like you are part of this organization. Please contact a staff person if you have questions."
