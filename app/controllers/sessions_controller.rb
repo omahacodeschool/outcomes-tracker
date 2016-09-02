@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       current_user.initialize_profile if !current_user.profile
+      # is the if statement above necessary if this is already in a condidtional?
       redirect_to :update_profile
       flash[:success] = "Welcome, #{@user.github_username}!"
     end
