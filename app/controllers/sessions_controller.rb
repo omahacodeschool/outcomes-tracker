@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def create
-    # render text: request.env['omniauth.auth'].to_yaml
     if user_is_whitelisted(request.env['omniauth.auth'])
       begin
         @user = User.from_omniauth(request.env['omniauth.auth'])
@@ -11,7 +10,7 @@ class SessionsController < ApplicationController
         flash[:warning] = "There was an error while trying to authenticate you."
       end
       # SUGGESTION INSTEAD OF WHAT IS BELOW:
-      # if first_user_login <-- lol, how?
+      # if first_user_login <-- not sure how to do this yet
       # # redirect_to :update_profile
       # else
       # # redirect_to :root_path
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       else
         current_user.initialize_profile
-        # this will move because the Staff User will initialize profile. 
+        # Eventually this will move b/c Staff User will initialize profile
         redirect_to :update_profile
         flash[:success] = "Welcome, #{@user.github_username}! Please fill out some additional info about yourself."
       end
@@ -39,7 +38,7 @@ class SessionsController < ApplicationController
   end
   
   private
-    # how is this method name?
+    # Is this an appropriate method name?
     def user_is_whitelisted(auth_hash)
       User.check_user_access(auth_hash)
     end

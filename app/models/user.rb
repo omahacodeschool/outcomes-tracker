@@ -24,6 +24,11 @@ class User < ActiveRecord::Base
     user
   end
 
+  # Checks GitHub username against the database.
+  #
+  # auth_hash - Authentication hash from GitHub
+  #
+  # Returns true if a User with the auth_hash's username exists in the database
   def self.check_user_access(auth_hash)
     return self.find_by(github_username: auth_hash['info']['nickname'])
   end
