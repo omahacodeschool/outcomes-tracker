@@ -26,15 +26,13 @@ class User < ActiveRecord::Base
 
   def set_view_permission
     if self.has_view_permission == false
-      p = self.permissions.build({ability: 1})
-      p.save
+      p = self.permissions.create({ability: 1})
     end
   end
 
   def set_edit_permission
     if self.has_edit_permission == false
-      p = self.permissions.build({ability: 2})
-      p.save
+      p = self.permissions.create({ability: 2})
     end
   end
 
@@ -42,15 +40,14 @@ class User < ActiveRecord::Base
     if self.has_view_permission == true
       permissions = self.permissions.where(ability: 1)
       # In best-use case, return of the above query should always be a single record, but not assured by application; and I'm not sure that there is a way to add such a validation on the table. 
-      # Therefore, loop through each below:
-      permissions.each { |p| p.destroy }
+      permissions.destroy_all
     end
   end
 
   def remove_edit_permission
     if self.has_edit_permission == true
       permissions = self.permissions.where(ability: 2)
-      permissions.each { |p| p.destroy }
+      permissions.destroy_all
     end
   end
 
@@ -63,20 +60,11 @@ class User < ActiveRecord::Base
   end
 
   def has_view_permission 
-    if self.return_list_of_abilities.include?("can view all user entries")
-      # Changing to enums does not change the need to do a check against a string here, which still feels weird. Maybe it doesn't need to feel weird.
-      true
-    else
-      false
-    end
+    self.return_list_of_abilities.include?("can view all user entries")
   end
 
   def has_edit_permission 
-    if self.return_list_of_abilities.include?("can edit all user entries")
-      true
-    else
-      false
-    end
+    self.return_list_of_abilities.include?("can edit all user entries")
   end
 
 end
