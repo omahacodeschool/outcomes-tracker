@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905183446) do
+ActiveRecord::Schema.define(version: 20160905232907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,9 +53,11 @@ ActiveRecord::Schema.define(version: 20160905183446) do
     t.text     "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
   end
 
   add_index "events", ["entry_id"], name: "index_events_on_entry_id", using: :btree
+  add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
   create_table "job_applications", force: :cascade do |t|
     t.string   "location"
@@ -142,4 +144,5 @@ ActiveRecord::Schema.define(version: 20160905183446) do
   end
 
   add_foreign_key "events", "entries"
+  add_foreign_key "events", "users"
 end
