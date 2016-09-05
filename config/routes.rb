@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :abilities
     resources :cohorts
     resources :entries
     resources :job_applications
@@ -13,7 +12,7 @@ Rails.application.routes.draw do
     resources :schools
     resources :users
 
-    root to: "abilities#index"
+    root to: "users#index"
   end
 
   get '/profile' => 'profiles#edit', as: "update_profile"

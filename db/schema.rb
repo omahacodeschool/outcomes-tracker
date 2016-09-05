@@ -11,16 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809190101) do
+ActiveRecord::Schema.define(version: 20160831160122) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "abilities", force: :cascade do |t|
-    t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
 
   create_table "cohorts", force: :cascade do |t|
     t.string   "name"
@@ -79,11 +73,10 @@ ActiveRecord::Schema.define(version: 20160809190101) do
   end
 
   create_table "permissions", force: :cascade do |t|
-    t.integer "ability_id"
     t.integer "user_id"
+    t.integer "ability"
   end
 
-  add_index "permissions", ["ability_id"], name: "index_permissions_on_ability_id", using: :btree
   add_index "permissions", ["user_id"], name: "index_permissions_on_user_id", using: :btree
 
   create_table "positions", force: :cascade do |t|

@@ -6,7 +6,7 @@ class OffersController < ApplicationController
     if current_user.has_view_permission
       @offers = Offer.all
     else
-      @offers = Offer.retrieve_all_for_user(current_user)
+      @offers = current_user.offers
     end
   end
 

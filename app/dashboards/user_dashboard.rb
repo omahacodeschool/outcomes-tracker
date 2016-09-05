@@ -11,7 +11,6 @@ class UserDashboard < Administrate::BaseDashboard
     entries: Field::HasMany,
     profile: Field::HasOne,
     permissions: Field::HasMany,
-    abilities: Field::HasMany,
     job_applications: Field::HasMany,
     id: Field::Number,
     name: Field::String,
@@ -31,7 +30,6 @@ class UserDashboard < Administrate::BaseDashboard
     :entries,
     :profile,
     :permissions,
-    :abilities,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,7 +38,6 @@ class UserDashboard < Administrate::BaseDashboard
     :entries,
     :profile,
     :permissions,
-    :abilities,
     :job_applications,
     :id,
     :name,
@@ -58,7 +55,6 @@ class UserDashboard < Administrate::BaseDashboard
     :entries,
     :profile,
     :permissions,
-    :abilities,
     :job_applications,
     :name,
     :github_username,
