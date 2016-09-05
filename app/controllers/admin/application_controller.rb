@@ -8,8 +8,15 @@ module Admin
   class ApplicationController < Administrate::ApplicationController
     before_filter :authenticate_admin
 
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
+
     def authenticate_admin
-      # TODO Add authentication logic here.
+      if !current_user.admin?
+        binding.pry
+        redirect_to :root, alert: "Access denied."
+      end
     end
 
     # Override this value to specify the number of elements to display at a time
