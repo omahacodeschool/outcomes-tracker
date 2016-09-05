@@ -84,8 +84,4 @@ class EntriesController < ApplicationController
     def entry_params
       params.require(:entry).permit(:user_id, :company, job_application_attributes: [:id, :location, :job_title, :posting_url, :company_contact, :notes ], offer_attributes: [:id, :job_title, :location, :remote])
     end
-
-    # def application_params
-    #   params.require(:entry).require(:application_attributes).permit(:job_title, :location, :posting_url, :company_contact, :notes)
-    # end
 end

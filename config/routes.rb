@@ -15,29 +15,20 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
-  get '/profile' => 'profiles#edit', as: "update_profile"
-
-  resources :salaries
   resources :positions
-  resources :users
-  resources :cohorts
-  resources :schools
+  resources :job_applications
+  resources :offers
 
+  get '/profile' => 'profiles#edit', as: "update_profile"
   resources :profiles, only: [:update]
 
   get '/entries/:id' => 'entries#show', as: :entry
-  # get '/entries/new/job_application' => 'entries#new_job_application'
-  # get '/entries/new/offer' => 'entries#new_offer'
-  # get '/entries/new/position' => 'entries#new_position'
 
   get '/entries/:id/add_offer' => 'offers#add_new_to_existing_entry', as: :advance_job_application
   # probably makes sense to move this controller action to the entries controller at some point?
 
   get '/entries/:id/add_position' => 'positions#add_new_to_existing_entry', as: :advance_offer
   # probably makes sense to move this controller action to the entries controller at some point?
-
-  resources :job_applications
-  resources :offers
 
   get '/auth/:provider/callback' => 'sessions#create'
 
