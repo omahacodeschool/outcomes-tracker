@@ -317,6 +317,7 @@ DEPENDENCIES
   high_voltage
   honeybadger
   jquery-rails
+  kaminari
   launchy
   neat
   newrelic_rpm (>= 3.9.8)
@@ -346,6 +347,9 @@ DEPENDENCIES
   uglifier
   web-console
   webmock
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
