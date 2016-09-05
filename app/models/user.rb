@@ -72,6 +72,11 @@ class User < ActiveRecord::Base
     ability_descriptions
   end
 
+  # Returns True if user is an admin.
+  def admin?
+    has_view_permission || has_edit_permission
+  end
+
   def has_view_permission 
     self.return_list_of_abilities.include?("can view all user entries")
   end
