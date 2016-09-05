@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :event do
+    entry nil
+    notes "MyText"
+  end
   factory :salary do
     amount 1
     rate 1

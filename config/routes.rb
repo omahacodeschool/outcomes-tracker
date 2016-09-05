@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  resources :events, only: [:create]
   resources :positions
   resources :job_applications
   resources :offers

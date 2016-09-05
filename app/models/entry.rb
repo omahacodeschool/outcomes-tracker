@@ -3,9 +3,15 @@ class Entry < ActiveRecord::Base
   has_one :job_application
   has_one :offer
   has_one :position
-  accepts_nested_attributes_for :job_application, :offer
+  has_many :events
+  accepts_nested_attributes_for :job_application, :offer, :events
   #has_one :offer
   #has_one :position
+
+  # Returns AR::Relation of Events, most recent first.
+  def events_history
+    events.persisted.order("created_at DESC")
+  end
 
   # name this better.
   def return_associated_info
