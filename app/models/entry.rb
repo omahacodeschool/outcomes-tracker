@@ -8,6 +8,11 @@ class Entry < ActiveRecord::Base
   #has_one :offer
   #has_one :position
 
+  # Returns AR::Relation of Events, most recent first.
+  def events_history
+    events.persisted.order("created_at DESC")
+  end
+
   # name this better.
   def return_associated_info
     arr = []

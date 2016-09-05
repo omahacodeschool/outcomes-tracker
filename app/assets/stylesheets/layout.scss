@@ -33,3 +33,39 @@ fieldset{
   width: 130px; 
   display: inline-block;
 }
+
+.eventsContainer{
+  padding: 9px;
+  border: solid #ccc;
+  border-width: 0 1px 1px;
+  border-radius: 0 0 3px 3px;
+}
+
+.bulletedList{
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 12px;
+}
+
+.jointFieldAndButton{
+  @include clearfix;
+}
+
+.jointFieldAndButton__field{
+  float: left;
+  width: 90%;
+  border-radius: 3px 0 0 0;
+  height: 55px;
+  margin-bottom: 0;
+}
+
+.jointFieldAndButton__button{
+  float: left;
+  width: 10%;
+  border-radius: 0 3px 0 0;
+  height: 55px;
+}
+
+#new_event{
+  margin-top: 18px;
+}

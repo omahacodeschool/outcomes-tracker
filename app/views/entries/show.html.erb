@@ -44,11 +44,50 @@
   </p>
 <% end %>
 
+<hr>
+
+<h2>Events</h2>
+
+<p>
+  Add a summary of <strong>every, single interaction</strong> you have with someone related to this job application. You should absolutely be recording at least:
+</p>
+
+<ul class="bulletedList">
+  <li>Each email exchange</li>
+  <li>Each phone call</li>
+  <li>Each in-person or video meeting</li>
+</ul>
+
+<p>
+  The more details you provide here, the better we can help guide you. This is also extremely valuable as you enter negotiations, as you might gain insights or leverage in conversations that are tracked here.
+</p>
+
 <%= form_for @event do |f| %>
-  <%= f.text_area :notes, placeholder: "Met with Janis for coffee. She asked me about my salary expectations." %>
   <%= f.hidden_field :entry_id %>
-  <%= f.submit "Save" %>
+
+  <div class="jointFieldAndButton">
+    <%= f.text_area :notes, placeholder: "Example: Met with Janis for coffee. She asked me about my salary expectations.", class: "jointFieldAndButton__field" %>
+    
+    <%= f.submit "Save", class: "jointFieldAndButton__button" %>  
+  </div>
 <% end %>
+
+<div class="eventsContainer">
+  <% @entry.events_history.each do |event| %>
+    <div class="comment">
+      <div class="comment-content">
+        <%= simple_format(event.notes) %>
+        <p class="comment-detail">
+          <%= time_ago_in_words(event.created_at) %> ago
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <% if !@entry.events_history.any? %>
+    <p>Use the form immediately above this to add events to this job application.</p>
+  <% end %>
+</div>
 
 <% if @entry.offer %>
   <hr>
