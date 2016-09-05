@@ -1,1 +1,22 @@
-This is the admin dashboard.
+<% @job_applications.each do |job_application| %>
+  <div class="comment">
+    <div class="comment-image">
+      <%= image_tag(job_application.user_photo) %>
+    </div>
+
+    <div class="comment-content">
+      <h1>
+        <%= job_application.name %> applied to
+        <%= link_to job_application.company, entry_path(job_application.entry_id) %>
+        <%= time_ago_in_words(job_application.created_at) %> ago
+      </h1>
+
+      <p>
+        <%= link_to job_application.job_title, entry_path(job_application.entry_id) %>
+        <em>-
+          <%= link_to("Job Posting", job_application.posting_url) unless  job_application.posting_url.blank? %>
+        </em>
+      </p>
+    </div>
+  </div>
+<% end %>
