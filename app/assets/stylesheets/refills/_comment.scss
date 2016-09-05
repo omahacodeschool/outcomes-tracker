@@ -5,7 +5,7 @@
   $dark-gray: #333 !default;
   $base-font-color: $dark-gray !default;
   $comment-gutter: 1.4em;
-  $comment-image-padding: 0.7em;
+  $comment-image-padding: 0; // Sumeet: Removing this. Pointless/bad design.
   $comment-image-width: 4em;
   $comment-color: $base-font-color;
   $comment-background: lighten($action-color, 15%);
