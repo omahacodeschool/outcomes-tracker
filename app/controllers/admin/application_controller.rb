@@ -14,7 +14,6 @@ module Admin
 
     def authenticate_admin
       if !current_user.admin?
-        binding.pry
         redirect_to :root, alert: "Access denied."
       end
     end
