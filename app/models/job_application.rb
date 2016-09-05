@@ -12,6 +12,7 @@ class JobApplication < ActiveRecord::Base
   def self.timeline
     joins(entry: :user)
     .select("job_applications.id, job_applications.entry_id, job_applications.job_title, job_applications.posting_url, job_applications.created_at, entries.company, users.image_url AS user_photo, users.name")
+    .order("job_applications.created_at DESC")
   end
 
 end
