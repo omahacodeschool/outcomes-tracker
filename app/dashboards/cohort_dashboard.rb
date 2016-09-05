@@ -59,8 +59,7 @@ class CohortDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how cohorts are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(cohort)
-  #   "Cohort ##{cohort.id}"
-  # end
+  def display_resource(cohort)
+    cohort.name
+  end
 end

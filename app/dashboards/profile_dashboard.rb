@@ -37,16 +37,12 @@ class ProfileDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :cohort,
-    :user,
-    :id,
     :gender,
     :birthdate,
     :race,
     :ethnicity,
     :military,
     :disability,
-    :created_at,
-    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -65,8 +61,7 @@ class ProfileDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how profiles are displayed
   # across all pages of the admin dashboard.
-  #
-  # def display_resource(profile)
-  #   "Profile ##{profile.id}"
-  # end
+  def display_resource(profile)
+    "#{profile.user.name} - Profile"
+  end
 end
