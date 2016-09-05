@@ -10,7 +10,7 @@ class Entry < ActiveRecord::Base
 
   # Returns AR::Relation of Events, most recent first.
   def events_history
-    events.persisted.order("created_at DESC")
+    events.includes(:user).persisted.order("created_at DESC")
   end
 
   # name this better.
