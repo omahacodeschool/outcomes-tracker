@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   has_many :entries
   has_one :profile
   has_many :permissions
-  has_many :abilities, through: :permissions
+
+  # accepts_nested_attributes_for :permissions
 
   has_many :job_applications, through: :entries
   has_many :offers, through: :entries
@@ -26,29 +27,47 @@ class User < ActiveRecord::Base
     user
   end
 
-  def return_abilities_array
+  def set_view_permission
+    if self.has_view_permission == false
+      p = self.permissions.create({ability: 1})
+    end
+  end
+
+  def set_edit_permission
+    if self.has_edit_permission == false
+      p = self.permissions.create({ability: 2})
+    end
+  end
+
+  def remove_view_permission
+    if self.has_view_permission == true
+      permissions = self.permissions.where(ability: 1)
+      # In best-use case, return of the above query should always be a single record, but not assured by application; and I'm not sure that there is a way to add such a validation on the table. 
+      permissions.destroy_all
+    end
+  end
+
+  def remove_edit_permission
+    if self.has_edit_permission == true
+      permissions = self.permissions.where(ability: 2)
+      permissions.destroy_all
+    end
+  end
+
+  def return_list_of_abilities
     ability_descriptions = []
-    self.abilities.each do |ability|
-      ability_descriptions << ability.description
+    self.permissions.each do |permission|
+      ability_descriptions << permission.ability
     end
     ability_descriptions
   end
 
   def has_view_permission 
-    if self.return_abilities_array.include?("can view all user entries")
-      # this still feels yucky because the ability description is hard-coded. having trouble of thinking how to best reference the specific ability for a given user-flow.
-      true
-    else
-      false
-    end
+    self.return_list_of_abilities.include?("can view all user entries")
   end
 
   def has_edit_permission 
-    if self.return_abilities_array.include?("can edit all user entries")
-      true
-    else
-      false
-    end
+    self.return_list_of_abilities.include?("can edit all user entries")
   end
 
 end

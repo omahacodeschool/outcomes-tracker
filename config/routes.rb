@@ -1,19 +1,18 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :abilities
-resources :cohorts
-resources :entries
-resources :job_applications
-resources :offers
-resources :permissions
-resources :positions
-resources :profiles
-resources :salaries
-resources :schools
-resources :users
+    resources :cohorts
+    resources :entries
+    resources :job_applications
+    resources :offers
+    resources :permissions
+    resources :positions
+    resources :profiles
+    resources :salaries
+    resources :schools
+    resources :users
 
-    root to: "abilities#index"
+    root to: "users#index"
   end
 
   get '/profile' => 'profiles#edit', as: "update_profile"
