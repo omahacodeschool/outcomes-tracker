@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def sumeet
+    @sumeet ||= User.find_by_github_username("sumeetjain")
+  end
+  helper_method :sumeet
+
   def new_entry_prompt
   end 
 
