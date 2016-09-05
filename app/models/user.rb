@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
     user
   end
 
-<<<<<<< HEAD
   # Checks GitHub username against the database.
   #
   # auth_hash - Authentication hash from GitHub
