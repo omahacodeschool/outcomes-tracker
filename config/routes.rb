@@ -37,6 +37,5 @@ Rails.application.routes.draw do
 
   post '/new_entry' => 'application#new_entry_prompt', as: :new_entry_prompt
 
-  root 'application#dashboard'
-  # url currently displays incorrectly
+  root 'dashboards#show'
 end
