@@ -44,6 +44,12 @@
   </p>
 <% end %>
 
+<%= form_for @event do |f| %>
+  <%= f.text_area :notes, placeholder: "Met with Janis for coffee. She asked me about my salary expectations." %>
+  <%= f.hidden_field :entry_id %>
+  <%= f.submit "Save" %>
+<% end %>
+
 <% if @entry.offer %>
   <hr>
 
