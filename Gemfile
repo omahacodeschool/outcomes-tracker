@@ -62,3 +62,5 @@ group :staging, :production do
   gem "rack-timeout"
   gem "puma"
 end
+
+gem 'kaminari'

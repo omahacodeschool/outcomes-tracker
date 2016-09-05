@@ -1,0 +1,34 @@
+<div class="comment">
+  <div class="comment-image">
+    <%= image_tag sumeet.image_url %>
+  </div>
+
+  <div class="comment-content">
+    <p>
+      Now that you've added a job, it's vital that we keep in constant contact about the application's progress.
+    </p>
+
+    <p>
+      Comment here to summarize <strong>every single interaction</strong> you have with someone related to this job application. You must be recording at least:
+    </p>
+
+    <ul class="bulletedList">
+      <li>Each email exchange</li>
+      <li>Each phone call</li>
+      <li>Each in-person or video meeting</li>
+    </ul>
+
+    <p>
+      The more details you provide here, the better we can help guide you. This is also extremely valuable as you enter negotiations, as you might gain insights or leverage in conversations that are tracked here.
+    </p>
+
+    <p>
+      Finally, post here whenever you need my help with something. If you want to know how to better prep for an upcoming interview, whether I have inside track at the company, if any other graduates work there, etc--post all your thoughts and questions here.
+    </p>
+    
+    <p class="comment-detail">
+      Sumeet commented
+      <%= time_ago_in_words(entry.created_at) %> ago
+    </p>
+  </div>
+</div>

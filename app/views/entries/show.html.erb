@@ -46,21 +46,9 @@
 
 <hr>
 
-<h2>Events</h2>
+<h2>Progress</h2>
 
-<p>
-  Add a summary of <strong>every, single interaction</strong> you have with someone related to this job application. You should absolutely be recording at least:
-</p>
-
-<ul class="bulletedList">
-  <li>Each email exchange</li>
-  <li>Each phone call</li>
-  <li>Each in-person or video meeting</li>
-</ul>
-
-<p>
-  The more details you provide here, the better we can help guide you. This is also extremely valuable as you enter negotiations, as you might gain insights or leverage in conversations that are tracked here.
-</p>
+<p>Add notes for yourself and the instructional team here.</p>
 
 <%= form_for @event do |f| %>
   <%= f.hidden_field :entry_id %>
@@ -75,18 +63,22 @@
 <div class="eventsContainer">
   <% @entry.events_history.each do |event| %>
     <div class="comment">
+      <div class="comment-image">
+        <%= image_tag event.user.image_url %>
+      </div>
+
       <div class="comment-content">
         <%= simple_format(event.notes) %>
+        
         <p class="comment-detail">
+          <%= event.user.name %> commented
           <%= time_ago_in_words(event.created_at) %> ago
         </p>
       </div>
     </div>
   <% end %>
 
-  <% if !@entry.events_history.any? %>
-    <p>Use the form immediately above this to add events to this job application.</p>
-  <% end %>
+  <%= render "message_from_sumeet", {entry: @entry} %>
 </div>
 
 <% if @entry.offer %>

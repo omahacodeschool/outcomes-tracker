@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  resources :users, only: [:show, :index]
   resources :events, only: [:create]
   resources :positions
   resources :job_applications
@@ -37,6 +38,5 @@ Rails.application.routes.draw do
 
   post '/new_entry' => 'application#new_entry_prompt', as: :new_entry_prompt
 
-  root 'application#dashboard'
-  # url currently displays incorrectly
+  root 'dashboards#show'
 end

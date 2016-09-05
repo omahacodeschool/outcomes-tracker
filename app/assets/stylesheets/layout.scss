@@ -35,10 +35,16 @@ fieldset{
 }
 
 .eventsContainer{
-  padding: 9px;
+  padding: 16px;
   border: solid #ccc;
   border-width: 0 1px 1px;
   border-radius: 0 0 3px 3px;
+}
+
+.eventsContainer .comment:last-child{
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 .bulletedList{
