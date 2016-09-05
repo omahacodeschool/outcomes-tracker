@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
 
   def new_entry_prompt
   end 
+
+  def admin_only
+    if !current_user.admin?
+      redirect_to :root, alert: "Access denied."
+    end
+  end
 end

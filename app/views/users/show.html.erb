@@ -1,31 +1,26 @@
-<p id="notice"><%= notice %></p>
-
 <h1>
-  <%= @user.name %>
+  <%= @user.name %> (<%= @user.github_username %>) - <%= @user.cohort.name %>
 </h1>
 
-<p>
-  <strong>Class <%= @user.cohort.name %></strong>
-</p>
+<% @user.job_applications.timeline.each do |job_application| %>
+  <div class="comment">
+    <div class="comment-image">
+      <%= image_tag(job_application.user_photo) %>
+    </div>
 
-<p>
-  <strong>Github:</strong>
-  <%= link_to @user.github_username , 'https://www.github.com/'+@user.github_username %>
-</p>
+    <div class="comment-content">
+      <h1>
+        <%= link_to @user.name, @user %> applied to
+        <%= link_to job_application.company, entry_path(job_application.entry_id) %>
+        <%= time_ago_in_words(job_application.created_at) %> ago
+      </h1>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-
-<% if current_user == @user %>
-  <div>
-    <%= link_to 'Edit', edit_user_path(@user) %>
+      <p>
+        <%= link_to job_application.job_title, entry_path(job_application.entry_id) %>
+        <em>-
+          <%= link_to("Job Posting", job_application.posting_url) unless  job_application.posting_url.blank? %>
+        </em>
+      </p>
+    </div>
   </div>
 <% end %>
-<%# link_to 'Back', users_path %>
-
-<div>
-  [PARTIAL WILL GO HERE WITH ENTRIES INFO]
-</div>
