@@ -3,7 +3,7 @@
 <div class="button-group jobEntryButtons">
   <% if !@entry.job_application.posting_url.blank? %>
     <label>
-      <%= link_to "Job Details", @entry.job_application.posting_url, class: "button-group-item" %>
+      <%= link_to "Job Details", @entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
     </label>
   <% end %>
 

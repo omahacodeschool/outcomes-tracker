@@ -14,7 +14,7 @@
       <p>
         <%= link_to job_application.job_title, entry_path(job_application.entry_id) %>
         <em>-
-          <%= link_to("Job Posting", job_application.posting_url) unless  job_application.posting_url.blank? %>
+          <%= link_to("Job Posting", job_application.posting_url, target: "_blank") unless  job_application.posting_url.blank? %>
         </em>
       </p>
     </div>

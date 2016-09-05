@@ -8,7 +8,7 @@
         </td>
 
         <td>
-          <%= link_to("Job Posting", job_application.posting_url) unless job_application.posting_url.blank? %>
+          <%= link_to("Job Posting", job_application.posting_url, target: "_blank") unless job_application.posting_url.blank? %>
         </td>
       </tr>
     <% end %>
