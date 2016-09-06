@@ -14,7 +14,7 @@
     <%= fa_icon "github-alt", text: user.github_username %>
   </div>
 
-  <% if user.email %>
+  <% if !user.email.blank? %>
     <div class="userInfo__email">
       <%= fa_icon "envelope-o", text: user.email %>
     </div>

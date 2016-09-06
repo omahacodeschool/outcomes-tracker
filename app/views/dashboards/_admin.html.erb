@@ -5,11 +5,11 @@
     </div>
 
     <div class="comment-content">
-      <h1>
+      <div class="comment-headline">
         <%= link_to job_application.name, user_path(job_application.user_id) %> applied to
         <%= link_to job_application.company, entry_path(job_application.entry_id) %>
         <%= time_ago_in_words(job_application.created_at) %> ago
-      </h1>
+      </div>
 
       <p>
         <%= link_to job_application.job_title, entry_path(job_application.entry_id) %>
