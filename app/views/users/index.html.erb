@@ -4,6 +4,7 @@
       <th>Name</th>
       <th>Github</th>
       <th>Email</th>
+      <th>Applications</th>
     </tr>
   </thead>
 
@@ -13,6 +14,7 @@
         <td><%= link_to user.name, user %></td>
         <td><%= user.github_username %></td>
         <td><%= user.email %></td>
+        <td><%= user.entries.count %></td>
       </tr>
     <% end %>
   </tbody>
