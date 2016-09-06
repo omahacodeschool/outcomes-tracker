@@ -117,6 +117,12 @@ header.navigation {
       width: auto;
     }
 
+    img{
+      
+      max-height: $navigation-height;
+      padding: 0.8em 0.8em 0.8em 0;
+    }
+
     a {
       color: $navigation-color;
       display: inline-block;
@@ -129,6 +135,10 @@ header.navigation {
       &:focus,
       &:hover {
         color: $navigation-color-hover;
+      }
+
+      &.nav-link__avatar{
+        float: right;  
       }
     }
   }
@@ -273,7 +283,7 @@ header.navigation {
     background: #505050;
     clear: both;
     display: block;
-    height: $navigation-height;
+    height: 0;
 
     @include media($horizontal-bar-mode) {
       background: transparent;

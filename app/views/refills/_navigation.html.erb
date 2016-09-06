@@ -5,14 +5,14 @@
     <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
 
     <nav role="navigation">
-      <ul id="js-navigation-menu" class="navigation-menu show">
+      <ul class="navigation-menu">
         <li class="nav-link"><%= link_to "Outcomes Tracker", :root %></li>
       </ul>
     </nav>
 
     <div class="navigation-tools">
       <% if current_user %>
-        <ul class="navigation-menu show">
+        <ul id="js-navigation-menu" class="navigation-menu show">
           <% if current_user.admin? %>
             <li class="nav-link">
               <%= link_to("Students", :users) %>
@@ -23,10 +23,6 @@
             <%= link_to("Add Application", :new_job_application) %>
           </li>
 
-          <li class="nav-link">
-            <%= link_to 'Update Profile', :update_profile %>
-          </li>
-
           <% if current_user.admin? %>
             <li class="nav-link">
               <%= link_to("Settings", :admin_root) %>
@@ -35,6 +31,10 @@
 
           <li class="nav-link">
             <%= link_to 'Log Out', :logout, method: :delete %>
+          </li>
+
+          <li class="nav-link">
+            <%= link_to image_tag(current_user.image_url), :update_profile, class: "nav-link__avatar" %>
           </li>
         </ul>
       <% end %>
