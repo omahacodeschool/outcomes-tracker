@@ -1,3 +1,7 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
 <h1>Add Application</h1>
 
 <p>Enter some basic information about the job you've applied for below.</p>

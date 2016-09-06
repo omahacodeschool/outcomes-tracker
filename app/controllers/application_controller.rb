@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :update_last_active_timestamp
+  before_action :check_if_logged_in
 
   def update_last_active_timestamp
     current_user.touch(:last_active_at) if current_user
@@ -20,6 +21,12 @@ class ApplicationController < ActionController::Base
     @sumeet ||= User.find_by_github_username("sumeetjain")
   end
   helper_method :sumeet
+
+  def check_if_logged_in
+    if !current_user
+      render "pages/public" and return
+    end
+  end
 
   def new_entry_prompt
   end 
