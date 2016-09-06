@@ -20,18 +20,13 @@
 
   <div class="main">
     <div class="container">
-      <% if current_user %>
+      <% if current_user && content_for(:sidebar) %>
         <div class="sidebar">
-          <%= image_tag current_user.image_url, alt: current_user.name, class: "profilePhoto" %>
-
-          <p>
-            <strong><%= current_user.github_username %></strong><br>
-            <%= current_user.cohort.name %>
-          </p>
+          <%= content_for(:sidebar) %>
         </div>
       <% end %>
 
-      <div class="pageContent">
+      <div class="pageContent <%= "pageContent--fullWidth" if !content_for(:sidebar) %>">
         <%= render "flashes" -%>
         <%= yield %>  
       </div>
