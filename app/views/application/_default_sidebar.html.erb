@@ -1,0 +1,16 @@
+<div class="userInfo">
+  <h1 class="userInfo__name"><%= user.name %></h1>
+  <div class="userInfo__cohort"><%= user.cohort.name %></div>
+
+  <div class="userInfo__github">
+    <%= fa_icon "github", text: user.github_username %>
+  </div>
+
+  <% if user.email %>
+    <div class="userInfo__email"><%= user.email %></div>
+  <% end %>
+
+  <div class="userInfo__lastActive">
+    Last active <%= time_ago_in_words(user.last_active_at) %> ago.
+  </div>
+</div>

@@ -1,6 +1,6 @@
-<h1>
-  <%= @user.name %> (<%= @user.github_username %>) - <%= @user.cohort.name %>
-</h1>
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: @entry.user} %>
+<% end %>
 
 <% @user.job_applications.timeline.each do |job_application| %>
   <div class="comment">
