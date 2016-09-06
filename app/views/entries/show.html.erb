@@ -2,26 +2,6 @@
 
 <%= render "buttons", {entry: @entry} %>
 
-<% if @entry.job_application %>
-  <p>
-    You added the "<%= @entry.job_application.job_title %>" <%= @entry.job_application.nature_of_employment %> position, at <%= @entry.company %> in <%= @entry.job_application.location %> about <%= time_ago_in_words(@entry.created_at) %> ago.
-  </p>
-
-  <% if !@entry.job_application.notes.blank? %>
-    <p>Notes: <%= @entry.job_application.notes %></p>
-  <% end %>
-
-  <p>
-    <% if @entry.job_application.remote %>
-      This is a remote position.
-    <% end %>
-  </p>
-<% end %>
-
-<hr>
-
-<h2>Progress</h2>
-
 <p>Add notes for yourself and the instructional team here.</p>
 
 <%= form_for @event do |f| %>
@@ -53,6 +33,7 @@
   <% end %>
 
   <%= render "message_from_sumeet", {entry: @entry} %>
+  <%= render "starter_comment", {entry: @entry} %>
 </div>
 
 <% if @entry.offer %>

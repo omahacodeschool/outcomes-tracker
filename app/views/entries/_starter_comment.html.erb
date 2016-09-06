@@ -1,0 +1,26 @@
+<div class="comment">
+  <div class="comment-image">
+    <%= image_tag entry.user.image_url %>
+  </div>
+
+  <div class="comment-content">
+    <p>
+      Adding this "<%= @entry.job_application.job_title %>"
+      <%= @entry.job_application.nature_of_employment %> position
+      at <%= @entry.company %> in <%= @entry.job_application.location %>.
+
+      <% if @entry.job_application.remote %>
+        (Remote position.)
+      <% end %>
+    </p>
+
+    <% if !@entry.job_application.notes.blank? %>
+      <p>Notes: <%= @entry.job_application.notes %></p>
+    <% end %>
+    
+    <p class="comment-detail">
+      <%= entry.user.name %> created this job application
+      <%= time_ago_in_words(entry.created_at) %> ago
+    </p>
+  </div>
+</div>
