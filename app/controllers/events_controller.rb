@@ -4,7 +4,7 @@ class EventsController < ApplicationController
 
     if @event.save
       @event.notify
-      redirect_to @event.entry, notice: "Added comment to this job application."
+      redirect_to @event.entry, notice: "Comment added."
     else
       redirect_to @event.entry, alert: "You can't add a comment without a comment. (ಠ_ಠ)"
     end
