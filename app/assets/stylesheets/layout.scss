@@ -1,9 +1,13 @@
 .container{
   @include outer-container;
 }
+.main .container{
+  padding-left: 1em;
+  padding-right: 1em;
+}
 
 .innerContainer{
-  padding-top: 10px;
+  padding-top: 30px;
 }
 
 .sidebar{
