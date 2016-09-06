@@ -12,6 +12,9 @@ class Event < ActiveRecord::Base
     users.each { |user| NewEventMailer.new_event_email(user).deliver_later }
   end
 
+  # For a event/comment, checks what other users have events/comments in the same thread or who should be notified of the event/comment.
+  #
+  # Returns an Array of User objects who should be notified.
   def get_users_in_conversation
     group = []
     if self.user != self.entry.user
