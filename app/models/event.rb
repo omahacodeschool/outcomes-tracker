@@ -13,8 +13,8 @@ class Event < ActiveRecord::Base
   end
 
   def get_users_in_conversation
-    group = [self.user]
-    if !group.include?(self.entry.user)
+    group = []
+    if self.user != self.entry.user
       group << self.entry.user
     end
     User.admins.each do |admin|
@@ -23,17 +23,6 @@ class Event < ActiveRecord::Base
       end
     end
     group
-
-    # group = []
-    # if self.user != self.entry.user
-    #   group << self.entry.user
-    # end
-    # User.admins.each do |admin|
-    #   if !group.include?(admin)
-    #     group << admin
-    #   end
-    # end
-    # group
   end
 
 end
