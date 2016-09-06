@@ -1,3 +1,7 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: @entry.user} %>
+<% end %>
+
 <h1><%= @entry.company %></h1>
 
 <%= render "buttons", {entry: @entry} %>
