@@ -2,6 +2,12 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  before_action :update_last_active_timestamp
+
+  def update_last_active_timestamp
+    current_user.touch(:last_active_at) if current_user
+  end
   
   private
 
