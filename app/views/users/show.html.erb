@@ -1,5 +1,5 @@
 <% content_for :sidebar do %>
-  <%= render "application/default_sidebar", {user: @entry.user} %>
+  <%= render "application/default_sidebar", {user: @user} %>
 <% end %>
 
 <% @user.job_applications.timeline.each do |job_application| %>

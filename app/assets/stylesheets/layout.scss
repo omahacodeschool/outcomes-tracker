@@ -79,3 +79,20 @@ fieldset{
 #new_event{
   margin-top: 18px;
 }
+
+.userInfo__top{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+  margin-bottom: 6px;
+}
+.userInfo__name{
+  margin-bottom: 0;
+}
+.userInfo__cohort{
+  color: #999;
+  font-size: 12px;
+}
+.userInfo__lastActive{
+  color: #ccc;
+  font-size: 12px; 
+}
