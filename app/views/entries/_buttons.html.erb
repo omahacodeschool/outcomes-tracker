@@ -1,0 +1,27 @@
+<div class="button-group jobEntryButtons">
+  <% if !entry.job_application.posting_url.blank? %>
+    <label>
+      <%= link_to "Job Details", entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
+    </label>
+  <% end %>
+
+  <% if !entry.job_application.company_contact.blank? %>
+    <label>
+      <%= link_to "Message Hiring Manager", "mailto:#{entry.job_application.company_contact}", class: "button-group-item" %>
+    </label>
+  <% end %>
+
+  <% if !entry.offer %>
+    <label>
+      <%= link_to '＋ Received Offer', :advance_job_application, class: "button-group-item" %>
+    </label>
+  <% else %>
+
+    <% if !entry.position && false %>
+      <label>
+        <%= link_to "＋ Accepted Position", :advance_offer, class: "button-group-item" %>
+      </label>
+    <% end %>
+
+  <% end %>
+</div>
