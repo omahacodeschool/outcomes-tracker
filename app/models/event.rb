@@ -5,4 +5,24 @@ class Event < ActiveRecord::Base
   scope :persisted, -> { where "id IS NOT NULL" }
 
   validates :notes, presence: true
+
+  def notify
+    # message goes to a group of users -- the event/comment owner, the entry owner, and any other "instructors"
+    users = self.get_users_in_conversation
+    NewEventMailer.new_event_email(users).deliver_later
+  end
+
+  def get_users_in_conversation
+    group = [self.user]
+    if !group.include?(self.entry.user)
+      group << self.entry.user
+    end
+    User.admins.each do |admin|
+      if !group.include?(admin)
+        group << admin
+      end
+    end
+    group
+  end
+
 end

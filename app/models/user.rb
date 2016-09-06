@@ -73,6 +73,11 @@ class User < ActiveRecord::Base
     ability_descriptions
   end
 
+  # Returns a collection of admins -- Users with view permission
+  def self.admins
+    User.joins(:permissions).where({permissions: {ability: 1}})
+  end
+
   # Returns True if user is an admin.
   def admin?
     has_view_permission || has_edit_permission
