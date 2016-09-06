@@ -16,6 +16,9 @@
   @extend .innerContainer;
   padding-bottom: 40px;
 }
+.pageContent.pageContent--fullWidth{
+  @include span-columns(12);
+}
 
 fieldset{
   padding: 12px 20px;
