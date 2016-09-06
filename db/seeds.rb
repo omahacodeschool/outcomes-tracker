@@ -10,8 +10,8 @@ Cohort.create([
   {name: "Gumiho", school_id: ocs.id}
 ])
 
-sumeet = User.create(name: "Sumeet", github_username: "sumeetjain")
-alex = User.create(name: "Alex", github_username: "halfghaninne")
+sumeet = User.create(name: "Sumeet", github_username: "sumeetjain", email: "sumeet@omahacodeschool.com", slack_username: "sumeetjain")
+alex = User.create(name: "Alex", github_username: "halfghaninne", email: "alex@omahacodeschool.com", slack_username: "alexandramillatmal")
 
 sumeet.initialize_profile(7)
 alex.initialize_profile(3)
