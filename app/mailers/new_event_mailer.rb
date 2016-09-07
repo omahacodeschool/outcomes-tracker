@@ -5,7 +5,7 @@ class NewEventMailer < ApplicationMailer
     @user = user
     @entry = entry
     subject = "New comment re: #{@entry.company} on Outcomes Tracker"
-    # this will change to URL for the exact entry.
+    
     mail(to: @user.email, subject: subject)
   end
 end
