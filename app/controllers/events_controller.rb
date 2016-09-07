@@ -3,7 +3,8 @@ class EventsController < ApplicationController
     @event = current_user.events.build(event_params)
 
     if @event.save
-      redirect_to @event.entry, notice: "Added event to this job application."
+      @event.notify
+      redirect_to @event.entry, notice: "Comment added."
     else
       redirect_to @event.entry, alert: "You can't add a comment without a comment. (ಠ_ಠ)"
     end
