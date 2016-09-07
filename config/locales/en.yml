@@ -1,4 +1,21 @@
 en:
+  activerecord:
+    attributes:
+      profile:
+        resume: "Résumé"
+        linked_in: "LinkedIn"
+    errors:
+      models:
+        profile:
+          attributes:
+            resume:
+              invalid: "must start with 'http://'' or 'https://'"
+            linked_in:
+              invalid: "must start with 'http://'' or 'https://'"
+            personal_website:
+              invalid: "must start with 'http://'' or 'https://'"
+            twitter:
+              invalid: "should just be the username with no '@' in front of it"
   date:
     formats:
       default:

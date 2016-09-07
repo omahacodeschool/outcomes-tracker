@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160906031114) do
+ActiveRecord::Schema.define(version: 20160907110754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -111,8 +111,12 @@ ActiveRecord::Schema.define(version: 20160906031114) do
     t.string   "ethnicity"
     t.boolean  "military"
     t.boolean  "disability"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.text     "resume"
+    t.string   "personal_website"
+    t.string   "linked_in"
+    t.string   "twitter"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
@@ -142,6 +146,7 @@ ActiveRecord::Schema.define(version: 20160906031114) do
     t.datetime "updated_at",      null: false
     t.text     "image_url"
     t.datetime "last_active_at"
+    t.string   "slack_username"
   end
 
   add_foreign_key "events", "entries"

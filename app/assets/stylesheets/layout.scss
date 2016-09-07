@@ -100,9 +100,37 @@ fieldset{
   color: #ccc;
   font-size: 12px; 
 }
+.userInfo__socialLinks{
+  padding-top: 4px;
+}
+.userInfo__socialLink{
+  font-size: 13px;
+  margin-bottom: 4px;
+  display: block;
+  color: #444;
+}
+.sidebarAlert{
+  @extend .flash-error;
+  text-align: left;
+  font-size: 14px;
+}
+.sidebarAlert__header{
+  font-weight: bold;
+  color: #F74D5A;
+}
 
 .pageContent h1{
   border-bottom: 1px solid #333;
   padding-bottom: 9px;
   margin-bottom: 18px;
+}
+
+#error_explanation{
+  @extend .flash-error;
+  text-align: left;
+  margin-bottom: 30px;
+}
+.field_with_errors{
+  border-left: 6px solid #F74D5A;
+  padding-left: 6px;
 }

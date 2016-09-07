@@ -61,6 +61,7 @@ group :staging, :production do
   gem "rails_stdout_logging"
   gem "rack-timeout"
   gem "puma"
+  gem "rails_12factor"
 end
 
 gem 'kaminari'

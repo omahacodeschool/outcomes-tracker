@@ -10,13 +10,31 @@
     <% end %>
   </div>
 
-  <div class="userInfo__github">
-    <%= fa_icon "github-alt", text: user.github_username %>
-  </div>
+  <div class="userInfo__socialLinks">
+    <% if user.missing_candidate_profile %>
+      <div class="sidebarAlert">
+        <p class="sidebarAlert__header">
+          <%= fa_icon("exclamation-triangle") %>
+          No Candidate Profile
+        </p>
+        <p class="sidebarAlert__text">
+          You need to
+          <%= link_to "add links to your latest résumé and LinkedIn", :update_profile %>.
+        </p>
+      </div>
+    <% else %>
+      <%= link_to fa_icon("file-text-o", text: "Résumé"), user.resume, class: "userInfo__socialLink" %>
+      <%= link_to fa_icon("linkedin", text: "LinkedIn"), user.linked_in, class: "userInfo__socialLink" %>
+    <% end %>
 
-  <% if !user.email.blank? %>
-    <div class="userInfo__email">
-      <%= fa_icon "envelope-o", text: user.email %>
-    </div>
-  <% end %>
+    <%= link_to fa_icon("github-alt", text: user.github_username), github_url(user.github_username), class: "userInfo__socialLink" %>
+
+    <% if !user.twitter.blank? %>
+      <%= link_to fa_icon("twitter", text: user.twitter), twitter_url(user.twitter), class: "userInfo__socialLink" %>
+    <% end %>
+
+    <% if !user.email.blank? %>
+      <%= link_to fa_icon("envelope-o", text: user.email), "mailto:#{user.email}", class: "userInfo__socialLink" %>
+    <% end %>
+  </div>
 </div>

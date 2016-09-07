@@ -10,9 +10,19 @@ class User < ActiveRecord::Base
   has_many :offers, through: :entries
   has_many :positions, through: :entries
 
-
   delegate :cohort, :to => :profile
+  delegate :resume, to: :profile
+  delegate :personal_website, to: :profile
+  delegate :linked_in, to: :profile
+  delegate :twitter, to: :profile
   # delegate :name, :to => :profile
+
+  # Public: Checks if a User's candidate Profile is blank
+  #
+  # Returns True if one of the required Profile fields is blank
+  def missing_candidate_profile
+    resume.blank? || linked_in.blank?
+  end
 
   # Public: Build a profile stub to avoid errors. Defaults to 7 (for Gumiho).
   def initialize_profile(c=7)
@@ -87,6 +97,17 @@ class User < ActiveRecord::Base
 
   # Internal: Returns True if a User's Permsissions includes the Permission 
   #   to view all Users' Entries.
+  #
+  # Returns a collection of admins -- Users with view permission
+  def self.admins
+    User.joins(:permissions).where({permissions: {ability: 1}})
+  end
+
+  # Returns True if user is an admin.
+  def admin?
+    has_view_permission || has_edit_permission
+  end
+
   def has_view_permission 
     self.return_list_of_abilities.include?("can view all user entries")
   end
