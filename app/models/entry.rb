@@ -1,4 +1,6 @@
 class Entry < ActiveRecord::Base
+  attr_accessor :company_name
+
   belongs_to :user
   belongs_to :company
   has_one :job_application
@@ -12,11 +14,16 @@ class Entry < ActiveRecord::Base
   # Internal: Set the entry's company association using a company's name. 
   # 
   # company_name - String name of the company.
+  # persist      - Boolean for whether to save the record after setting.
   # 
   # Returns the updated Entry.
-  def set_company_from_name(company_name)
+  def set_company_from_name(company_name, persist=true)
     self.company = Company.find_or_create_by(name: company_name)
-    self.save
+    self.save if persist
+  end
+
+  def company_name=(input)
+    set_company_from_name(input, false)
   end
 
   # Returns AR::Relation of Events, most recent first.
