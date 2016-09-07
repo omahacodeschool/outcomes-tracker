@@ -1,6 +1,5 @@
 class NewEventMailer < ApplicationMailer
-  # default from: 'notifications@omahacodeschool.com'
-  default from: 'alexandrajmh@gmail.com'
+  default from: 'sumeet@omahacodeschool.com'
  
   def new_event_email(user, entry)
     @user = user
