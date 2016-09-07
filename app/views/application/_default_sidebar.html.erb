@@ -32,11 +32,9 @@
     <% if !user.twitter.blank? %>
       <%= link_to fa_icon("twitter", text: user.twitter), twitter_url(user.twitter), class: "userInfo__socialLink" %>
     <% end %>
-  </div>
 
-  <% if !user.email.blank? %>
-    <div class="userInfo__email">
-      <%= fa_icon "envelope-o", text: user.email %>
-    </div>
-  <% end %>
+    <% if !user.email.blank? %>
+      <%= link_to fa_icon("envelope-o", text: user.email), "mailto:#{user.email}"), class: "userInfo__socialLink" %>
+    <% end %>
+  </div>
 </div>
