@@ -34,7 +34,7 @@
     <% end %>
 
     <% if !user.email.blank? %>
-      <%= link_to fa_icon("envelope-o", text: user.email), "mailto:#{user.email}"), class: "userInfo__socialLink" %>
+      <%= link_to fa_icon("envelope-o", text: user.email), "mailto:#{user.email}", class: "userInfo__socialLink") %>
     <% end %>
   </div>
 </div>
