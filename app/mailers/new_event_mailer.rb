@@ -2,7 +2,7 @@ class NewEventMailer < ApplicationMailer
   default from: '"Omaha Code School" <sumeet@omahacodeschool.com>'
  
   def new_event_email(users, entry)
-    @users = user
+    @users = users
     @entry = entry
 
     emails = @users.map(&:email)
