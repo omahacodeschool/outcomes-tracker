@@ -1,4 +1,8 @@
 en:
+  activerecord:
+    attributes:
+      profile:
+        resume: "Résumé"
   date:
     formats:
       default:

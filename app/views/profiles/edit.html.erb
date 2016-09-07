@@ -3,7 +3,7 @@
 <%= form_for(@profile) do |f| %>
   <% if @profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <h2>Your profile could not be saved.</h2>
 
       <ul>
       <% @profile.errors.full_messages.each do |message| %>
@@ -29,8 +29,8 @@
     </p>
 
     <p>
-      <%= f.label :linkded_in, "Link to your LinkedIn profile" %>
-      <%= f.text_field :ethnicity, placeholder: "E.g. 'http://linkedin.com/p/3892423'" %>
+      <%= f.label :linked_in, "Link to your LinkedIn profile" %>
+      <%= f.text_field :linked_in, placeholder: "E.g. 'http://linkedin.com/p/3892423'" %>
     </p>
 
     <p>
