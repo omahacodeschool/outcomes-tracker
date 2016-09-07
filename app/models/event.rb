@@ -6,16 +6,15 @@ class Event < ActiveRecord::Base
 
   validates :notes, presence: true
 
+  # Send email to everyone involved in the conversation.
   def notify
-    # message goes to a group of users -- the event/comment owner, the entry owner, and any other "instructors"
-    users = self.get_users_in_conversation
-    users.each { |user| NewEventMailer.new_event_email(user, self.entry).deliver_now }
+    NewEventMailer.new_event_email(users_in_conversation, entry).deliver_now
   end
 
   # For a event/comment, checks what other users have events/comments in the same thread or who should be notified of the event/comment.
   #
   # Returns an Array of User objects who should be notified.
-  def get_users_in_conversation
+  def users_in_conversation
     group = User.admins + [entry.user]
     group.delete(self.user)
     return group
