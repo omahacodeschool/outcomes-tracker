@@ -14,12 +14,12 @@ class User < ActiveRecord::Base
   delegate :cohort, :to => :profile
   # delegate :name, :to => :profile
 
-  # Build a profile stub to avoid errors. Defaults to 7 (for Gumiho).
+  # Public: Build a profile stub to avoid errors. Defaults to 7 (for Gumiho).
   def initialize_profile(c=7)
     self.create_profile(cohort_id: c)
   end
 
-  # Authenticates user via omniauth/GitHub
+  # Public: Authenticates user via omniauth/GitHub
   #
   # auth_hash - Authentication hash from GitHub
   #
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  # Checks GitHub username against the database.
+  # Public: Checks GitHub username against the database.
   #
   # auth_hash - Authentication hash from GitHub
   #
@@ -40,21 +40,26 @@ class User < ActiveRecord::Base
     return self.find_by(github_username: auth_hash['info']['nickname'])
   end
 
-  #Gives User object the Permission to view all Users' Entries
+  # Public: Returns True if User is an admin.
+  def admin?
+    has_view_permission || has_edit_permission
+  end
+
+  # Internal: Gives User object the Permission to view all Users' Entries
   def set_view_permission
     if self.has_view_permission == false
       p = self.permissions.create({ability: 1})
     end
   end
 
-  #Gives User object the Permission to edit all Users' Entries
+  # Internal: Gives User object the Permission to edit all Users' Entries
   def set_edit_permission
     if self.has_edit_permission == false
       p = self.permissions.create({ability: 2})
     end
   end
 
-  #Removes the Permission to view all Users' Entries from a User
+  # Internal: Removes the Permission to view all Users' Entries from a User
   def remove_view_permission
     if self.has_view_permission == true
       permissions = self.permissions.where(ability: 1)
@@ -63,7 +68,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  #Removes the Permission to edit all Users' Entries from a User
+  # Internal: Removes the Permission to edit all Users' Entries from a User
   def remove_edit_permission
     if self.has_edit_permission == true
       permissions = self.permissions.where(ability: 2)
@@ -71,7 +76,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  #Returns a collection of all Permission abilities for a User
+  # Internal: Returns a collection of all Permission abilities for a User
   def return_list_of_abilities
     ability_descriptions = []
     self.permissions.each do |permission|
@@ -80,17 +85,14 @@ class User < ActiveRecord::Base
     ability_descriptions
   end
 
-  #Returns True if User is an admin.
-  def admin?
-    has_view_permission || has_edit_permission
-  end
-
-  #Returns True if a User's Permsissions includes the Permission to view all Users' Entries.
+  # Internal: Returns True if a User's Permsissions includes the Permission 
+  #   to view all Users' Entries.
   def has_view_permission 
     self.return_list_of_abilities.include?("can view all user entries")
   end
 
-  #Returns True if a User's Permsissions includes the Permission to edit all Users' Entries.
+  # Internal: Returns True if a User's Permsissions includes the Permission 
+  #   to edit all Users' Entries.
   def has_edit_permission 
     self.return_list_of_abilities.include?("can edit all user entries")
   end

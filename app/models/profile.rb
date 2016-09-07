@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
 
   # delegate :cohort, :to => :user
 
-  #Returns True if a Profile's gender field == an arbitrary value -- is blank. 
+  # Public: Returns True if a Profile's gender field is blank. 
   def empty?
     gender.blank?
   end
