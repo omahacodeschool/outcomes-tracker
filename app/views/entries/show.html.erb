@@ -2,7 +2,7 @@
   <%= render "application/default_sidebar", {user: @entry.user} %>
 <% end %>
 
-<h1><%= @entry.company %></h1>
+<h1><%= @entry.company.name %></h1>
 
 <%= render "buttons", {entry: @entry} %>
 

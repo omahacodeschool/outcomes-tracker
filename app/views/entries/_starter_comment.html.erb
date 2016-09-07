@@ -7,7 +7,7 @@
     <p>
       Adding this "<%= @entry.job_application.job_title %>"
       <%= @entry.job_application.nature_of_employment %> position
-      at <%= @entry.company %> in <%= @entry.job_application.location %>.
+      at <%= @entry.company.name %> in <%= @entry.job_application.location %>.
 
       <% if @entry.job_application.remote %>
         (Remote position.)

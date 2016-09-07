@@ -6,7 +6,7 @@ class NewEventMailer < ApplicationMailer
     @entry = entry
 
     emails = @users.map(&:email)
-    subject = "New comment re: #{@entry.company} on Outcomes Tracker"
+    subject = "New comment re: #{@entry.company.name} on Outcomes Tracker"
 
     mail(to: emails, subject: subject)
   end
