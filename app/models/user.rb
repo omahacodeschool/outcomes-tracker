@@ -12,6 +12,14 @@ class User < ActiveRecord::Base
 
 
   delegate :cohort, :to => :profile
+  delegate :resume, to: :profile
+  delegate :personal_website, to: :profile
+  delegate :linked_in, to: :profile
+  delegate :twitter, to: :profile
+
+  def missing_candidate_profile
+    resume.blank? || linked_in.blank?
+  end
 
   # delegate :name, :to => :profile
 
