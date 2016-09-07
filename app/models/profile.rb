@@ -4,6 +4,11 @@ class Profile < ActiveRecord::Base
 
   # delegate :cohort, :to => :user
 
+  # Validate these on update, so that new user creation doesn't fail.
+  validates :resume, presence: true, on: :update
+  validates :linked_in, presence: true, on: :update
+  validates :personal_website, presence: true, on: :update
+
   def empty?
     gender.blank?
   end
