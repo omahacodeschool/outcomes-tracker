@@ -20,4 +20,15 @@ class NewEventMailer < ApplicationMailer
 
     mail(to: emails, subject: subject)
   end
+
+
+  def new_position_event_email(users, user, entry)
+    @users = users
+    @entry = entry
+
+    emails = @users.map(&:email)
+    subject = "#{user.name} just accepted a position at #{@entry.company.name}!"
+
+    mail(to: emails, subject: subject)
+  end
 end
