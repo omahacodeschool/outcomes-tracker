@@ -1,5 +1,8 @@
 class Entry < ActiveRecord::Base
+  attr_accessor :company_name
+
   belongs_to :user
+  belongs_to :company
   has_one :job_application
   has_one :offer
   has_one :position
@@ -7,6 +10,21 @@ class Entry < ActiveRecord::Base
   accepts_nested_attributes_for :job_application, :offer, :events
   #has_one :offer
   #has_one :position
+
+  # Internal: Set the entry's company association using a company's name. 
+  # 
+  # company_name - String name of the company.
+  # persist      - Boolean for whether to save the record after setting.
+  # 
+  # Returns the updated Entry.
+  def set_company_from_name(company_name, persist=true)
+    self.company = Company.find_or_create_by(name: company_name)
+    self.save if persist
+  end
+
+  def company_name=(input)
+    set_company_from_name(input, false)
+  end
 
   # Returns AR::Relation of Events, most recent first.
   def events_history

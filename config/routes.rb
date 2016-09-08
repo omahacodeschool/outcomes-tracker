@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index]
   resources :events, only: [:create]
   resources :positions
-  resources :job_applications
+  resources :job_applications do
+    get :autocomplete_company_name, :on => :collection
+  end
   resources :offers
 
   get '/profile' => 'profiles#edit', as: "update_profile"

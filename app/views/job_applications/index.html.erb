@@ -20,7 +20,7 @@
 <% @job_applications.each do |job_application| %>
   <tr>
     <!-- <td><%= job_application.location %></td> -->
-    <td><%= job_application.job_title %>, <%= job_application.entry.company %></td>
+    <td><%= job_application.job_title %>, <%= job_application.entry.company.name %></td>
     <!-- <td><%= job_application.remote %></td>
     <td><%= job_application.posting_url %></td>
     <td><%= job_application.company_contact %></td>

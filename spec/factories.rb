@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :company do
+    name "MyString"
+  end
   factory :event do
     entry nil
     notes "MyText"

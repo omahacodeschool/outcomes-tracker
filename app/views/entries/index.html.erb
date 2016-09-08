@@ -23,7 +23,7 @@
         <% if current_user != User.find(entry.user_id) %>
           <td><%= link_to User.find(entry.user_id).name, user_path(entry.user_id) %></td>
         <% end %>
-        <td><%= entry.company %></td>
+        <td><%= entry.company.name %></td>
         <td><%= entry.return_associated_info %></td>
         <%# if entry.job_application && entry.job_application.job_title.blank? == false %>
           <!-- <td>Application,</td> -->

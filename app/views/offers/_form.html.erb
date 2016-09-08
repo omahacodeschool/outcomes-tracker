@@ -14,7 +14,7 @@
   <% if params[:action] == "new" %>
     <p>
       <%= f.label "For which existing application?" %>
-      <%= f.select(:entry_id, @entries.collect {|e| [e.company, e.id]}) %>
+      <%= f.select(:entry_id, @entries.collect {|e| [e.company.name, e.id]}) %>
     </p>
   <% elsif params[:action] == "add_new_to_existing_entry" %>
     <p>

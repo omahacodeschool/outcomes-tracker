@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  autocomplete :company, :name
 
   # GET /applications
   def index
@@ -59,6 +60,6 @@ class JobApplicationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def job_application_params
       params.require(:job_application).permit(:location, :job_title, :nature_of_employment, :remote, :posting_url, :company_contact, :notes, :date_due, 
-        entry_attributes: [:id, :user_id, :company])
+        entry_attributes: [:id, :user_id, :company_name])
     end
 end
