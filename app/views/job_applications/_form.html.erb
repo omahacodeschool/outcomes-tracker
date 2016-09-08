@@ -18,7 +18,7 @@
 
       <p>
         <%= ff.label :company_name, "Company" %>
-        <%= ff.text_field :company_name, placeholder: "Google" %>
+        <%= ff.autocomplete_field :company_name, autocomplete_company_name_job_applications_path, placeholder: "Google" %>
       </p>
     <% end %> 
 

@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  autocomplete :company, :name
 
   # GET /applications
   def index
