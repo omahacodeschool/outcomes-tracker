@@ -1,5 +1,16 @@
-<h1>New Position</h1>
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: @entry.user} %>
+<% end %>
+
+<h1><%= @entry.company.name %>: Position Accepted</h1>
+
+<p>
+  You're accepting an offer "<%= @entry.offer.job_title %>" <%= @entry.offer.nature_of_employment %> position, at <%= @entry.company.name %> in <%= @entry.offer.location %>. Congrats!
+</p>
+
+<p>
+  Please add/confirm some details about the position below.
+</p>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', positions_path %>

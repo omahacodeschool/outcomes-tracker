@@ -28,7 +28,7 @@ class PositionsController < ApplicationController
 
     if @position.save
       Event.for_position(@position)
-      redirect_to @position, notice: 'Position was successfully created.'
+      redirect_to @position.entry, notice: 'Position was successfully created.'
     else
       render :new
     end
@@ -57,7 +57,7 @@ class PositionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def position_params
-      params.require(:position).permit(:job_title, :location, :remote, :start_date, :end_date, :entry_id,
+      params.require(:position).permit(:job_title, :location, :nature_of_employment, :remote, :start_date, :end_date, :entry_id,
         entry_attributes: [:id, :user_id, :company],
         salary_attributes: [:id, :amount, :rate])
     end
