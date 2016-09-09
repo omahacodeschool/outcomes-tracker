@@ -30,7 +30,8 @@
   <%= f.fields_for :salary do |ff| %>
     <p>
       <%= ff.label :amount, "Salary/Rate" %>
-      <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
+      <%= ff.text_field :amount, placeholder: "Ex: 49,000 or 20. No dollar signs, please." %>
+      <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
     </p>
   <% end %>
 
