@@ -23,14 +23,14 @@
         </p>
       </div>
     <% else %>
-      <%= link_to fa_icon("file-text-o", text: "Résumé"), user.resume, class: "userInfo__socialLink" %>
-      <%= link_to fa_icon("linkedin", text: "LinkedIn"), user.linked_in, class: "userInfo__socialLink" %>
+      <%= link_to fa_icon("file-text-o", text: "Résumé"), user.resume, class: "userInfo__socialLink", :target => "_blank"  %>
+      <%= link_to fa_icon("linkedin", text: "LinkedIn"), user.linked_in, class: "userInfo__socialLink", :target => "_blank"  %>
     <% end %>
 
-    <%= link_to fa_icon("github-alt", text: user.github_username), github_url(user.github_username), class: "userInfo__socialLink" %>
+    <%= link_to fa_icon("github-alt", text: user.github_username), github_url(user.github_username), class: "userInfo__socialLink", :target => "_blank" %>
 
     <% if !user.twitter.blank? %>
-      <%= link_to fa_icon("twitter", text: user.twitter), twitter_url(user.twitter), class: "userInfo__socialLink" %>
+      <%= link_to fa_icon("twitter", text: user.twitter), twitter_url(user.twitter), class: "userInfo__socialLink", :target => "_blank" %>
     <% end %>
 
     <% if !user.email.blank? %>
