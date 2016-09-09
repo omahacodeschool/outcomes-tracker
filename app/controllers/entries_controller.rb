@@ -17,7 +17,6 @@ class EntriesController < ApplicationController
   # GET /entries/1
   def show
     @event = @entry.events.build
-    binding.pry
   end
 
   # GET /entries/new
