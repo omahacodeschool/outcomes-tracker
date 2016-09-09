@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :sumeet
 
+  def alex
+    @alex ||= User.find_by_github_username("halfghaninne")
+  end
+  helper_method :alex
+
   def check_if_logged_in
     if !current_user
       render "pages/public" and return
