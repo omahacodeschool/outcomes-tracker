@@ -41,7 +41,7 @@
   </p>
   <p>
     <%= f.label "Employment type" %><br>
-    <%= f.select(:nature_of_employment, Position.nature_of_employments.keys, @entry.offer.nature_of_employment) %>
+    <%= f.select(:nature_of_employment, options_for_select(Position.nature_of_employments.keys, @entry.offer.nature_of_employment)) %>
   </p>
   <p>
     <label for="offer_remote">

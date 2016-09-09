@@ -51,8 +51,11 @@
 <% end %>
 
 <% if @entry.position %>
-  <strong>Position</strong><br>
-  <%= @entry.position.job_title %>, <%= @entry.position.location %><br>
-  <%= link_to 'See more...', @entry.position %><br><br>
+  <h2>Position</h2>
+  <p>
+    You accepted a position at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.pretty_amount, precision: 0) %> about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %> Congratulations!
+  </p>
+  <!-- <%# @entry.position.job_title %> <%# @entry.position.location %><br>
+  <%# link_to 'See more...', @entry.position %><br><br> -->
 <% end %>
 
