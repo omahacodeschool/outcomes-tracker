@@ -27,6 +27,7 @@ class PositionsController < ApplicationController
     @position = Position.new(position_params)
 
     if @position.save
+      Event.for_position(@position)
       redirect_to @position.entry, notice: 'Position was successfully created.'
     else
       render :new
