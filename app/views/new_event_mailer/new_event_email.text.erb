@@ -1,4 +1,6 @@
-There is a new comment regarding your job application to <%= @entry.company.name %>.
+<% subject_modifier = (@users.include?@entry.user) ? "your" : "#{@entry.user.name}'s" %>
+
+There is a new comment regarding <%= subject_modifier %> job application to <%= @entry.company.name %>,
 
 View the conversation at:
 
