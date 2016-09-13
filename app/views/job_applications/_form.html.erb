@@ -16,6 +16,7 @@
     <%= f.fields_for :entry do |ff| %>
       <%= ff.hidden_field :user_id, :value => current_user.id %>
 
+      <!-- Question about this section -->
       <p>
         <%= ff.label :company_name, "Company" %>
         <%= ff.autocomplete_field :company_name, autocomplete_company_name_job_applications_path, placeholder: "Google" %>
