@@ -1,7 +1,7 @@
 <div class="button-group jobEntryButtons">
   <% if !entry.job_application.posting_url.blank? %>
     <label>
-      <%= link_to "Job Details", entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
+      <%= link_to "Job Posting", entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
     </label>
   <% end %>
 
@@ -10,6 +10,10 @@
       <%= link_to "Message Hiring Manager", "mailto:#{entry.job_application.company_contact}", class: "button-group-item" %>
     </label>
   <% end %>
+
+  <label>
+      <%= link_to "Edit Details", edit_job_application_path(@entry.job_application.id), class: "button-group-item", target: "_blank" %>
+  </label>
 
   <% if !entry.offer %>
     <label>
