@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  resources :companies, only: [:index, :show]
   resources :users, only: [:show, :index]
   resources :events, only: [:create]
   resources :positions
