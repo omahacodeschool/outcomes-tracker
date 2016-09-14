@@ -47,14 +47,14 @@
   <h2>Offer</h2>
 
   <p>
-    You received an offer to work at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.pretty_amount, precision: 0) %> about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %>
+    You received an offer to work at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.amount, precision: 0) %> (<%= @entry.offer.salary.rate %>) about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %>
   </p>
 <% end %>
 
 <% if @entry.position %>
   <h2>Position</h2>
   <p>
-    You accepted a position at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.pretty_amount, precision: 0) %> about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %> Congratulations!
+    You accepted a position at the <%= @entry.position.location %> location as a <%= @entry.position.job_title %>, earning <%= number_to_currency(@entry.position.salary.pretty_amount, precision: 0) %> (<%= @entry.position.salary.rate %>) about <%= time_ago_in_words(@position.offer.created_at) %> ago. <%= "This is a remote position." if @position.offer.remote %> Congratulations!
   </p>
   <!-- <%# @entry.position.job_title %> <%# @entry.position.location %><br>
   <%# link_to 'See more...', @entry.position %><br><br> -->

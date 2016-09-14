@@ -38,7 +38,6 @@ class OffersController < ApplicationController
   # POST /offers
   def create
     @offer = Offer.new(offer_params)
-
     if @offer.save
       Event.for_offer(@offer)
       redirect_to @offer.entry, notice: 'Offer added.'
