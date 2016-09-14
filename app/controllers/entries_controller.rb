@@ -69,6 +69,8 @@ class EntriesController < ApplicationController
     end
 
     def view_permission_check
+      redirect_to(root_path, notice: 'You cannot access that page') if @entry.company.hidden_for_user?(current_user)
+
       if current_user.id != @entry.user_id && current_user.has_view_permission == false # is the logic right?
         # it feels a little weird that permission to view and edit are separate. can't totally articulate why.
         redirect_to root_path, notice: 'You cannot access that page'

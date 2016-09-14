@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :permissions
   has_many :events
 
+  has_many :hidings
+
   # accepts_nested_attributes_for :permissions
 
   has_many :job_applications, through: :entries
