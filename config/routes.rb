@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :cohorts
+    resources :hidings
+    resources :companies
     resources :entries
     resources :job_applications
     resources :offers
