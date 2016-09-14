@@ -50,7 +50,7 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   def update
     if @offer.update(offer_params)
-      redirect_to @offer, notice: 'Offer updated.'
+      redirect_to @offer.entry, notice: 'Offer updated.'
     else
       render :edit
     end
@@ -71,7 +71,7 @@ class OffersController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def offer_params
       params.require(:offer).permit(:job_title, :location, :nature_of_employment, :remote, :entry_id,
-      entry_attributes: [:id, :user_id, :company],
+      entry_attributes: [:id, :user_id, :company_name],
       salary_attributes: [:id, :amount, :rate])
     end
 
