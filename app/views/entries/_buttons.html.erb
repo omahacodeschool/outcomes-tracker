@@ -11,15 +11,18 @@
     </label>
   <% end %>
 
-  <label>
-      <%= link_to "Edit Details", edit_job_application_path(@entry.job_application.id), class: "button-group-item", target: "_blank" %>
-  </label>
-
   <% if !entry.offer %>
+    <label>
+      <%= link_to "Edit Details", edit_job_application_path(@entry.job_application.id), class: "button-group-item", target: "_blank" %>
+    </label>
+
     <label>
       <%= link_to '＋ Received Offer', :advance_job_application, class: "button-group-item" %>
     </label>
   <% else %>
+    <label>
+      <%= link_to "Edit Details", edit_offer_path(@entry.offer.id), class: "button-group-item", target: "_blank" %>
+    </label>
 
     <% if !entry.position %>
       <label>
