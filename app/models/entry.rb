@@ -1,5 +1,4 @@
 class Entry < ActiveRecord::Base
-  attr_accessor :company_name
 
   belongs_to :user
   belongs_to :company
@@ -15,13 +14,18 @@ class Entry < ActiveRecord::Base
   # persist      - Boolean for whether to save the record after setting.
   # 
   # Returns the updated Entry.
-  def set_company_from_name(company_name, persist=true)
-    self.company = Company.find_or_create_by(name: company_name)
+  def set_company_from_name(input, persist=true)
+    @company_name = input
+    self.company = Company.find_or_create_by(name: input)
     self.save if persist
   end
 
   def company_name=(input)
     set_company_from_name(input, false)
+  end
+
+  def company_name
+    @company_name ||= self.company.name
   end
 
   # Returns AR::Relation of Events, most recent first.
