@@ -69,6 +69,16 @@ ActiveRecord::Schema.define(version: 20160912214142) do
   add_index "events", ["entry_id"], name: "index_events_on_entry_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
 
+  create_table "interview_questions", force: :cascade do |t|
+    t.integer  "entry_id"
+    t.text     "body"
+    t.boolean  "technical"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "interview_questions", ["entry_id"], name: "index_interview_questions_on_entry_id", using: :btree
+
   create_table "job_applications", force: :cascade do |t|
     t.string   "location"
     t.string   "job_title"
@@ -162,4 +172,5 @@ ActiveRecord::Schema.define(version: 20160912214142) do
   add_foreign_key "entries", "companies"
   add_foreign_key "events", "entries"
   add_foreign_key "events", "users"
+  add_foreign_key "interview_questions", "entries"
 end
