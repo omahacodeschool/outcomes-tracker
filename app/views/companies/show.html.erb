@@ -1,2 +1,17 @@
-<h1>Companies#show</h1>
-<p>Find me in app/views/companies/show.html.erb</p>
+<h1><%= @company.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Applicant</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @company.entries.each do |entry| %>
+      <tr>
+        <td><%= link_to entry.user.name, entry %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
