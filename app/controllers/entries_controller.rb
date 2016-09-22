@@ -1,28 +1,11 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :user_check, only: [:new, :index] # more views needed here?
   before_action :view_permission_check, only: [:show]
   before_action :edit_permission_check, only: [:edit]
-
-  # GET /entries
-  def index
-    # note, this check may change or be relocated later
-    if current_user.has_view_permission
-      @entries = Entry.all
-    else
-      @entries = current_user.entries
-    end
-  end
 
   # GET /entries/1
   def show
     @event = @entry.events.build
-  end
-
-  # GET /entries/new
-  def new
-    @entry = Entry.new
-    @user = current_user
   end
 
   # GET /entries/1/edit
@@ -62,13 +45,9 @@ class EntriesController < ApplicationController
       @entry = Entry.find(params[:id])
     end
 
-    def user_check
-      if !current_user
-        redirect_to root_path, notice: 'You must log in first'
-      end
-    end
-
     def view_permission_check
+      redirect_to(root_path, notice: 'You cannot access that page') if @entry.company.hidden_for_user?(current_user)
+
       if current_user.id != @entry.user_id && current_user.has_view_permission == false # is the logic right?
         # it feels a little weird that permission to view and edit are separate. can't totally articulate why.
         redirect_to root_path, notice: 'You cannot access that page'

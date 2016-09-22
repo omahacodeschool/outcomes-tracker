@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :hiding do
+    user nil
+    company nil
+  end
   factory :company do
     name "MyString"
   end

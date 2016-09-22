@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912214142) do
+ActiveRecord::Schema.define(version: 20160914203736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,26 @@ ActiveRecord::Schema.define(version: 20160912214142) do
 
   add_index "events", ["entry_id"], name: "index_events_on_entry_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "hidings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hidings", ["company_id"], name: "index_hidings_on_company_id", using: :btree
+  add_index "hidings", ["user_id"], name: "index_hidings_on_user_id", using: :btree
+
+  create_table "interview_questions", force: :cascade do |t|
+    t.integer  "entry_id"
+    t.text     "body"
+    t.boolean  "technical"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "interview_questions", ["entry_id"], name: "index_interview_questions_on_entry_id", using: :btree
 
   create_table "job_applications", force: :cascade do |t|
     t.string   "location"
@@ -162,4 +182,7 @@ ActiveRecord::Schema.define(version: 20160912214142) do
   add_foreign_key "entries", "companies"
   add_foreign_key "events", "entries"
   add_foreign_key "events", "users"
+  add_foreign_key "hidings", "companies"
+  add_foreign_key "hidings", "users"
+  add_foreign_key "interview_questions", "entries"
 end
