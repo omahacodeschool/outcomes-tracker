@@ -25,7 +25,7 @@ class Entry < ActiveRecord::Base
   end
 
   def company_name
-    @company_name = self.company ? self.company.name : ""
+    @company_name ||= company.try(:name)
   end
 
   # Returns AR::Relation of Events, most recent first.
