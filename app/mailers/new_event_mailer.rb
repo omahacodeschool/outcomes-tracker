@@ -11,6 +11,8 @@ class NewEventMailer < ApplicationMailer
 
     subject = "New comment re: #{topic} on Outcomes Tracker"
 
+    @subject_modifier = (@users.include?@entry.user) ? "your" : "#{@entry.user.name}'s"
+
     mail(to: emails, subject: subject)
   end
 
