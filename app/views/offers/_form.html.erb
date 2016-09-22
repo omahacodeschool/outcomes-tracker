@@ -32,6 +32,15 @@
       <%= f.label :job_title %>
       <%= f.text_field :job_title %>
     </p>
+
+    <%= f.fields_for :salary do |ff| %>
+      <p>
+        <%= ff.label :amount, "Salary/Rate" %>
+        <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
+        <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
+      </p>
+    <% end %>
+    
     <p>
       <%= f.label "Employment type" %>
       <%= f.select(:nature_of_employment, Offer.nature_of_employments.keys) %>
@@ -42,14 +51,6 @@
         Remote?
       </label>
     </p>  
-
-    <%= f.fields_for :salary do |ff| %>
-      <p>
-        <%= ff.label :amount, "Salary/Rate" %>
-        <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
-        <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
-      </p>
-    <% end %>
 
   </fieldset>
 
