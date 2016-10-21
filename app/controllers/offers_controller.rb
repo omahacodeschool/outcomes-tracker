@@ -37,7 +37,14 @@ class OffersController < ApplicationController
 
   # POST /offers
   def create
-    @offer = Offer.new(offer_params)
+    # @offer = Offer.new(offer_params)
+    # Implementing the following to move past an error
+    # seemingly caused by a conflict between ANAF and child/parent
+    # strong params?
+    entry = Entry.find(params["offer"]["entry_attributes"]["id"])
+    @offer = entry.build_offer
+    @offer.save
+    @offer.update(offer_params)
     if @offer.save
       Event.for_offer(@offer)
       redirect_to @offer.entry, notice: 'Offer added.'
