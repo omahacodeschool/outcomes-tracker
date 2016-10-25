@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     get :autocomplete_company_name, :on => :collection
   end
   resources :offers
+  resources :translations
 
   get '/profile' => 'profiles#edit', as: "update_profile"
   resources :profiles, only: [:update]
