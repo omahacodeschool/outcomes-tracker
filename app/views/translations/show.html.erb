@@ -1,0 +1,26 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
+<h1>Your Resumé Translation</h1>
+
+
+<form>
+	<fieldset>
+		<h2>Work Details</h2>
+		<label><%= @translation.project_name %></label>
+		<p><%= @translation.input_text %></p>
+	</fieldset>
+</form>
+
+<% if @translation.output_text %>
+
+	<form>
+		<fieldset>
+			<h2>Translation</h2>
+			<p><%= @translation.output_text %></p>
+		</fieldset>
+	</form>
+<% else %>
+	<p>Looks like there's no translation yet. Check back soon, or bug the instructors in Slack.</p>
+<% end %>

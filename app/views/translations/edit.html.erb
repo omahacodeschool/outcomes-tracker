@@ -1,0 +1,9 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
+<h1>Provide a Translation</h1>
+
+<p>Help <%= @translation.user.name %> translate this item for their resumé.</p>
+
+<%= render 'edit_form' %>

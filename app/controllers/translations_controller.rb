@@ -1,5 +1,6 @@
 class TranslationsController < ApplicationController
-	before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+	before_action :set_translation, only: [:show, :edit, :update, :destroy]
+	before_action :admin_only, only: [:edit]
 
 	def new
 		@translation = Translation.new
@@ -23,8 +24,13 @@ class TranslationsController < ApplicationController
 
 	def edit
 	end
-
+	
 	def update
+		if @translation.update(translation_params)
+			redirect to root_path, notice: "Translation saved!"
+		else
+			render :edit
+		end
 	end
 
 	def destroy
@@ -36,6 +42,6 @@ class TranslationsController < ApplicationController
     	end
 
 		def translation_params
-			params.require(:translation).permit(:user_id, :input_text, :output_text)
+			params.require(:translation).permit(:user_id, :input_text, :output_text, :project_name	)
 		end
 end

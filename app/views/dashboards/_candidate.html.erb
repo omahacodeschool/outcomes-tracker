@@ -22,3 +22,22 @@
     Click "Add Application" in the menu bar above to get started.
   </p>
 <% end %>
+
+<h1>Resumé Translations</h1>
+
+<% if @translations.any? %>
+  <table class="tables">
+    <% @translations.each do |translation| %>
+      <tr>
+        <td>
+          <%= link_to translation.project_name, translation %>,
+          <%= translation.truncate %>
+        </td>
+
+<!--         <td>
+          <%# link_to("Job Posting", translation.posting_url, target: "_blank") unless translation.posting_url.blank? %>
+        </td> -->
+      </tr>
+    <% end %>
+  </table>  
+<% end %>
