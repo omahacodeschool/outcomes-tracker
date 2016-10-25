@@ -20,7 +20,6 @@ class TranslationsController < ApplicationController
 	end
 
 	def index
-		# @translations = Translation.order("created_at DESC")
 		@finished_translations = Translation.where("output_text IS NOT NULL").order("updated_at DESC")
 		@new_translations = Translation.where("output_text IS NULL").order("created_at DESC")
 	end

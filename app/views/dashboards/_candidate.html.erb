@@ -30,8 +30,8 @@
     <% @translations.each do |translation| %>
       <tr>
         <td>
-          <%= link_to translation.project_name, translation %>,
-          <%= translation.truncate %>
+          <%= translation.project_name %> - 
+          <%= link_to translation.truncate, translation %>
         </td>
 
 <!--         <td>
