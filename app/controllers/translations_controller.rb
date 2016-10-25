@@ -1,6 +1,6 @@
 class TranslationsController < ApplicationController
 	before_action :set_translation, only: [:show, :edit, :update, :destroy]
-	before_action :admin_only, only: [:edit]
+	before_action :admin_only, only: [:edit, :index]
 
 	def new
 		@translation = Translation.new
@@ -20,6 +20,7 @@ class TranslationsController < ApplicationController
 	end
 
 	def index
+		@translations = Translation.all
 	end
 
 	def edit
