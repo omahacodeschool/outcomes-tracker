@@ -9,11 +9,11 @@ class Translation < ActiveRecord::Base
 		return true if self.all_unfinished.count > 0
 	end
 
-	def self.all_finished
+	def self.finished
 		self.where("output_text IS NOT NULL").order("updated_at DESC")
 	end
 
-	def self.all_unfinished
+	def self.unfinished
 		self.where("output_text IS NULL").order("created_at DESC")
 	end
 end
