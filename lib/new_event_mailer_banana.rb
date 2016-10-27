@@ -1,4 +1,4 @@
-class NewEventMailerHelper 
+class NewEventMailerBanana
 
 	attr_reader :users, :entry, :company, :entry_user_name
 
@@ -10,7 +10,7 @@ class NewEventMailerHelper
 	end
 
 	def email_subject
-		if self.event_is_from_entry_owner?
+		if event_is_from_entry_owner?
 	      topic = "#{self.company}"
 	    else
 	      topic = "#{self.entry_user_name} and #{self.company}"
