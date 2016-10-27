@@ -29,14 +29,13 @@
   <table class="tables">
     <% @translations.each do |translation| %>
       <tr>
-        <td>
-          <%= translation.project_name %> - 
-          <%= link_to translation.truncate, translation %>
+        <td class="tables__cell">
+          <div>
+            <%= translation.project_name %> - 
+            <%= link_to translation.truncate, translation %>
+          </div>
+          <i class="fa fa-check-circle-o finished" aria-hidden="true"></i>
         </td>
-
-<!--         <td>
-          <%# link_to("Job Posting", translation.posting_url, target: "_blank") unless translation.posting_url.blank? %>
-        </td> -->
       </tr>
     <% end %>
   </table>  
