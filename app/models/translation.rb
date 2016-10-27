@@ -16,4 +16,13 @@ class Translation < ActiveRecord::Base
 	def self.unfinished
 		self.where("output_text IS NULL").order("created_at DESC")
 	end
+
+	def icon
+		if self.output_text
+			"fa fa-check-circle-o finished"
+		else
+			"fa fa-clock-o unfinished"
+		end
+	end
+
 end
