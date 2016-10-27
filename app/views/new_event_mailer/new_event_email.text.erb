@@ -1,5 +1,5 @@
-There is a new comment regarding <%= @subject_modifier %> job application to <%= @entry.company.name %>.
+There is a new comment regarding <%= @helper.email_body_subject_modifier %> job application to <%= @helper.company %>.
 
 View the conversation at:
 
-<%= entry_url(@entry.id) %>
+<%= entry_url(@helper.entry.id) %>
