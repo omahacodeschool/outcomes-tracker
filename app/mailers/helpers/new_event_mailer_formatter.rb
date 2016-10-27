@@ -1,4 +1,4 @@
-class NewEventMailerBanana
+class NewEventMailerFormatter
 
 	attr_reader :users, :entry, :company, :entry_user_name
 

@@ -3,7 +3,7 @@ class NewEventMailer < ApplicationMailer
  
   def new_event_email(users, entry)
 
-    @helper = NewEventMailerBanana.new(users, entry)
+    @helper = NewEventMailerFormatter.new(users, entry)
 
     mail(to: @helper.user_emails, subject: @helper.email_subject)
   end
