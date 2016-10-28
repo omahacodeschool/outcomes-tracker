@@ -38,4 +38,10 @@ class ApplicationController < ActionController::Base
       redirect_to :root, alert: "Access denied."
     end
   end
+
+  def must_have_candidate_profile
+    if current_user.missing_candidate_profile
+      redirect_to :update_profile, alert: "You must add candidate information to your profile before you can add applications to the system."
+    end
+  end
 end
