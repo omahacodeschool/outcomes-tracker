@@ -2,13 +2,10 @@ class NewEventMailer < ApplicationMailer
   default from: '"Omaha Code School" <sumeet@omahacodeschool.com>'
  
   def new_event_email(users, entry)
-    @users = users
-    @entry = entry
 
-    emails = @users.map(&:email)
-    subject = "New comment re: #{@entry.company.name} on Outcomes Tracker"
+    @helper = NewEventMailerFormatter.new(users, entry)
 
-    mail(to: emails, subject: subject)
+    mail(to: @helper.user_emails, subject: @helper.email_subject)
   end
 
   def new_offer_event_email(users, user, entry)
