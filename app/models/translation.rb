@@ -33,7 +33,7 @@ class Translation < ActiveRecord::Base
 	end
 
 	def project_name=(input)
-	  set_company_from_name(input, false)
+	  set_project_from_name(input, false)
 	end
 
 end

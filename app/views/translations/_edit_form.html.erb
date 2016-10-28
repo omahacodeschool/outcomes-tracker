@@ -15,7 +15,7 @@
     <h2>Work Details</h2>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <p>
-      <%= f.label :project_name, @translation.project_name %>
+      <%= f.label :project_name, @translation.project.name %>
       <%= @translation.input_text %>
     </p>
   </fieldset>

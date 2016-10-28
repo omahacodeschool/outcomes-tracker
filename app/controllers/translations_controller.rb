@@ -45,6 +45,6 @@ class TranslationsController < ApplicationController
     	end
 
 		def translation_params
-			params.require(:translation).permit(:user_id, :input_text, :output_text, :project)
+			params.require(:translation).permit(:user_id, :input_text, :output_text, :project_name)
 		end
 end
