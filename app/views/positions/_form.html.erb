@@ -32,6 +32,7 @@
     <p>
       <%= ff.label :amount, "Salary/Rate" %><br>
       <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
+      <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
     </p>
   <% end %>
 
