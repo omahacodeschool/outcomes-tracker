@@ -1,6 +1,7 @@
 class TranslationsController < ApplicationController
 	before_action :set_translation, only: [:show, :edit, :update, :destroy]
 	before_action :admin_only, only: [:edit, :index]
+	autocomplete :project, :name
 
 	def new
 		@translation = Translation.new
@@ -44,6 +45,6 @@ class TranslationsController < ApplicationController
     	end
 
 		def translation_params
-			params.require(:translation).permit(:user_id, :input_text, :output_text, :project_name	)
+			params.require(:translation).permit(:user_id, :input_text, :output_text, :project)
 		end
 end

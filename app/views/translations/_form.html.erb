@@ -15,8 +15,8 @@
     <h2>Work Details</h2>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <p>
-      <%= f.label :project_name %>
-      <%= f.text_field :project_name %>
+      <%= f.label :project_name, "Project" %>
+      <%= f.autocomplete_field :project_name, autocomplete_project_name_translations_path, placeholder: "Project name here" %>
     </p>
     <p>
       <%= f.label :input_text, "Describe the work you did. Be as specific as you can." %>

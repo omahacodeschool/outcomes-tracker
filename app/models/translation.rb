@@ -1,5 +1,7 @@
 class Translation < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :project
+	attr_accessor :project_name
 
 	def truncate
 		self.input_text[0,50] + " ..."
@@ -23,6 +25,15 @@ class Translation < ActiveRecord::Base
 		else
 			"fa fa-clock-o unfinished"
 		end
+	end
+
+	def set_project_from_name(project_name, persist=true)
+	  self.project = Project.find_or_create_by(name: project_name)
+	  self.save if persist
+	end
+
+	def project_name=(input)
+	  set_company_from_name(input, false)
 	end
 
 end

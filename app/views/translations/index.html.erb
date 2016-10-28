@@ -9,7 +9,7 @@
     <div class="comment-content">
       <div class="comment-headline">
         <%= link_to translation.user.name, user_path(translation.user_id) %> submitted a translation request for
-        <b><%= translation.project_name %></b>
+        <b><%= translation.project.name %></b>
         <%= time_ago_in_words(translation.created_at) %> ago
       </div>
 
@@ -31,7 +31,7 @@
     <div class="comment-content">
       <div class="comment-headline">
         <%= link_to translation.user.name, user_path(translation.user_id) %> submitted a translation request for
-        <b><%= translation.project_name %></b>
+        <b><%= translation.project.name %></b>
         <%= time_ago_in_words(translation.created_at) %> ago
       </div>
 
