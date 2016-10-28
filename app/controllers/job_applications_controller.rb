@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  before_action :must_have_candidate_profile, only: [:new]
   autocomplete :company, :name
 
   # GET /applications
@@ -61,5 +62,11 @@ class JobApplicationsController < ApplicationController
     def job_application_params
       params.require(:job_application).permit(:location, :job_title, :nature_of_employment, :remote, :posting_url, :company_contact, :notes, :date_due, 
         entry_attributes: [:id, :user_id, :company_name])
+    end
+
+    def must_have_candidate_profile
+      if current_user.missing_candidate_profile
+        redirect_to :update_profile, alert: "You must add candidate information to your profile before you can add applications to the system."
+      end
     end
 end
