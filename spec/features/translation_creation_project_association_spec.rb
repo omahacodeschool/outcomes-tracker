@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature 'Able to successfully create new position' do
+RSpec.feature 'Able to create new translation and project' do
 
 	let(:student) { FactoryGirl.create(:user) }
 
-  scenario 'all input is good' do
+  scenario 'using new translation and new project' do
   	allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(student)
     visit new_translation_path
 
