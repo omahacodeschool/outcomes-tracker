@@ -39,7 +39,7 @@ class JobApplicationsController < ApplicationController
   # PATCH/PUT /applications/1
   def update
     if @job_application.update(job_application_params)
-      redirect_to @job_application, notice: 'Application updated.'
+      redirect_to @job_application.entry, notice: 'Application updated.'
     else
       render :edit
     end
