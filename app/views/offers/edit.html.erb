@@ -1,6 +1,9 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
 <h1>Editing Offer</h1>
 
-<%= render 'form' %>
+<p>Update information about the offer you've received below.</p>
 
-<%= link_to 'Show', @offer %> |
-<%= link_to 'Back', offers_path %>
+<%= render 'form' %>

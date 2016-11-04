@@ -15,7 +15,7 @@
   <tbody> -->
     <% @offers.each do |offer| %>
       <tr>
-        <td><%= offer.job_title %>, <%= offer.entry.company %></td>
+        <td><%= offer.job_title %>, <%= offer.entry.company.name %></td>
         <!-- <td><%= offer.location %></td>
         <td><%= offer.remote %></td> -->
         <td><%= link_to 'Show', offer.entry %></td>

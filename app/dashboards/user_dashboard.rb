@@ -9,7 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     entries: Field::HasMany,
-    profile: Field::HasOne,
+    cohort: Field::Cohort,
     permissions: Field::HasMany,
     job_applications: Field::HasMany,
     id: Field::Number,

@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :cohorts
+    resources :hidings
+    resources :companies
     resources :entries
     resources :job_applications
     resources :offers
@@ -15,10 +17,13 @@ Rails.application.routes.draw do
     root to: "users#index"
   end
 
+  resources :companies, only: [:index, :show]
   resources :users, only: [:show, :index]
   resources :events, only: [:create]
   resources :positions
-  resources :job_applications
+  resources :job_applications do
+    get :autocomplete_company_name, :on => :collection
+  end
   resources :offers
 
   get '/profile' => 'profiles#edit', as: "update_profile"

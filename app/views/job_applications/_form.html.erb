@@ -17,8 +17,8 @@
       <%= ff.hidden_field :user_id, :value => current_user.id %>
 
       <p>
-        <%= ff.label :company %>
-        <%= ff.text_field :company, placeholder: "Google" %>
+        <%= ff.label :company_name, "Company" %>
+        <%= ff.autocomplete_field :company_name, autocomplete_company_name_job_applications_path, placeholder: "Google" %>
       </p>
     <% end %> 
 

@@ -67,3 +67,5 @@ end
 
 gem 'kaminari'
 gem "font-awesome-rails"
+gem 'jquery-ui-rails'
+gem 'rails-jquery-autocomplete'

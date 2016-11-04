@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907110754) do
+ActiveRecord::Schema.define(version: 20160914203736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160907110754) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "companies", ["name"], name: "index_companies_on_name", using: :btree
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -43,10 +51,12 @@ ActiveRecord::Schema.define(version: 20160907110754) do
 
   create_table "entries", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "company"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "company_id"
   end
+
+  add_index "entries", ["company_id"], name: "index_entries_on_company_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "entry_id"
@@ -58,6 +68,16 @@ ActiveRecord::Schema.define(version: 20160907110754) do
 
   add_index "events", ["entry_id"], name: "index_events_on_entry_id", using: :btree
   add_index "events", ["user_id"], name: "index_events_on_user_id", using: :btree
+
+  create_table "hidings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "hidings", ["company_id"], name: "index_hidings_on_company_id", using: :btree
+  add_index "hidings", ["user_id"], name: "index_hidings_on_user_id", using: :btree
 
   create_table "job_applications", force: :cascade do |t|
     t.string   "location"
@@ -139,9 +159,9 @@ ActiveRecord::Schema.define(version: 20160907110754) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "github_username"
-    t.string   "email"
+    t.string   "name",            null: false
+    t.string   "github_username", null: false
+    t.string   "email",           null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.text     "image_url"
@@ -149,6 +169,9 @@ ActiveRecord::Schema.define(version: 20160907110754) do
     t.string   "slack_username"
   end
 
+  add_foreign_key "entries", "companies"
   add_foreign_key "events", "entries"
   add_foreign_key "events", "users"
+  add_foreign_key "hidings", "companies"
+  add_foreign_key "hidings", "users"
 end

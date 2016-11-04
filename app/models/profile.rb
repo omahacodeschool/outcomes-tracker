@@ -16,6 +16,9 @@ class Profile < ActiveRecord::Base
 
   validates :twitter, format: { with: /\A(-|\w)*\z/i }, on: :update
 
+  # Public: Checks for an empty Profile
+  #
+  # Returns True if a Profile's gender field is blank. 
   def empty?
     gender.blank?
   end

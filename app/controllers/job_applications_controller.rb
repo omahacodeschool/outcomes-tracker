@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  autocomplete :company, :name
 
   # GET /applications
   def index
@@ -38,7 +39,7 @@ class JobApplicationsController < ApplicationController
   # PATCH/PUT /applications/1
   def update
     if @job_application.update(job_application_params)
-      redirect_to @job_application, notice: 'Application updated.'
+      redirect_to @job_application.entry, notice: 'Application updated.'
     else
       render :edit
     end
@@ -59,6 +60,6 @@ class JobApplicationsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def job_application_params
       params.require(:job_application).permit(:location, :job_title, :nature_of_employment, :remote, :posting_url, :company_contact, :notes, :date_due, 
-        entry_attributes: [:id, :user_id, :company])
+        entry_attributes: [:id, :user_id, :company_name])
     end
 end

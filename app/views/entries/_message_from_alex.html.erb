@@ -1,0 +1,33 @@
+<div class="comment">
+  <div class="comment-image">
+    <%= image_tag alex.image_url %>
+  </div>
+
+  <div class="comment-content">
+    <p>
+      As you continue in the application process, you are welcome to use either of us as references!
+    </p>
+
+    <p>
+      Please utilize our contact information below and leave a comment on this thread letting us know to expect a phone call or email.
+    </p>
+
+    <p>
+      <strong>Sumeet Jain</strong><br>
+      sumeet@omahacodeschool.com<br>
+      <%= ENV['SUMEET_NUMBER'] %>
+    </p>
+    
+    <p>
+      <strong>Alexandra Millatmal</strong><br>
+      alex@omahacodeschool.com<br>
+      <a href="http://twitter.com/halfghaninne">@halfghaninNE</a><br>
+      <%= ENV['ALEX_NUMBER'] %>
+    </p>
+    
+    <p class="comment-detail">
+      Alex commented
+      <%= time_ago_in_words(entry.created_at) %> ago
+    </p>
+  </div>
+</div>
