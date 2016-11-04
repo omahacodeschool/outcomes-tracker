@@ -9,7 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     entries: Field::HasMany,
-    cohort: Field::Cohort,
+    cohort_id: CohortField,
     permissions: Field::HasMany,
     job_applications: Field::HasMany,
     id: Field::Number,
@@ -34,7 +34,7 @@ class UserDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :profile,
+    :cohort_id, 
     :name,
     :github_username,
     :email,
@@ -47,6 +47,7 @@ class UserDashboard < Administrate::BaseDashboard
     :name,
     :github_username,
     :email,
+    :cohort_id
   ].freeze
 
   # Overwrite this method to customize how users are displayed

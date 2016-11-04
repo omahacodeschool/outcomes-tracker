@@ -19,6 +19,18 @@ class User < ActiveRecord::Base
   delegate :twitter, to: :profile
   # delegate :name, :to => :profile
 
+  def cohort_id
+    @cohort_id ||= self.profile.cohort_id
+  end
+
+  # For every param key passed to User.new, Rails runs a 
+  # setter method named after that key. Most of these are 
+  # default AR setter methods but it will also run this:
+
+  def cohort_id=(input)
+    self.build_profile(cohort_id: input)
+  end
+
   # Public: Checks if a User's candidate Profile is blank
   #
   # Returns True if one of the required Profile fields is blank
