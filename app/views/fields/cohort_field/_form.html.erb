@@ -2,5 +2,5 @@
   <%= f.label field.attribute %>
 </div>
 <div class="field-unit__field">
-  <%= f.collection_select(field.attribute, Cohort.all, :id, :name, prompt: true, selected: Cohort.next) %>
+  <%= f.collection_select(field.attribute, Cohort.all, :id, :name, prompt: true, selected: Cohort.try(:next).id) %>
 </div>

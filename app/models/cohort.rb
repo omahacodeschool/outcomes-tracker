@@ -3,7 +3,7 @@ class Cohort < ActiveRecord::Base
   has_many :users, through: :profiles
 
   def self.next
-  	(upcoming.length > 0) ? upcoming[0].id : nil
+  	(upcoming.length > 0) ? upcoming[0] : nil
   end
 
   def self.upcoming
