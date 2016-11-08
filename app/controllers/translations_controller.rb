@@ -12,7 +12,7 @@ class TranslationsController < ApplicationController
 		@translation = Translation.new(translation_params)
 
 		if @translation.save
-			redirect_to root_path, notice: "Translation request submitted."
+			redirect_to new_translation_path, notice: "Translation request submitted."
 		else
 			render :new
 		end
@@ -31,7 +31,7 @@ class TranslationsController < ApplicationController
 	
 	def update
 		if @translation.update(translation_params)
-			redirect_to root_path, notice: "Translation saved!"
+			redirect_to translations_path, notice: "Translation saved!"
 		else
 			render :edit
 		end
