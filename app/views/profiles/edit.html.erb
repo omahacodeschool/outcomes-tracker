@@ -13,7 +13,7 @@
     </div>
   <% end %>
 
-  <div <%= "class=profileEditHighlight" if current_user.missing_candidate_profile %>>
+  <div <%= "class=profileEditHighlight" if current_user.missing_candidate_profile? %>>
     <h2>Candidate Information</h2>
 
     <p>This is basic information any jobseeker should have. We'd like you to fill out these fields, so that we can easily access the information from one place.</p>

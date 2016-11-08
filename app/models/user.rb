@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   # Public: Checks if a User's candidate Profile is blank
   #
   # Returns True if one of the required Profile fields is blank
-  def missing_candidate_profile
+  def missing_candidate_profile?
     resume.blank? || linked_in.blank?
   end
 

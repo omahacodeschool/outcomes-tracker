@@ -1,7 +1,7 @@
 class TranslationsController < ApplicationController
 	before_action :set_translation, only: [:show, :edit, :update, :destroy]
 	before_action :admin_only, only: [:edit, :index]
-	before_action :must_have_candidate_profile, only: [:new]
+	before_action :must_have_candidate_profile, only: [:new, :create]
 	autocomplete :project, :name
 
 	def new
