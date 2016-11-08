@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   # delegate :name, :to => :profile
 
   def cohort_id
-    @cohort_id ||= self.profile.cohort_id
+    @cohort_id ||= self.profile.try(:cohort_id)
   end
 
   # For every param key passed to User.new, Rails runs a 
