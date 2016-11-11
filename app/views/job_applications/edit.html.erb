@@ -1,6 +1,10 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
 <h1>Editing Application</h1>
+
+<p>Update information about the job you've applied for below.</p>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @job_application %> |
-<%= link_to 'Back', job_applications_path %>
