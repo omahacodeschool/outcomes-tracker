@@ -1,0 +1,30 @@
+<%= form_for(@translation) do |f| %>
+	<% if @translation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@translation.errors.count, "error") %> prohibited this application from being saved:</h2>
+
+      <ul>
+      <% @translation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+	<% end %>
+
+	<fieldset>
+    <h2>Work Details</h2>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <p>
+      <%= f.label :project_name, @translation.project.name %>
+      <%= @translation.input_text %>
+    </p>
+  </fieldset>
+  <fieldset>
+    <p>
+      <h2>Translation</h2>
+      <%= f.text_area :output_text %>
+    </p>
+  </fieldset>
+
+  <%= f.submit "Submit" %>
+<% end %>

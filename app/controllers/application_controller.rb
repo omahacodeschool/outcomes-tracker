@@ -40,8 +40,8 @@ class ApplicationController < ActionController::Base
   end
 
   def must_have_candidate_profile
-    if current_user.missing_candidate_profile
-      redirect_to :update_profile, alert: "You must add candidate information to your profile before you can add applications to the system."
+    if current_user.missing_candidate_profile?
+      redirect_to :update_profile, alert: "You must add candidate information to your profile before using this feature."
     end
   end
 end

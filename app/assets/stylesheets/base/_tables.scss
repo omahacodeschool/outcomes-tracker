@@ -22,3 +22,17 @@ td,
 th {
   vertical-align: middle;
 }
+
+.tables__cell {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.finished.fa-check-circle-o.fa {
+  color: green;
+}
+
+.fa.fa-clock-o.unfinished {
+  color: gray;
+}

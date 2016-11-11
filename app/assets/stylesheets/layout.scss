@@ -54,6 +54,10 @@ fieldset{
   padding-bottom: 0;
 }
 
+.comment--closed {
+  opacity: 0.5;
+}
+
 .bulletedList{
   list-style-type: disc;
   margin-left: 20px;
