@@ -54,15 +54,27 @@
 
   <fieldset>
     <p>
+      <%= f.label :gender_ndol %>
+      <%= f.select(:gender_ndol, JobApplication.gender_ndols.keys %>
+    </p>
+    <p>
       <%= f.label :gender %>
       <%= f.text_field :gender %>
     </p>
 
     <p>
+      <%= f.label :race_ndol %>
+      <%= f.select(:race_ndol, JobApplication.race_ndols.keys %>
+    </p>
+    <p>
       <%= f.label :race %>
       <%= f.text_field :race %>
     </p>
 
+    <p>
+      <%= f.label :ethnicity_ndol %>
+      <%= f.select(:ethnicity_ndol, JobApplication.ethnicity_ndols.keys %>
+    </p>
     <p>
       <%= f.label :ethnicity %>
       <%= f.text_field :ethnicity %>

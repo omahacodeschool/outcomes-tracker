@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027233611) do
+ActiveRecord::Schema.define(version: 20161111215634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,12 +131,18 @@ ActiveRecord::Schema.define(version: 20161027233611) do
     t.string   "ethnicity"
     t.boolean  "military"
     t.boolean  "disability"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.text     "resume"
     t.string   "personal_website"
     t.string   "linked_in"
     t.string   "twitter"
+    t.integer  "gender_ndol",           default: 2
+    t.integer  "race_ndol",             default: 7
+    t.integer  "ethnicity_ndol",        default: 3
+    t.integer  "military_ndol",         default: 2
+    t.integer  "disability_ndol",       default: 2
+    t.integer  "first_generation_ndol", default: 2
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
