@@ -13,7 +13,7 @@
 
   <% if !entry.offer %>
     <label>
-      <%= link_to "Edit Details", edit_job_application_path(@entry.job_application.id), class: "button-group-item" %>
+      <%= link_to "Edit Details", edit_job_application_path(entry.job_application.id), class: "button-group-item" %>
     </label>
 
     <label>
@@ -21,7 +21,7 @@
     </label>
   <% else %>
     <label>
-      <%= link_to "Edit Details", edit_offer_path(@entry.offer.id), class: "button-group-item" %>
+      <%= link_to "Edit Details", edit_offer_path(entry.offer.id), class: "button-group-item" %>
     </label>
 
     <% if !entry.position %>

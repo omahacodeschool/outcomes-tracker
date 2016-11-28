@@ -1,11 +1,11 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
-  before_action :view_permission_check, only: [:show]
-  before_action :edit_permission_check, only: [:edit]
+  # before_action :view_permission_check, only: [:show]
+  # before_action :edit_permission_check, only: [:edit]
 
   # GET /entries/1
   def show
-    @event = @entry.events.build
+    @decorated_entry = DecoratedEntry.new(@_entry)
   end
 
   # GET /entries/1/edit
@@ -42,7 +42,8 @@ class EntriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_entry
-      @entry = Entry.find(params[:id])
+      #@_ is an indication that this instance variable is being used inside of the controller instantiation but is not meant to be passed to the view
+      @_entry = Entry.find(params[:id])
     end
 
     def view_permission_check

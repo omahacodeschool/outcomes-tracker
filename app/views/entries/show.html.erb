@@ -1,14 +1,14 @@
 <% content_for :sidebar do %>
-  <%= render "application/default_sidebar", {user: @entry.user} %>
+  <%= render "application/default_sidebar", {user: @decorated_entry.user} %>
 <% end %>
 
-<h1><%= @entry.company.name %></h1>
+<h1><%= @decorated_entry.company_name %></h1>
 
-<%= render "buttons", {entry: @entry} %>
+<%= render "buttons", {entry: @decorated_entry.entry} %>
 
 <p>Add notes for yourself and the instructional team here.</p>
 
-<%= form_for @event do |f| %>
+<%= form_for @decorated_entry.build_event do |f| %>
   <%= f.hidden_field :entry_id %>
 
   <div class="jointFieldAndButton">
@@ -19,42 +19,42 @@
 <% end %>
 
 <div class="eventsContainer">
-  <% @entry.events_history.each do |event| %>
+  <% @decorated_entry.events_history.each do |decorated_event| %>
     <div class="comment">
       <div class="comment-image">
-        <%= image_tag event.user.image_url %>
+        <%= image_tag decorated_event.image_url %>
       </div>
 
       <div class="comment-content">
-        <%= simple_format(event.notes) %>
+        <%= decorated_event.formatted_notes %>
         
         <p class="comment-detail">
-          <%= event.user.name %> commented
-          <%= time_ago_in_words(event.created_at) %> ago
+          <%= decorated_event.name %> commented
+          <%= decorated_event.formatted_time_ago %> ago
         </p>
       </div>
     </div>
   <% end %>
 
-  <%= render "message_from_alex", {entry: @entry} %>
-  <%= render "message_from_sumeet", {entry: @entry} %>
-  <%= render "starter_comment", {entry: @entry} %>
+  <%= render "message_from_alex", {entry: @decorated_entry.entry} %>
+  <%= render "message_from_sumeet", {entry: @decorated_entry.entry} %>
+  <%= render "starter_comment", {entry: @decorated_entry.entry} %>
 </div>
 
-<% if @entry.offer %>
+<% if @decorated_entry.offer %>
   <hr>
 
   <h2>Offer</h2>
 
   <p>
-    You received an offer to work at the <%= @entry.offer.location %> location as a <%= @entry.offer.job_title %>, earning <%= number_to_currency(@entry.offer.salary.amount, precision: 0) %> (<%= @entry.offer.salary.rate %>) about <%= time_ago_in_words(@entry.offer.created_at) %> ago. <%= "This is a remote position." if @entry.offer.remote %>
+    You received an offer to work at the <%= @decorated_entry.offer.location %> location as a <%= @decorated_entry.offer.job_title %>, earning <%= @decorated_entry.offer.formatted_amount %> (<%= @decorated_entry.offer.rate %>) about <%= @decorated_entry.offer.formatted_acceptance_time %> ago. <%= @decorated_entry.offer.remote_message %>
   </p>
 <% end %>
 
-<% if @entry.position %>
+<% if @decorated_entry.position %>
   <h2>Position</h2>
   <p>
-    You accepted a position at the <%= @entry.position.location %> location as a <%= @entry.position.job_title %>, earning <%= number_to_currency(@entry.position.salary.amount, precision: 0) %> (<%= @entry.position.salary.rate %>) about <%= time_ago_in_words(@entry.position.created_at) %> ago. <%= "This is a remote position." if @entry.position.remote %> Congratulations!
+    You accepted a position at the <%= @decorated_entry.position.location %> location as a <%= @decorated_entry.position.job_title %>, earning <%= @decorated_entry.position.formatted_amount %> (<%= @decorated_entry.position.rate %>) about <%= @decorated_entry.position.formatted_acceptance_time %> ago. <%= @decorated_entry.position.remote_message %> Congratulations!
   </p>
   <!-- <%# @entry.position.job_title %> <%# @entry.position.location %><br>
   <%# link_to 'See more...', @entry.position %><br><br> -->
