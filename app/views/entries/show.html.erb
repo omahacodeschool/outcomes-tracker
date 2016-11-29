@@ -41,7 +41,7 @@
   <%= render "starter_comment", {entry: @decorated_entry.entry} %>
 </div>
 
-<% if @decorated_entry.offer %>
+<% if @decorated_entry.offer.try(:job_title) %>
   <hr>
 
   <h2>Offer</h2>
@@ -51,7 +51,7 @@
   </p>
 <% end %>
 
-<% if @decorated_entry.position %>
+<% if @decorated_entry.position.try(:job_title) %>
   <h2>Position</h2>
   <p>
     You accepted a position at the <%= @decorated_entry.position.location %> location as a <%= @decorated_entry.position.job_title %>, earning <%= @decorated_entry.position.formatted_amount %> (<%= @decorated_entry.position.rate %>) about <%= @decorated_entry.position.formatted_acceptance_time %> ago. <%= @decorated_entry.position.remote_message %> Congratulations!

@@ -19,6 +19,13 @@ class DecoratedOffer
 		"This is a remote position." if @offer.remote
 	end
 
+	# moving the method into the decorating object breaks. 
+	# doesnt return nil or falsey value
+	#
+	# def exists
+	# 	@offer.try(:job_title)
+	# end
+
 	def method_missing(m, *args, &block)
 		@offer.send(m)
 	end
