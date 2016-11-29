@@ -14,7 +14,11 @@ class DecoratedEntry
 	end
 
 	def offer
-		@offer ||= DecoratedOffer.new(@entry.offer)
+		@offer ||= @entry.offer ? DecoratedOffer.new(@entry.offer) : nil
+	end
+
+	def position
+		@position ||= @entry.position ? DecoratedPosition.new(@entry.position) : nil
 	end
 
 	def method_missing(m, *args, &block)
