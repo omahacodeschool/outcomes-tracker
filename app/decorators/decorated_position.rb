@@ -1,3 +1,6 @@
+include ActionView::Helpers::NumberHelper
+include ActionView::Helpers::DateHelper
+
 class DecoratedPosition
 	def initialize(position)
 		@position = position
