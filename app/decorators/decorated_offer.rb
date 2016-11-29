@@ -1,3 +1,6 @@
+include ActionView::Helpers::NumberHelper
+include ActionView::Helpers::DateHelper
+
 class DecoratedOffer
 	def initialize(offer)
 		@offer = offer
@@ -18,13 +21,6 @@ class DecoratedOffer
 	def remote_message
 		"This is a remote position." if @offer.remote
 	end
-
-	# moving the method into the decorating object breaks. 
-	# doesnt return nil or falsey value
-	#
-	# def exists
-	# 	@offer.try(:job_title)
-	# end
 
 	def method_missing(m, *args, &block)
 		@offer.send(m)
