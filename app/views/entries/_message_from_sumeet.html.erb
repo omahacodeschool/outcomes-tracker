@@ -28,7 +28,7 @@
     
     <p class="comment-detail">
       Sumeet commented
-      <%= time_ago_in_words(entry.created_at) %> ago
+      <%= @decorated_entry.formatted_created_time %> ago
     </p>
   </div>
 </div>

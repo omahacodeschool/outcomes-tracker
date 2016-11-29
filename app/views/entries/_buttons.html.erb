@@ -1,19 +1,19 @@
 <div class="button-group jobEntryButtons">
-  <% if !entry.job_application.posting_url.blank? %>
+  <% if @decorated_entry.has_job_application_posting_url %>
     <label>
-      <%= link_to "Job Posting", entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
+      <%= link_to "Job Posting", @decorated_entry.job_application.posting_url, class: "button-group-item", target: "_blank" %>
     </label>
   <% end %>
 
-  <% if !entry.job_application.company_contact.blank? %>
+  <% if @decorated_entry.has_job_application_company_contact %>
     <label>
-      <%= link_to "Message Hiring Manager", "mailto:#{entry.job_application.company_contact}", class: "button-group-item" %>
+      <%= link_to "Message Hiring Manager", "mailto:#{@decorated_entry.job_application.company_contact}", class: "button-group-item" %>
     </label>
   <% end %>
 
-  <% if !entry.offer %>
+  <% if !@decorated_entry.offer %>
     <label>
-      <%= link_to "Edit Details", edit_job_application_path(entry.job_application.id), class: "button-group-item" %>
+      <%= link_to "Edit Details", edit_job_application_path(@decorated_entry.job_application.id), class: "button-group-item" %>
     </label>
 
     <label>
@@ -21,10 +21,10 @@
     </label>
   <% else %>
     <label>
-      <%= link_to "Edit Details", edit_offer_path(entry.offer.id), class: "button-group-item" %>
+      <%= link_to "Edit Details", edit_offer_path(@decorated_entry.offer.id), class: "button-group-item" %>
     </label>
 
-    <% if !entry.position %>
+    <% if !@decorated_entry.position %>
       <label>
         <%= link_to "＋ Accepted Position", :advance_offer, class: "button-group-item" %>
       </label>

@@ -1,26 +1,26 @@
 <div class="comment">
   <div class="comment-image">
-    <%= image_tag entry.user.image_url %>
+    <%= image_tag @decorated_entry.user_image %>
   </div>
 
   <div class="comment-content">
     <p>
-      Adding this "<%= entry.job_application.job_title %>"
-      <%= entry.job_application.nature_of_employment %> position
-      at <%= entry.company.name %> in <%= entry.job_application.location %>.
+      Adding this "<%= @decorated_entry.job_application.job_title %>"
+      <%= @decorated_entry.job_application.nature_of_employment %> position
+      at <%= @decorated_entry.company_name %> in <%= @decorated_entry.job_application.location %>.
 
-      <% if entry.job_application.remote %>
+      <% if @decorated_entry.job_application.remote %>
         (Remote position.)
       <% end %>
     </p>
 
-    <% if !entry.job_application.notes.blank? %>
+    <% if @decorated_entry.has_job_application_notes %>
       <p>Notes: <%= entry.job_application.notes %></p>
     <% end %>
     
     <p class="comment-detail">
-      <%= entry.user.name %> created this job application
-      <%= time_ago_in_words(entry.created_at) %> ago
+      <%= @decorated_entry.user_name %> created this job application
+      <%= @decorated_entry.formatted_created_time %> ago
     </p>
   </div>
 </div>

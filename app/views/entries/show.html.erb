@@ -4,7 +4,7 @@
 
 <h1><%= @decorated_entry.company_name %></h1>
 
-<%= render "buttons", {entry: @decorated_entry.entry} %>
+<%= render "buttons" %>
 
 <p>Add notes for yourself and the instructional team here.</p>
 
@@ -36,9 +36,9 @@
     </div>
   <% end %>
 
-  <%= render "message_from_alex", {entry: @decorated_entry.entry} %>
-  <%= render "message_from_sumeet", {entry: @decorated_entry.entry} %>
-  <%= render "starter_comment", {entry: @decorated_entry.entry} %>
+  <%= render "message_from_alex" %>
+  <%= render "message_from_sumeet" %>
+  <%= render "starter_comment" %>
 </div>
 
 <% if @decorated_entry.offer %>
