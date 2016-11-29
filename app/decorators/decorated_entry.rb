@@ -26,6 +26,6 @@ class DecoratedEntry
 	end
 
 	def events_history
-		@entry.events_history.map { |event| DecoratedEvent(event) }
+		@entry.events_history.map { |event| DecoratedEvent.new(event) }
 	end
 end

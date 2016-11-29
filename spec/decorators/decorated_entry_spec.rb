@@ -6,7 +6,8 @@ describe DecoratedEntry do
   	@offer = double()
   	@position = double()
   	@entry = double()
-  	# @entry.stub(:events_history)
+  	@event1 = double()
+  	@event2 = double()
 
   	@decorated_entry = DecoratedEntry.new(@entry)
   end
@@ -32,8 +33,9 @@ describe DecoratedEntry do
     expect(@decorated_entry.position).to be_a(DecoratedPosition)
   end
 
-  # it 'returns a collection of associated events as decorated events' do
-  #   expect(decorated_entry.events_history).to eq('600')
-  # end
+  it 'returns a collection of associated events as decorated events' do
+    allow(@entry).to receive(:events_history) { [@event1, @event2] }
+    expect(@decorated_entry.events_history[0]).to be_a(DecoratedEvent)
+  end
 
 end
