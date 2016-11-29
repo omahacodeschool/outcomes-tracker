@@ -40,3 +40,13 @@ Password: testtest
 - When the admin masquerades as a user, there is no longer a masquerade bar below the navigation bar because it was obscuring content. Instead, there is an unobtrusive masquerade icon next to the avatar.
 - When the admin opens the avatar dropdown, there is a message reminding them that they are masquerading as a user and a link to return to their own account.
 ```
+
+## Refactoring Goals
+
+1. Remove unused code and files.
+    - Be thorough. E.g. there are probably individual actions within a controller that are unused.
+2. Clean up tests--delete unused tests and even entire files if needed.
+3. Build a `DecoratedEntry` class to manage the complexity of how an (entry + its applications/offers/positions/etc) is used in views.
+4. Reliance on `params[:action] == "new"` in **views/positions/_form.erb** is bothersome. Can anything be done about it?
+5. Get test coverage as high as possible.
+6. Integrate CodeClimate and get as high a grade as possible.
