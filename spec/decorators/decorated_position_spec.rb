@@ -13,8 +13,7 @@ describe DecoratedPosition do
   end
 
   it 'formats position acceptance time' do
-    time = Time.zone.now
-    allow(@position).to receive(:created_at) { time }
+    allow(@position).to receive(:created_at) { Time.zone.now }
     expect(@decorated_position.formatted_acceptance_time).to eq('less than a minute')
   end
 

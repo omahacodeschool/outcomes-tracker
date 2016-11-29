@@ -13,8 +13,7 @@ describe DecoratedOffer do
   end
 
   it 'formats position acceptance time' do
-    time = Time.zone.now
-    allow(@offer).to receive(:created_at) { time }
+    allow(@offer).to receive(:created_at) { Time.zone.now }
     expect(@decorated_offer.formatted_acceptance_time).to eq('less than a minute')
   end
 
