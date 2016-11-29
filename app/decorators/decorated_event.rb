@@ -1,3 +1,6 @@
+include ActionView::Helpers::TextHelper
+include ActionView::Helpers::DateHelper
+
 class DecoratedEvent
 	def initialize(event)
 		@event = event
