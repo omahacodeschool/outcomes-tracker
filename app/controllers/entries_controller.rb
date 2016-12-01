@@ -10,7 +10,6 @@ class EntriesController < ApplicationController
 
   # GET /entries/1/edit
   def edit
-    @user = User.find(@entry.user_id)
   end
 
   # POST /entries
