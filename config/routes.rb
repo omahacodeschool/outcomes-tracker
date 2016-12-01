@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   get '/profile' => 'profiles#edit', as: "update_profile"
   resources :profiles, only: [:update]
 
-  get '/entries/:id' => 'entries#show', as: :entry
+  resources :entries, only: [:show]
+  # get '/entries/:id' => 'entries#show', as: :entry
 
   get '/entries/:id/add_offer' => 'offers#add_new_to_existing_entry', as: :advance_job_application
   # probably makes sense to move this controller action to the entries controller at some point?

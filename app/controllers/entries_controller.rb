@@ -8,10 +8,6 @@ class EntriesController < ApplicationController
     @decorated_entry = DecoratedEntry.new(@_entry)
   end
 
-  # GET /entries/1/edit
-  def edit
-  end
-
   # POST /entries
   def create
     @entry = Entry.new(entry_params)
