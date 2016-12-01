@@ -35,14 +35,17 @@ class DecoratedEntry
 		@position ||= @entry.position ? DecoratedPosition.new(@entry.position) : nil
 	end
 
+	# how to test?
 	def has_job_application_posting_url
 		!@entry.job_application.posting_url.blank?
 	end
 
+	# how to test?
 	def has_job_application_company_contact
 		!@entry.job_application.company_contact.blank?
 	end
 
+	# how to test?
 	def has_job_application_notes
 		!entry.job_application.notes.blank?
 	end

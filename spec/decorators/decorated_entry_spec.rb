@@ -7,6 +7,17 @@ describe DecoratedEntry do
   	@decorated_entry = DecoratedEntry.new(@entry)
   end
 
+  it 'returns nil for a non-existent job application' do
+    @job_application = double()
+    allow(@entry).to receive(:job_application) { nil }
+    expect(@decorated_entry.job_application).to eq(nil)
+  end
+
+  it 'returns job application object for an existing job application' do
+    @job_application = double()
+    allow(@entry).to receive(:position) { @job_application }
+    expect(@decorated_entry.job_application).to be_a(DecoratedJobApplication)
+  end
 
   it 'returns nil for a non-existent offer' do
   	@offer = double()
@@ -37,6 +48,11 @@ describe DecoratedEntry do
     @event2 = double()
     allow(@entry).to receive(:events_history) { [@event1, @event2] }
     expect(@decorated_entry.events_history[0]).to be_a(DecoratedEvent)
+  end
+
+  it 'formats entry created time' do
+    allow(@entry).to receive(:created_at) { Time.zone.now }
+    expect(@decorated_entry.formatted_created_time).to eq('less than a minute')
   end
 
 end
