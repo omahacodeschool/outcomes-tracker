@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.3.1"
+ruby "2.3.0"
 
 gem "administrate", "~> 0.2.2"
 gem "autoprefixer-rails"
@@ -47,7 +47,7 @@ group :development, :staging do
 end
 
 group :test do
-  # gem "capybara-webkit"
+  gem "capybara-webkit"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
