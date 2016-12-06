@@ -15,7 +15,7 @@ describe DecoratedEntry do
 
   it 'returns job application object for an existing job application' do
     @job_application = double()
-    allow(@entry).to receive(:position) { @job_application }
+    allow(@entry).to receive(:job_application) { @job_application }
     expect(@decorated_entry.job_application).to be_a(DecoratedJobApplication)
   end
 
