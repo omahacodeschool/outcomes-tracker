@@ -24,8 +24,11 @@ class PositionsController < ApplicationController
 
   # POST /positions
   def create
-    @position = Position.new(position_params)
-
+    # @position = Position.new(position_params)
+    entry = Entry.find(params["position"]["entry_attributes"]["id"])
+    @position = entry.build_position
+    @position.save
+    @position.update(position_params)
     if @position.save
       Event.for_position(@position)
       redirect_to @position.entry, notice: 'Position was successfully created.'
@@ -57,7 +60,7 @@ class PositionsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def position_params
-      params.require(:position).permit(:job_title, :location, :nature_of_employment, :remote, :start_date, :end_date, 
+      params.require(:position).permit(:job_title, :location, :nature_of_employment, :remote, :start_date, :end_date, :entry_id,
         entry_attributes: [:id, :user_id, :company_name],
         salary_attributes: [:id, :amount, :rate])
     end
