@@ -2,11 +2,10 @@ class PositionsController < ApplicationController
   before_action :set_position, only: [:show, :edit, :update, :destroy]
   
   # GET /positions/new
+  # not currently being used
   def new
     @position = Position.new
     @position.build_salary
-    @entries = Entry.all_without_position
-    check_if_new_position_is_valid
   end
 
   # GET /entries/:id/add_position
@@ -24,17 +23,9 @@ class PositionsController < ApplicationController
 
   # POST /positions
   def create
-    # @position = Position.new(position_params)
-    entry = Entry.find(params["position"]["entry_attributes"]["id"])
-    @position = entry.build_position
-    @position.save
+    build_position_on_existing_entry
     @position.update(position_params)
-    if @position.save
-      Event.for_position(@position)
-      redirect_to @position.entry, notice: 'Position was successfully created.'
-    else
-      render :new
-    end
+    position_save
   end
 
   # PATCH/PUT /positions/1
@@ -65,9 +56,22 @@ class PositionsController < ApplicationController
         salary_attributes: [:id, :amount, :rate])
     end
 
-    def check_if_new_position_is_valid
-      if @entries.length == 0 
-        redirect_to offers_path, notice: 'You must have a pending offer to add a new position.'
-      end 
+    def build_position_on_existing_entry
+      entry = Entry.find(params["position"]["entry_attributes"]["id"])
+      @position = entry.build_position
+      @position.save
+    end
+
+    def position_save
+      if @position.save
+        create_new_position_event_and_redirect
+      else
+        render :new
+      end
+    end
+
+    def create_new_position_event_and_redirect
+      Event.for_position(@position)
+      redirect_to @position.entry, notice: 'Position was successfully created.'
     end
 end
