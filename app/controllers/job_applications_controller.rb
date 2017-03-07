@@ -1,5 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  before_action :must_have_candidate_profile, only: [:new]
   autocomplete :company, :name
 
   # GET /applications
