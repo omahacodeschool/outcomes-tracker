@@ -13,32 +13,33 @@
     </div>
   <% end %>
 
-  <h2>Candidate Information</h2>
+  <div <%= "class=profileEditHighlight" if current_user.missing_candidate_profile %>>
+    <h2>Candidate Information</h2>
 
-  <p>This is basic information any jobseeker should have. We'd like you to fill out these fields, so that we can easily access the information from one place.</p>
+    <p>This is basic information any jobseeker should have. We'd like you to fill out these fields, so that we can easily access the information from one place.</p>
 
-  <fieldset>
-    <p>
-      <%= f.label :resume, "Link to your latest résumé" %>
-      <%= f.text_field :resume, placeholder: "E.g. 'http://docs.google.com/5x8m23'" %>
-    </p>
+    <fieldset>
+      <p>
+        <%= f.label :resume, "Link to your latest résumé" %>
+        <%= f.text_field :resume, placeholder: "E.g. 'http://docs.google.com/5x8m23'" %>
+      </p>
 
-    <p>
-      <%= f.label :personal_website, "Link to your personal website" %>
-      <%= f.text_field :personal_website, placeholder: "E.g. 'http://sumeetjain.github.io'" %>
-    </p>
+      <p>
+        <%= f.label :personal_website, "Link to your personal website" %>
+        <%= f.text_field :personal_website, placeholder: "E.g. 'http://sumeetjain.github.io'" %>
+      </p>
 
-    <p>
-      <%= f.label :linked_in, "Link to your LinkedIn profile" %>
-      <%= f.text_field :linked_in, placeholder: "E.g. 'http://linkedin.com/p/3892423'" %>
-    </p>
+      <p>
+        <%= f.label :linked_in, "Link to your LinkedIn profile" %>
+        <%= f.text_field :linked_in, placeholder: "E.g. 'http://linkedin.com/p/3892423'" %>
+      </p>
 
-    <p>
-      <%= f.label :twitter, "Your Twitter username" %>
-      <%= f.text_field :twitter, placeholder: "E.g. 'sumeetjain'" %>
-    </p>
-  </fieldset>
-
+      <p>
+        <%= f.label :twitter, "Your Twitter username" %>
+        <%= f.text_field :twitter, placeholder: "E.g. 'sumeetjain'" %>
+      </p>
+    </fieldset>
+  </div>
   <h2>Anonymous Information</h2>
 
   <p>
