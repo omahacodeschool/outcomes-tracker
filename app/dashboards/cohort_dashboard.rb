@@ -12,7 +12,7 @@ class CohortDashboard < Administrate::BaseDashboard
     users: Field::HasMany,
     id: Field::Number,
     name: Field::String,
-    school_id: Field::Number,
+    school: Field::BelongsTo,
     start_date: Field::DateTime,
     end_date: Field::DateTime,
     created_at: Field::DateTime,
@@ -25,10 +25,9 @@ class CohortDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :profiles,
-    :users,
     :id,
     :name,
+    :school,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -38,7 +37,7 @@ class CohortDashboard < Administrate::BaseDashboard
     :users,
     :id,
     :name,
-    :school_id,
+    :school,
     :start_date,
     :end_date,
     :created_at,
@@ -49,10 +48,8 @@ class CohortDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :profiles,
-    :users,
     :name,
-    :school_id,
+    :school,
     :start_date,
     :end_date,
   ].freeze
