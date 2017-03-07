@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
     resume.blank? || linked_in.blank?
   end
 
-  # Public: Build a profile stub to avoid errors. Defaults to 7 (for Gumiho).
-  def initialize_profile(c=7)
+  # Public: Build a profile stub to avoid errors. Defaults to 8 (for Huma).
+  def initialize_profile(c=8)
     self.create_profile(cohort_id: c)
   end
 
