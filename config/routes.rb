@@ -42,4 +42,6 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   root 'dashboards#show'
+
+  post '/email_event' => 'email#receive'
 end
