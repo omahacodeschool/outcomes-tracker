@@ -11,44 +11,48 @@
     </div>
   <% end %>
 
-  <% if params[:action] == "new" %>
-    <p>
-      <%= f.label "For which existing application?" %>
-      <%= f.select(:entry_id, @entries.collect {|e| [e.company.name, e.id]}) %>
-    </p>
-  <% elsif params[:action] == "add_new_to_existing_entry" %>
-    <p>
-      <%= f.hidden_field :entry_id, :value => @offer.entry_id %>
-    </p>
-  <% end %>
+  <fieldset>
+    <h2>Company Info</h2>
+    <%= f.fields_for :entry do |ff| %>
+      <p>
+        <%= ff.label :company_name, "Company" %>
+        <%= ff.autocomplete_field :company_name, autocomplete_company_name_job_applications_path, placeholder: "Google" %>
+      </p>
+    <% end %> 
 
-  <p>
-    <%= f.label :job_title %>
-    <%= f.text_field :job_title, value: @entry.job_application.job_title %>
-  </p>
-  
-  <%= f.fields_for :salary do |ff| %>
     <p>
-      <%= ff.label :amount, "Salary/Rate" %>
-      <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
-      <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
-    </p>
-  <% end %>
+      <%= f.label :location %>
+      <%= f.text_field :location, placeholder: "Omaha" %>
+    </p>  
+  </fieldset>
 
-  <p>
-    <%= f.label :location %>
-    <%= f.text_field :location, value: @entry.job_application.location %>
-  </p>
-  <p>
-    <%= f.label "Employment type" %>
-    <%= f.select(:nature_of_employment, options_for_select(Offer.nature_of_employments.keys, @entry.job_application.nature_of_employment)) %>
-  </p>
-  <p>
-    <label for="offer_remote">
-      <%= f.check_box :remote, checked: @entry.job_application.remote %>
-      Remote?
-    </label>
-  </p>
+  <fieldset>
+    <h2>Offer Details</h2>
+    <p>
+      <%= f.label :job_title %>
+      <%= f.text_field :job_title %>
+    </p>
+
+    <%= f.fields_for :salary do |ff| %>
+      <p>
+        <%= ff.label :amount, "Salary/Rate" %>
+        <%= ff.text_field :amount, placeholder: "49,000 or 20/hr" %>
+        <%= ff.select(:rate, options_for_select(Salary.rates.keys, "hourly")) %>
+      </p>
+    <% end %>
+    
+    <p>
+      <%= f.label "Employment type" %>
+      <%= f.select(:nature_of_employment, Offer.nature_of_employments.keys) %>
+    </p>
+    <p>
+      <label for="job_application_remote">
+        <%= f.check_box :remote %>
+        Remote?
+      </label>
+    </p>  
+
+  </fieldset>
 
   <%= f.submit "Save" %>
 <% end %>

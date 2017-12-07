@@ -3,6 +3,7 @@ class JobApplication < ActiveRecord::Base
   accepts_nested_attributes_for :entry
 
   delegate :user_id, to: :entry
+  delegate :company, to: :entry
 
   enum nature_of_employment: {"internship" => 0, "apprenticeship" => 1, 
                               "freelance/contract" => 2, "part-time" => 3, 

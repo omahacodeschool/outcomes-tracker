@@ -36,7 +36,6 @@
     </div>
   <% end %>
 
-  <%= render "message_from_alex", {entry: @entry} %>
   <%= render "message_from_sumeet", {entry: @entry} %>
   <%= render "starter_comment", {entry: @entry} %>
 </div>
@@ -54,7 +53,7 @@
 <% if @entry.position %>
   <h2>Position</h2>
   <p>
-    You accepted a position at the <%= @entry.position.location %> location as a <%= @entry.position.job_title %>, earning <%= number_to_currency(@entry.position.salary.pretty_amount, precision: 0) %> (<%= @entry.position.salary.rate %>) about <%= time_ago_in_words(@position.offer.created_at) %> ago. <%= "This is a remote position." if @position.offer.remote %> Congratulations!
+    You accepted a position at the <%= @entry.position.location %> location as a <%= @entry.position.job_title %>, earning <%= number_to_currency(@entry.position.salary.amount, precision: 0) %> (<%= @entry.position.salary.rate %>) about <%= time_ago_in_words(@entry.position.created_at) %> ago. <%= "This is a remote position." if @entry.position.remote %> Congratulations!
   </p>
   <!-- <%# @entry.position.job_title %> <%# @entry.position.location %><br>
   <%# link_to 'See more...', @entry.position %><br><br> -->
