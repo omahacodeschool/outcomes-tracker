@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+  <%= render "application/default_sidebar", {user: current_user} %>
+<% end %>
+
+<h1>Submit a Translation Request</h1>
+
+<p>Sometimes, it can feel like you have no way to talk about the work you've done. We don't want that to be nerve-wracking. Tell us some technical work you've done on your projects, and we will help you translate it into resumé speak.</p>
+
+<p>Example:</p>
+
+<p>If you send: "i made it so some users can see certain pages but others can’t. each user has different 'access' privileges."</p>
+
+<p>We'll send back something like: "Implemented role-based authorization using Pundit and Devise to restrict access within application according to authentication policies."</p>
+
+<%= render 'form' %>

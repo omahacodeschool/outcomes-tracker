@@ -1,0 +1,47 @@
+<h1>Resumé Translations</h1>
+
+<% @new_translations.each do |translation| %>
+  <div class="comment">
+    <div class="comment-image">
+      <%= image_tag(translation.user.image_url) %>
+    </div>
+
+    <div class="comment-content">
+      <div class="comment-headline">
+        <%= link_to translation.user.name, user_path(translation.user_id) %> submitted a translation request for
+        <b><%= translation.project.name %></b>
+        <%= time_ago_in_words(translation.created_at) %> ago
+      </div>
+
+      <p>
+        <em>
+          <%= link_to translation.truncate, edit_translation_path(translation.id) %>
+        </em>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<% @finished_translations.each do |translation| %>
+  <div class="comment comment--closed">
+    <div class="comment-image">
+      <%= image_tag(translation.user.image_url) %>
+    </div>
+
+    <div class="comment-content">
+      <div class="comment-headline">
+        <%= link_to translation.user.name, user_path(translation.user_id) %> submitted a translation request for
+        <b><%= translation.project.name %></b>
+        <%= time_ago_in_words(translation.created_at) %> ago
+      </div>
+
+      <p>
+        <em>
+          <%= link_to translation.truncate, translation %>
+        </em>
+      </p>
+    </div>
+  </div>
+<% end %>
+
+<%# paginate @translations %>

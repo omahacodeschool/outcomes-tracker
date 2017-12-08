@@ -11,7 +11,7 @@
   </div>
 
   <div class="userInfo__socialLinks">
-    <% if user.missing_candidate_profile %>
+    <% if user.missing_candidate_profile? %>
       <div class="sidebarAlert">
         <p class="sidebarAlert__header">
           <%= fa_icon("exclamation-triangle") %>

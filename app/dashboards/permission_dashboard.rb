@@ -9,7 +9,7 @@ class PermissionDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     user: Field::BelongsTo,
-    ability: Field::BelongsTo,
+    ability: Field::String,
     id: Field::Number,
   }.freeze
 

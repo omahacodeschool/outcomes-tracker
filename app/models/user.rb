@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
   has_many :entries
   has_one :profile
+  has_one :cohort, through: :profile
   has_many :permissions
   has_many :events
-
+  has_many :translations
+  accepts_nested_attributes_for :profile
   has_many :hidings
-
   # accepts_nested_attributes_for :permissions
 
   has_many :job_applications, through: :entries
@@ -19,15 +20,27 @@ class User < ActiveRecord::Base
   delegate :twitter, to: :profile
   # delegate :name, :to => :profile
 
+  def cohort_id
+    @cohort_id ||= self.profile.try(:cohort_id)
+  end
+
+  # For every param key passed to User.new, Rails runs a 
+  # setter method named after that key. Most of these are 
+  # default AR setter methods but it will also run this:
+
+  def cohort_id=(input)
+    self.build_profile(cohort_id: input)
+  end
+
   # Public: Checks if a User's candidate Profile is blank
   #
   # Returns True if one of the required Profile fields is blank
-  def missing_candidate_profile
+  def missing_candidate_profile?
     resume.blank? || linked_in.blank?
   end
 
-  # Public: Build a profile stub to avoid errors. Defaults to 7 (for Gumiho).
-  def initialize_profile(c=7)
+  # Public: Build a profile stub to avoid errors. Defaults to 8 (for Huma).
+  def initialize_profile(c=8)
     self.create_profile(cohort_id: c)
   end
 

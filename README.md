@@ -41,12 +41,15 @@ Password: testtest
 - When the admin opens the avatar dropdown, there is a message reminding them that they are masquerading as a user and a link to return to their own account.
 ```
 
-## Refactoring Goals
+### Coding Standards
 
-1. Remove unused code and files.
-    - Be thorough. E.g. there are probably individual actions within a controller that are unused.
-2. Clean up tests--delete unused tests and even entire files if needed.
-3. Build a `DecoratedEntry` class to manage the complexity of how an (entry + its applications/offers/positions/etc) is used in views.
-4. Reliance on `params[:action] == "new"` in **views/positions/_form.erb** is bothersome. Can anything be done about it?
-5. Get test coverage as high as possible.
-6. Integrate CodeClimate and get as high a grade as possible.
+We're going to try to stick to this:
+
+0. You should break these rules only if you have a good reason or your pair lets you.
+1. Classes can be no longer than one hundred lines of code.
+2. Methods can be no longer than five lines of code.
+3. Pass no more than four parameters into a method. Hash options are parameters.
+4. Controllers can instantiate only one object. Therefore, views can only know about one instance variable and views should only send messages to that object (`@object.collaborator.value` is not allowed).
+5. Avoid non-resource routes (So avoid `member`, `collection`, and one-off routes like `get "blah" => 'foo#bar'`).
+6. Avoid non-resource methods (aka ‘actions’) in controllers (So controller actions should only ever be index, show, new, create, edit, update, destroy).
+

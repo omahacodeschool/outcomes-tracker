@@ -36,9 +36,8 @@
     </div>
   <% end %>
 
-  <%= render "message_from_alex" %>
-  <%= render "message_from_sumeet" %>
-  <%= render "starter_comment" %>
+  <%= render "message_from_sumeet", {entry: @entry} %>
+  <%= render "starter_comment", {entry: @entry} %>
 </div>
 
 <% if @decorated_entry.offer %>

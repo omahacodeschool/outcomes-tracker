@@ -22,3 +22,21 @@
     Click "Add Application" in the menu bar above to get started.
   </p>
 <% end %>
+
+<h1>Resumé Translations</h1>
+
+<% if @translations.any? %>
+  <table class="tables">
+    <% @translations.each do |translation| %>
+      <tr>
+        <td class="tables__cell">
+          <div>
+            <%= translation.project.name %> - 
+            <%= link_to translation.truncate, translation %>
+          </div>
+          <i class= "<%= translation.icon %>" aria-hidden="true"></i>
+        </td>
+      </tr>
+    <% end %>
+  </table>  
+<% end %>
